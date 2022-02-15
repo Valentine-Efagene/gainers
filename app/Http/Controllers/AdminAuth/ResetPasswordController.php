@@ -4,7 +4,7 @@ namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\AdminAuth\ResetsPasswords;
+use App\Http\Controllers\AdminAuthBackend\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\AdminAuth\SendsPasswordResetEmails;
+use App\Http\Controllers\AdminAuthBackend\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {

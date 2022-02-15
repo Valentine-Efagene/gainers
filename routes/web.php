@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Auth::routes();
+
 Route::view('/', 'home')->name('home');
+Route::view('/home', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/faq', 'faq')->name('faq');
 Route::view('/contact', 'contact')->name('contact');
@@ -24,7 +27,8 @@ Route::view('/stock', 'stock')->name('stock');
 Route::view('/terms', 'terms')->name('terms');
 Route::view('/team', 'team')->name('team');
 Route::view('/statistics', 'statistics')->name('statistics');
+Route::get('test', function () {
+  return request()->segment(1);
+});
 
 Route::get('/adminLogin', [App\Http\Controllers\Auth\AdminAuthController::class, 'login'])->name('log');
-
-Auth::routes();

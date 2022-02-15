@@ -4,7 +4,7 @@ namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\AdminAuth\ConfirmsPasswords;
+use App\Http\Controllers\AdminAuthBackend\ConfirmsPasswords;
 
 class ConfirmPasswordController extends Controller
 {
