@@ -53,17 +53,25 @@
     <!-- end loader -->
     <div id="mySidepanel" class="sidepanel">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="index.html">Home</a>
-        <a class="active" href="{{ route('about') }}">About</a>
-        <a href="services.html">Services</a>
-        <a href="market.html">Crypto Market</a>
-        <a href="stock.html">Stock Market</a>
-        <a href="statistic.html">Statistics</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
-        <a href="#">Logout</a>
-        <a href="#">My Dashboard</a>
+        <a class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+        <a class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+        <a class="{{ Route::currentRouteName() == 'services' ? 'active' : '' }}"
+            href="{{ route('services') }}">Services</a>
+        <a class="{{ Route::currentRouteName() == 'crypto_market' ? 'active' : '' }}"
+            href="{{ route('market') }}">Crypto
+            Market</a>
+        <a class="{{ Route::currentRouteName() == 'stock_market' ? 'active' : '' }}"
+            href="{{ route('stock') }}">Stock
+            Market</a>
+        <a class="{{ Route::currentRouteName() == 'statistics' ? 'active' : '' }}"
+            href="statistic.html">Statistics</a>
+        <a class="{{ Route::currentRouteName() == 'faq' ? 'active' : '' }}" href="{{ route('faq') }}">FAQ</a>
+        <a class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}"
+            href="{{ route('contact') }}">Contact</a>
+        <a class="{{ Route::currentRouteName() == 'login' ? 'active' : '' }}"
+            href="{{ route('login') }}">Login</a>
+        <a class="{{ Route::currentRouteName() == 'logout' ? 'active' : '' }}" href="#">Logout</a>
+        <a class="{{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}" href="#">My Dashboard</a>
     </div>
     <!-- header -->
     <header>
@@ -214,7 +222,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 "">
-                        <div class="                       Informa helpful">
+                        <div class="                                              Informa helpful">
                         <h3>Useful Link</h3>
                         <ul>
 

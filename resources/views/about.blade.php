@@ -18,8 +18,6 @@
                                         accessing the opportunity to gain from the market, without any initial skills in
                                         trading or idea about what Forex is all about.
                                     </p>
-
-
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -35,9 +33,7 @@
                                 blockchain network. Payment and other transactions are all made with cryptocurrencies.
                             </p>
                             <hr>
-                            <h3>WHY CHOOSE GAINERS BAY?
-
-                            </h3>
+                            <h3>WHY CHOOSE GAINERS BAY?</h3>
 
                             <ul style="text-align: justify;">
                                 <li>
