@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class=" col-md-10 offset-md-1">
-                    <form method="POST" class="main_form" action="{{ route('register') }}">
+                    <form method="POST" class="main_form" action="{{ url('/register') }}">
                         @csrf
 
                         <div class="row">

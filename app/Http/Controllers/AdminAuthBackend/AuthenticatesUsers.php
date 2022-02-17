@@ -85,7 +85,7 @@ trait AuthenticatesUsers
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard('admin')->attempt(
+        return $this->guard()->attempt(
             $this->credentials($request),
             $request->filled('remember')
         );
@@ -114,7 +114,7 @@ trait AuthenticatesUsers
 
         $this->clearLoginAttempts($request);
 
-        if ($response = $this->authenticated($request, $this->guard('admin')->user())) {
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
         }
 
@@ -168,7 +168,7 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
-        $this->guard('admin')->logout();
+        $this->guard()->logout();
 
         $request->session()->invalidate();
 

@@ -73,9 +73,15 @@
             <a class="{{ Route::currentRouteName() == 'faq' ? 'active' : '' }}" href="{{ route('faq') }}">FAQ</a>
             <a class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}"
                 href="{{ route('contact') }}">Contact</a>
-            <a class="{{ request()->segment(1) == 'login' ? 'active' : '' }}" href="{{ url('/login') }}">Login</a>
-            <a class="{{ Route::currentRouteName() == 'logout' ? 'active' : '' }}" href="#">Logout</a>
-            <a class="{{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}" href="#">My Dashboard</a>
+            @if (Auth::guard()->check())
+                <a class="{{ Route::currentRouteName() == 'logout' ? 'active' : '' }}"
+                    href="{{ url('/logout') }}">Logout</a>
+                <a class="{{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
+                    href="{{ route('user.dashboard') }}">My Dashboard</a>
+            @else
+                <a class="{{ request()->segment(1) == 'login' ? 'active' : '' }}"
+                    href="{{ url('/login') }}">Login</a>
+            @endif
         </div>
     @endif
     <!-- header -->
