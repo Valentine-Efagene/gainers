@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_dashboard')
 
 @section('content')
     <div class="container">
@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Admin Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('admin.login') }}">
                             @csrf
 
                             <div class="row mb-3">
@@ -64,7 +64,7 @@
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="{{ route('admin.password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif

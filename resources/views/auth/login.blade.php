@@ -12,7 +12,7 @@
                         <div class="login-title">
                             <h2 class="text-center text-primary">Login To Your Gainers Bay</h2>
                         </div>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ url('/login') }}">
                             @csrf
 
                             <div class="input-group custom">
@@ -71,9 +71,9 @@
                                 <div class="col-sm-12">
                                     <div class="input-group mb-0">
                                         <!--
-                                                                                    use code for form submit
-                                                                                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
-                                                                                 -->
+                                                                                            use code for form submit
+                                                                                            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
+                                                                                         -->
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
                                             {{ __('Login') }}
                                         </button>

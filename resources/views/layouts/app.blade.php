@@ -82,6 +82,10 @@
                 <a class="{{ request()->segment(1) == 'login' ? 'active' : '' }}"
                     href="{{ url('/login') }}">Login</a>
             @endif
+            @if (Auth::guard('admin')->check())
+                <a class="{{ Route::currentRouteName() == 'admin/dashboard' ? 'active' : '' }}"
+                    href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+            @endif
         </div>
     @endif
     <!-- header -->

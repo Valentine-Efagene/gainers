@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::view('/deposit', 'deposit')->name('user.deposit');
   Route::view('/activities', 'activities')->name('user.activities');
   Route::view('/dashboard', 'dashboard')->name('user.dashboard');
+  Route::view('/*', 'dashboard')->name('user.dashboard');
 });
 
 //Route::get('/adminLogin', [App\Http\Controllers\Auth\AdminAuthController::class, 'login'])->name('log');

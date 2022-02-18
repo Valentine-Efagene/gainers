@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminAuth\LoginController;
 use App\Http\Controllers\AdminAuth\RegisterController;
 use App\Http\Controllers\AdminAuth\ForgotPasswordController;
 use App\Http\Controllers\AdminAuth\ResetPasswordController;
+use App\Http\Controllers\adminDashboard\TotalUsers;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,39 +22,29 @@ use App\Http\Controllers\AdminAuth\ResetPasswordController;
 */
 
 // Authentication Routes...
-Route::get('login', [LoginController::class, 'showLoginForm'])->name('admin-login');
-Route::post('login', [LoginController::class, 'login']);
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('admin.login');
+Route::post('login', [LoginController::class, 'login'])->name('admin.logout');
+Route::post('logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 // Registration Routes...
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [RegisterController::class, 'register']);
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('admin.register');
+Route::post('register', [RegisterController::class, 'admin.register']);
 
 // Password Reset Routes...
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'admin_auth'], function () {
+    Route::view('/profit', 'admin.profit')->name('admin.profit');
+    Route::view('/token', 'admin.token')->name('admin.token');
+    Route::view('/withdrawals', 'admin.withdrawals')->name('admin.withdrawals');
+    Route::view('/deposits', 'admin.deposits')->name('admin.deposits');
+    Route::view('/trader_stat', 'admin.trader_stat')->name('admin.trader_stat');
+    Route::get('/total_users', [TotalUsers::class, 'index'])->name('admin.total_users');
+    Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
+    Route::view('/system', 'admin.system')->name('admin.system');
+    Route::view('/dashboard', 'admin.index')->name('admin.dashboard');
+    Route::view('/*', 'admin.index')->name('admin');
 });
-
-Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
-
-Route::get('/home', function () {
-    return 'Is there an admin home?';
-});
-
-Route::get('/', function () {
-    return 'Hello Admin';
-});
-
-//Route::get('/login', [AdminAuthController::class], 'getLogin')->name('adminLogin');
-//Route::post('/login', 'AdminAuthController@postLogin')->name('adminLoginPost');
-//Route::get('/logout', 'AdminAuthController@logout')->name('adminLogout');
-
-// Route::group(['prefix' => 'admin', 'middleware' => 'adminauth'], function () {
-//     // Admin Dashboard
-//     Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
-// });

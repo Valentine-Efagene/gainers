@@ -19,6 +19,19 @@ class AdminSeeder extends Seeder
             'name' => 'Ghost',
             'email' => 'ghost@gmail.com',
             'password' => Hash::make('power'),
+            'phone_number' => '+45454343576',
+            'country' => 'UK',
+            'gender' => 'Male',
+            'username' => 'Ghost',
+        ]);
+        DB::table('admins')->insert([
+            'name' => 'Skipper',
+            'email' => 'skipper@gmail.com',
+            'password' => Hash::make('power'),
+            'phone_number' => '+45454343576',
+            'country' => 'UK',
+            'gender' => 'Male',
+            'username' => 'Skipper',
         ]);
     }
 }
