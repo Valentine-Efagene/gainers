@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DepositController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,8 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 
-Route::view('/', 'home')->name('home');
 Route::view('/home', 'home')->name('home');
+Route::view('/', 'home')->name('index');
 Route::view('/about', 'about')->name('about');
 Route::view('/faq', 'faq')->name('faq');
 Route::view('/contact', 'contact')->name('contact');
@@ -39,9 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::view('/profile', 'profile')->name('user.profile');
   Route::view('/withdrawal', 'withdrawal')->name('user.withdrawal');
   Route::view('/deposit', 'deposit')->name('user.deposit');
+  Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
   Route::view('/activities', 'activities')->name('user.activities');
   Route::view('/dashboard', 'dashboard')->name('user.dashboard');
-  Route::view('/*', 'dashboard')->name('user.dashboard');
 });
 
 //Route::get('/adminLogin', [App\Http\Controllers\Auth\AdminAuthController::class, 'login'])->name('log');

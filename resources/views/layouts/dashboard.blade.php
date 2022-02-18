@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/dashboard.html">
+                    <a class="nav-link" href="{{ route('user.dashboard') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/activities.html">
+                    <a class="nav-link  " href="{{ route('user.activities') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/deposits.html">
+                    <a class="nav-link" href="{{ route('user.deposit') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -117,7 +117,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="../pages/withdrawal.html">
+                    <a class="nav-link active" href="{{ route('user.withdrawal') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -147,7 +147,7 @@
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/profile.html">
+                    <a class="nav-link" href="{{ route('user.profile') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -177,7 +177,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="#">
+                    <a class="nav-link  " href="{{ route('logout') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -218,7 +218,7 @@
                     </div>
                     <h6 class="text-white up mb-0">Need help?</h6>
                     <p class="text-xs font-weight-bold">Please Contact Our Supports</p>
-                    <a href="#" class="btn btn-white btn-sm w-100 mb-0">Support</a>
+                    <a href="{{ route('contact') }}" class="btn btn-white btn-sm w-100 mb-0">Support</a>
                 </div>
             </div>
         </div>
@@ -266,20 +266,20 @@
                                 document.write(new Date().getFullYear())
                             </script>,
                             All Right Reserve <i class="fa fa-heart"></i>
-                            <a href="#" class="font-weight-bold">Gainers Bay
+                            <a href="{{ route('home') }}" class="font-weight-bold">Gainers Bay
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-muted">Team</a>
+                                <a href="{{ route('team') }}" class="nav-link text-muted">Team</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link text-muted">Policies</a>
+                                <a href="{{ route('terms') }}" class="nav-link text-muted">Policies</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link pe-0 text-muted">Support</a>
+                                <a href="{{ route('contact') }}" class="nav-link pe-0 text-muted">Support</a>
                             </li>
                         </ul>
                     </div>

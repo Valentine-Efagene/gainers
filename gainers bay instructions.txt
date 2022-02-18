@@ -1,0 +1,81 @@
+
+GENERAL UI:
+
+sign up form: 			The sign up form contains where the user will enter a few of their info to sign up. That info should be saved at the user profile 
+				in User Dashboard. Preferred Password have to match with Confirm password else alert user to use a matching one.
+
+				
+
+Login form: 			User can login their account through this form and show their dashboard. 
+				Remember password show be able to store user login details when they ticked it.
+				Reset password should be used to direct users to reset their password when they lost or forget their old one.
+
+Reset Password Form:		Users should fill the provided details. To reset password, the system should check for old email and name in data base
+				that matches the submitted details and send the user and email containing an auto generated new password or if you can
+				create a page where user can fill a new password following the link from their email. In all, data base should be updated
+				with the new password.
+Contact form: 			User should be able to send the company an email using this form.
+
+Statistics Page:		It just a graph. I would have love that admin can change the year month and percentage trading success over the months.
+				But if there is a way you can code it to update every month randomly by not below 55% it a welcome idea.
+				
+
+
+
+USER DASHBOARD:
+
+User Account overview page: 	Account balance is the withdrawable balance from expire investment. 
+				Active equity is the total amount of active investment deposited
+				Active profit is the profit from active deposits. 
+				Total withdrawal is the amount Users has withdrawn so far since signing up.
+				
+				TRADER CHART AND STATISTICS: Displays user assigned trader by admin and their stats, which can be updated by admin.
+			
+				Last 5 transactions should show the user last five transactions;: withdrawal or deposit.
+User Account Activities page:	This should show the last 100 activities on the Users account with their status and date and type of transactions
+
+User Deposit Page:		Here user will be able to fill their deposit information after payment into the provided wallets. Which will be
+				recieved by admin for approval. Note: Wallets can be updated by admin.
+
+				DEPOSIT HISTORY: This will show the last 10 deposits of the user
+
+User Withdrawal page:		Here user will be able to make withdrawal by entering their wallet, withdrawal token which is assigned by admin and 
+				amount and will be approved by admin or not.
+				WITHDRAWAL HISTORY: This space shows the last 10 failed or approved withdrawal.
+
+User profile page:		Here user details and user can update their email and phone number.
+				Users can not update their names and some other info But only phone and email and their profile photo.
+
+NOTE: IN ALL THE PAGES, LINK THE SUPPORT BUTTON AT THE LEFT DOWN CONNER TO LIVE CHAT OR EMAIL TO THE COMPANY.
+	LINK THE GAINERS BAY ICON TO GENERAL UI HOME PAGE. AND pOLICIES TO TERMS AND CONDITION PAGE
+
+
+
+
+ADMIN DASHBOARD: (FUNCTION DROPDOWN BUTTON)
+
+Total Users: 			Contains all users on the platform and the details specified. The action button helps admin do the actions stated.
+				Admin can use the action  button to add bonus to users who just signed up.
+
+
+Withdrawals:			This page contains all withdrawals, approved and new ones (New ones above). Action Button helps admin to carryout
+				the state functions. This table should store the details filled by users to withdraw.
+
+Deposits:			This page contians all previous deposits and new ones (recent and new ones on top). Admin should be able to download
+				deposit receipt uploaded by the user. 
+				The action button contains function the admin can carryout on each deposit i.e: adding of profit on investment etc (Note, profit are added
+				manually not automatically by admin)
+
+Stystem Statistics settings:	1.	Change/update wallet addresses on users dashboard: Admin should be able to use the edit form to update
+					new wallet addresses when he wants to. 
+
+				2.	Trader Statistics: Admin should be able to update or create new trader that can be assigned to users/investors
+					This list of traders/managers are displayed at the bottom dashboard of the user and the particular user trader
+					is assigned to. Please traders are assigned in the total user page. here is just to create or update traders.
+
+ANY QUESTION, PLEASE LET ME KNOW. tHANKS 
+
+
+
+
+

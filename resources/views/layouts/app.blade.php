@@ -85,6 +85,8 @@
             @if (Auth::guard('admin')->check())
                 <a class="{{ Route::currentRouteName() == 'admin/dashboard' ? 'active' : '' }}"
                     href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                <a class="{{ request()->segment(1) == 'logout' ? 'active' : '' }}"
+                    href="{{ route('admin.logout') }}">Log Out Admin</a>
             @endif
         </div>
     @endif

@@ -1,4 +1,5 @@
 @extends('layouts.dashboard')
+@inject('Plan', 'App\Models\Deposit')
 
 @section('content')
     <!--Bitcoin Wallet Starts-->
@@ -58,6 +59,11 @@
                         </div>
                     </div>
                 </div>
+                @isset($success)
+                    @if ($success)
+                        <div style="color: rgb(0, 255, 179)">Done</div>
+                    @endif
+                @endisset
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-md-12 mb-md-0 mb-4">
@@ -67,40 +73,69 @@
                                 <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Edit Card"></i>
                                 <form id="contact-form" class="form" name="enq" enctype='multipart/form-data'
-                                    method="POST" action="">
+                                    method="POST" action="{{ route('deposit.store') }}">
+                                    @csrf
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
                                             <label>Choose an Investment plan</label><br>
-                                            <input id="rbBasic" type="radio" name="plan" value="">Basic Plan ($500 -
+                                            <input id="rbBasic" type="radio" name="plan" value="{{ $Plan::BASIC }}">Basic
+                                            Plan ($500 -
                                             $1000)<br>
-                                            <input id="rbStarter" type="radio" name="plan" value="">Bronze Plan ($1001 -
+                                            <input id="rbStarter" type="radio" name="plan"
+                                                value="{{ $Plan::BRONZE }}">Bronze Plan ($1001 -
                                             $2000)<br>
-                                            <input id="rbStandard" type="radio" name="plan" value="">Silver Plan ($2001 -
+                                            <input id="rbStandard" type="radio" name="plan"
+                                                value="{{ $Plan::SILVER }}">Silver Plan ($2001 -
                                             $3000)<br>
-                                            <input id="rbSuperStandard" type="radio" name="plan" value="">Diamond Plan
+                                            <input id="rbSuperStandard" type="radio" name="plan"
+                                                value="{{ $Plan::DIAMOND }}">Diamond Plan
                                             ($3001 - $5000<br>
-                                            <input id="rbPremium" type="radio" name="plan">Premium Plan ($5000+)<br>
-                                            <input id="rbOther" type="radio" name="plan" value="">Cryptocurrencies ($1000 -
+                                            <input id="rbPremium" type="radio" name="plan"
+                                                value="{{ $Plan::PREMIUM }}">Premium Plan ($5000+)<br>
+                                            <input id="rbOther" type="radio" name="plan"
+                                                value="{{ $Plan::CRYPTOCURRENCIES }}">Cryptocurrencies ($1000 -
                                             $50,000)<br>
-                                            <input id="rbOther" type="radio" name="plan" value="">Stocks ($1000 -
+                                            <input id="rbOther" type="radio" name="plan"
+                                                value="{{ $Plan::STOCKS }}">Stocks
+                                            ($1000 -
                                             $50,000)<br>
-                                            <input id="rbOther" type="radio" name="plan" value="">Custom plan
+                                            <input id="rbOther" type="radio" name="plan"
+                                                value="{{ $Plan::CUSTOM }}">Custom
+                                            plan
 
+                                            @error('plan')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group col-4 mb-3">
                                         <label>Amount paid: $</label>
                                         <input name="amount" class="form-control" id="cnumber" required="required"
                                             type="text" placeholder="Enter amount deposited in USD">
+
+                                        @error('amount')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div>
                                         <label>Upload Receipt of payment (jpeg, png, jpg format only)</label><br>
-                                        <input name="proof" id="cphoto" type="file" required="required">
+                                        <input name="proof" id="proof" value="{{ old('proof') }}" type="file"
+                                            required="required" @error('proof') is-invalid @enderror>
+
+                                        @error('proof')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div><br><br>
 
                                     <div class="col-md-6 text-right">
-                                        <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                                                class="fas fa-plus"></i>&nbsp;&nbsp; SUBMIT</a>
+                                        <button type="submit" class="btn bg-gradient-dark mb-0" href="javascript:;"><i
+                                                class="fas fa-plus"></i>&nbsp;&nbsp; SUBMIT</button>
                                     </div>
                                     <hr>
                                     <div>

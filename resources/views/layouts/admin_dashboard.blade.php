@@ -178,7 +178,7 @@
                             <li><a href="{{ route('admin.system') }}">System Statistics and Update Settings</a></li>
                             <!--Only Available to Grand Admin. Other Admin only eligible to process
        withdrawals and Deposits-->
-                            <li><a href="{{ url('admin/logout') }}">Log Out</a></li>
+                            <li><a href="{{ route('admin.logout') }}">Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
