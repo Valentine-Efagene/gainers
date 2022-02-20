@@ -192,7 +192,7 @@
 
     <!--Footer Starts-->
     <div class="footer-wrap pd-20 mb-20 card-box">
-        247Gainers_Admin: User's name
+        247Gainers Admin: {{ Auth::guard('admin')->user()->name }}
     </div>
     <!--Footer ends-->
     </div>
