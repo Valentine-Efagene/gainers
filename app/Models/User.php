@@ -24,6 +24,7 @@ class User extends Authenticatable
         'username',
         'phone_number',
         'country',
+        'referrer',
         'gender'
     ];
 

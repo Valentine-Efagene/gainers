@@ -34,36 +34,42 @@
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="table-plus">John Davison
-                                </td>
-                                <td>124343434
-                                </td>
-                                <td>Diamond</td>
-                                <td>45678</td>
-                                <td>Bitcoin</td>
-                                <td>Download Receipt</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
-                                            role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Decline
-                                                Investment</a>
-                                            <a class="dropdown-item" href="profit.html"><i class="dw dw-edit2"></i>Add
-                                                Profit</a>
-                                            <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Approve
-                                                Investment</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Delete
-                                                Investment</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
+                        @isset($deposits)
+                            <tbody>
+                                @foreach ($deposits as $deposit)
+                                    <tr>
+                                        <td class="table-plus">{{ $deposit->user->name }}
+                                        </td>
+                                        <td>{{ $deposit->user_id }}
+                                        </td>
+                                        <td>{{ $deposit->plan }}</td>
+                                        <td>{{ $deposit->amount }}</td>
+                                        <td>{{ $deposit->plan }}</td>
+                                        <td>Download Receipt</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                                    href="#" role="button" data-toggle="dropdown">
+                                                    <i class="dw dw-more"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Decline
+                                                        Investment</a>
+                                                    <a class="dropdown-item" href="profit.html"><i
+                                                            class="dw dw-edit2"></i>Add
+                                                        Profit</a>
+                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Approve
+                                                        Investment</a>
+                                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Delete
+                                                        Investment</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            {{ $deposits->links() }}
+                        @endisset
                     </table>
                 </div>
             </div>

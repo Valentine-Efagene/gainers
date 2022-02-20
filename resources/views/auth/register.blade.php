@@ -78,6 +78,21 @@
                                 @enderror
                             </div>
 
+                            @if (request()->request->get('ref'))
+                                <div class="col-md-6">
+                                    <input id="referrer" type="text" placeholder="referrer"
+                                        class="contactus @error('referrer') is-invalid @enderror" name="referrer"
+                                        value="{{ request()->request->get('ref') }}" readonly required
+                                        autocomplete="referrer" autofocus>
+
+                                    @error('referrer')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            @endif
+
                             <div class="col-md-6">
                                 <input id="password" type="password" placeholder="Preferred Password"
                                     class="contactus @error('password') is-invalid @enderror" name="password" required
