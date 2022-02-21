@@ -7,6 +7,38 @@ use Illuminate\Http\Request;
 
 class DepositController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'only' => [
+                'store'
+            ]
+        ]);
+
+        $this->middleware('admin_auth', [
+            'only' => [
+                'index'
+            ]
+        ]);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        $deposits = Deposit::paginate(10);
+        //dd($deposits);
+        return view('admin.deposits', compact('deposits'));
+    }
+
     public function store(Request $request)
     {
         // dd($request->file('proof'));

@@ -191,9 +191,11 @@
     @yield('content')
 
     <!--Footer Starts-->
-    <div class="footer-wrap pd-20 mb-20 card-box">
-        247Gainers Admin: {{ Auth::guard('admin')->user()->name }}
-    </div>
+    @if (Auth::check('admin'))
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            247Gainers Admin: {{ Auth::guard('admin')->user()->name }}
+        </div>
+    @endif
     <!--Footer ends-->
     </div>
     </div>

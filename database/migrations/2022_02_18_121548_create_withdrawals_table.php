@@ -15,6 +15,14 @@ class CreateWithdrawalsTable extends Migration
     {
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('wallet_id')->nullable();
+            $table->string('wallet_qpr')->nullable();
+            $table->string('token');
+            $table->float('amount');
             $table->timestamps();
         });
     }

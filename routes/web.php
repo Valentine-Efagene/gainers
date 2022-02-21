@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\WithdrawalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::view('/withdrawal', 'withdrawal')->name('user.withdrawal');
   Route::view('/deposit', 'deposit')->name('user.deposit');
   Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
+  Route::post('/withdrawal', [WithdrawalController::class, 'store'])->name('withdrawal.store');
   Route::view('/activities', 'activities')->name('user.activities');
   Route::view('/dashboard', 'dashboard')->name('user.dashboard');
 });

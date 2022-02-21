@@ -27,11 +27,19 @@
                                             <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
                                             <form id="contact-form" class="form" name="enq"
-                                                enctype='multipart/form-data' method="POST" action="">
+                                                enctype='multipart/form-data' method="POST"
+                                                action="{{ route('withdrawal.store') }}">
+                                                @csrf
                                                 <div class="form-group col-8 mb-3">
                                                     <label>Wallet ID</label>
-                                                    <input name="Wallet ID" class="form-control" id="wnumber"
+                                                    <input class="form-control" id="wallet_id" name="wallet_id"
                                                         required="required" type="text" placeholder="Enter Your Wallet ID">
+
+                                                    @error('wallet_id')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                                 <div>
                                                     <label> Or Upload Your Wallet QPR (jpeg, png, jpg format
@@ -40,15 +48,25 @@
                                                 </div>
                                                 <div class="form-group col-6 mb-3">
                                                     <label>Withdrawal Token</label>
-                                                    <input name="Token" class="form-control" id="Ctoken"
+                                                    <input name="token" class="form-control" id="token"
                                                         required="required" type="text"
                                                         placeholder="Enter your Transfer token">
+                                                    @error('token')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group col-6 mb-3">
                                                     <label>Amount: $</label>
-                                                    <input name="amount" class="form-control" id="cnumber"
+                                                    <input name="amount" class="form-control" id="amount"
                                                         required="required" type="text"
                                                         placeholder="Enter amount You want to withdraw in USD">
+                                                    @error('amount')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                                 <br><br>
 
