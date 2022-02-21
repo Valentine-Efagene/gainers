@@ -112,8 +112,9 @@
                                     </div>
                                     <div class="form-group col-4 mb-3">
                                         <label>Amount paid: $</label>
-                                        <input name="amount" class="form-control" id="cnumber" required="required"
-                                            type="text" placeholder="Enter amount deposited in USD">
+                                        <input name="amount" class="form-control @error('amount') is-invalid @enderror"
+                                            id="cnumber" required="required" type="text"
+                                            placeholder="Enter amount deposited in USD">
 
                                         @error('amount')
                                             <span class="invalid-feedback" role="alert">
@@ -123,8 +124,9 @@
                                     </div>
                                     <div>
                                         <label>Upload Receipt of payment (jpeg, png, jpg format only)</label><br>
-                                        <input name="proof" id="proof" value="{{ old('proof') }}" type="file"
-                                            required="required" @error('proof') is-invalid @enderror>
+                                        <input name="proof" class="@error('proof') is-invalid @enderror" id="proof"
+                                            value="{{ old('proof') }}" type="file" required="required"
+                                            @error('proof') is-invalid @enderror>
 
                                         @error('proof')
                                             <span class="invalid-feedback" role="alert">

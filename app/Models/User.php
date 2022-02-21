@@ -28,6 +28,21 @@ class User extends Authenticatable
         'gender'
     ];
 
+    public function deposit()
+    {
+        return $this->hasMany(Deposit::class);
+    }
+
+    public function withdrawal()
+    {
+        return $this->hasMany(Withdrawal::class);
+    }
+
+    public function profit()
+    {
+        return $this->hasManyThrough(Profit::class, Investment::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

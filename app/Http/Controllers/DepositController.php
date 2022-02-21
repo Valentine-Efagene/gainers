@@ -28,21 +28,26 @@ class DepositController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Paginate all deposits
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         $deposits = Deposit::paginate(10);
-        //dd($deposits);
         return view('admin.deposits', compact('deposits'));
     }
 
+    /**
+     * Store a deposit: (POST)
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function store(Request $request)
     {
-        // dd($request->file('proof'));
-        $request->validate([]);
+        $request->validate([
+            'amount' => ['numeric']
+        ]);
         $deposit = new Deposit;
         $deposit->user_id = auth()->id();
         $deposit->plan = $request->plan;

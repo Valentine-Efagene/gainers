@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Profit extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['investment_id', 'amount'];
+
+    public function deposit()
+    {
+        return $this->belongsTo(Deposit::class);
+    }
 }

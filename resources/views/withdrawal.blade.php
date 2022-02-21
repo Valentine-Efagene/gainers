@@ -32,8 +32,9 @@
                                                 @csrf
                                                 <div class="form-group col-8 mb-3">
                                                     <label>Wallet ID</label>
-                                                    <input class="form-control" id="wallet_id" name="wallet_id"
-                                                        required="required" type="text" placeholder="Enter Your Wallet ID">
+                                                    <input class="form-control @error('wallet_id') is-invalid @enderror"
+                                                        id="wallet_id" name="wallet_id" required="required" type="text"
+                                                        placeholder="Enter Your Wallet ID">
 
                                                     @error('wallet_id')
                                                         <span class="invalid-feedback" role="alert">
@@ -44,11 +45,14 @@
                                                 <div>
                                                     <label> Or Upload Your Wallet QPR (jpeg, png, jpg format
                                                         only)</label><br>
-                                                    <input name="proof" id="cphoto" type="file" required="">
+                                                    <input name="wallet_qpr"
+                                                        class="@error('wallet_qpr') is-invalid @enderror" id="wallet_qpr"
+                                                        type="file" required="required">
                                                 </div>
                                                 <div class="form-group col-6 mb-3">
                                                     <label>Withdrawal Token</label>
-                                                    <input name="token" class="form-control" id="token"
+                                                    <input name="token"
+                                                        class="form-control @error('token') is-invalid @enderror" id="token"
                                                         required="required" type="text"
                                                         placeholder="Enter your Transfer token">
                                                     @error('token')
@@ -59,8 +63,9 @@
                                                 </div>
                                                 <div class="form-group col-6 mb-3">
                                                     <label>Amount: $</label>
-                                                    <input name="amount" class="form-control" id="amount"
-                                                        required="required" type="text"
+                                                    <input name="amount"
+                                                        class="form-control @error('amount') is-invalid @enderror"
+                                                        id="amount" required="required" type="text"
                                                         placeholder="Enter amount You want to withdraw in USD">
                                                     @error('amount')
                                                         <span class="invalid-feedback" role="alert">
@@ -71,9 +76,10 @@
                                                 <br><br>
 
                                                 <div class="col-md-6 text-right">
-                                                    <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                                                            class="fas fa-plus"></i>&nbsp;&nbsp; Submit Withdrawal
-                                                        Request</a>
+                                                    <button type="submit" class="btn bg-gradient-dark mb-0"
+                                                        href="javascript:;"><i class="fas fa-plus"></i>&nbsp;&nbsp;
+                                                        Submit Withdrawal
+                                                        Request</button>
                                                 </div>
                                                 <hr>
                                                 <div>

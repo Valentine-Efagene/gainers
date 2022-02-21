@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminAuth\ResetPasswordController;
 use App\Http\Controllers\adminDashboard\DepositsController;
 use App\Http\Controllers\adminDashboard\TotalUsers;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::view('/withdrawals', 'admin.withdrawals')->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
     Route::view('/trader_stat', 'admin.trader_stat')->name('admin.trader_stat');
-    Route::get('/total_users', [TotalUsers::class, 'index'])->name('admin.total_users');
+    Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');
     Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
     Route::view('/system', 'admin.system')->name('admin.system');
     Route::view('/dashboard', 'admin.index')->name('admin.dashboard');

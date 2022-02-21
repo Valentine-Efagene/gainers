@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\adminDashboard;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class TotalUsers extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -15,11 +14,21 @@ class TotalUsers extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin_auth');
+        /*$this->middleware('auth', [
+            'only' => [
+                'store'
+            ]
+        ]);*/
+
+        $this->middleware('admin_auth', [
+            'only' => [
+                'index'
+            ]
+        ]);
     }
 
     /**
-     * Show the application dashboard.
+     * Paginate all users
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
