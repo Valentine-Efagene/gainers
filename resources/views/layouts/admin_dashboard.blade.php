@@ -20,6 +20,8 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+    <!-- font awesome icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome-free-6.0.0-web\css\all.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css"
@@ -51,7 +53,7 @@
                         <span class="user-icon">
                             <img src="{{ asset('vendors/images/photo1.jpg') }}" alt="">
                         </span>
-                        <span class="user-name">Admin_Name</span>
+                        <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                         <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
@@ -191,7 +193,7 @@
     @yield('content')
 
     <!--Footer Starts-->
-    @if (Auth::check('admin'))
+    @if (Auth::guard('admin')->check())
         <div class="footer-wrap pd-20 mb-20 card-box">
             247Gainers Admin: {{ Auth::guard('admin')->user()->name }}
         </div>

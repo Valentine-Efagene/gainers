@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AdminSeeder::class,
             DepositSeeder::class,
-            WithdrawalSeeder::class
+            WithdrawalSeeder::class,
+            WalletSeeder::class
         ]);
     }
 }

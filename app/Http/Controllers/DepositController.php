@@ -52,7 +52,11 @@ class DepositController extends Controller
         $deposit->user_id = auth()->id();
         $deposit->plan = $request->plan;
         $deposit->amount = $request->amount;
-        $deposit->proof = $request->file('proof')->store('uploads', 'public');
+
+        if ($request->file('proof')) {
+            $deposit->proof = $request->file('proof')->store('uploads', 'public');
+        }
+
         $ret = $deposit->save();
         $success = $ret ? true : false;
         return view('deposit', compact('success'));

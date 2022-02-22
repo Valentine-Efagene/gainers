@@ -45,7 +45,8 @@
                                         <td>{{ $deposit->plan }}</td>
                                         <td>{{ $deposit->amount }}</td>
                                         <td>{{ $deposit->plan }}</td>
-                                        <td>Download Receipt</td>
+                                        <td><a href="../storage/app/public/uploads/{{ $deposit['proof'] }}"><i
+                                                    class="fa-solid fa-receipt fa-2x" style="color: goldenrod"></i></a></td>
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"

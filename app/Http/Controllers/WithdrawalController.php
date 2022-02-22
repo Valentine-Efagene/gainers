@@ -36,7 +36,10 @@ class WithdrawalController extends Controller
         $withdrawal->token = $request->token;
         $withdrawal->wallet_id = $request->wallet_id;
         $withdrawal->amount = $request->amount;
-        $withdrawal->wallet_qpr = $request->file('wallet_qpr')->store('uploads', 'public');
+
+        if ($request->file('wallet_qpr')) {
+            $withdrawal->wallet_qpr = $request->file('wallet_qpr')->store('uploads', 'public');
+        }
 
         $ret = $withdrawal->save();
         $success = $ret ? true : false;

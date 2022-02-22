@@ -21,7 +21,9 @@
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form>
+                                            <form enctype='multipart/form-data' method="POST"
+                                                action="{{ route('admin.system_wallet') }}">
+                                                @csrf
                                                 <ul class="profile-edit-list row">
                                                     <li class="weight-500 col-md-6">
                                                         <h4 class="text-blue h5 mb-20">Edit/Update Wallets</h4>
@@ -29,13 +31,29 @@
                                                         <!--BITCOIN WALLET UPDATE STARTS-->
                                                         <div class="form-group">
                                                             <label>BITCOIN WALLET ID</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input
+                                                                class="form-control form-control-lg @error('bitcoin_wallet_id') is-invalid @enderror"
+                                                                type="text" name="bitcoin_wallet_id" id="bitcoin_wallet_id">
+                                                            @error('bitcoin_wallet_id')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
 
                                                         <div class="form-group">
 
                                                             <label>UPLOAD BITCOIN WALLET QPR CODE</label><br>
-                                                            <input name="proof" id="cphoto" type="file">
+                                                            <input name="bitcoin_wallet_qpr_code"
+                                                                class="@error('bitcoin_wallet_qpr_code') is-invalid @enderror"
+                                                                id="bitcoin_wallet_qpr_code"
+                                                                value="{{ old('bitcoin_wallet_qpr_code') }}" type="file"
+                                                                @error('bitcoin_wallet_qpr_code') is-invalid @enderror>
+                                                            @error('bitcoin_wallet_qpr_code')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
 
                                                         </div>
                                                         <div class="form-group mb-0">
@@ -49,13 +67,30 @@
                                                         <BR><BR>
                                                         <div class="form-group">
                                                             <label>BNB WALLET ID</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input
+                                                                class="form-control form-control-lg @error('bnb_wallet_id') is-invalid @enderror"
+                                                                type="text" name="bnb_wallet_id" id="bnb_wallet_id">
+                                                            @error('bnb_wallet_id')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
 
                                                         <div class="form-group">
 
                                                             <label>UPLOAD BNB WALLET QPR CODE</label><br>
-                                                            <input name="proof" id="cphoto" type="file">
+                                                            <input name="bnb_wallet_qpr_code"
+                                                                class="@error('bnb_wallet_qpr_code') is-invalid @enderror"
+                                                                id="bnb_wallet_qpr_code"
+                                                                value="{{ old('bnb_wallet_qpr_code') }}" type="file"
+                                                                @error('bnb_wallet_qpr_code') is-invalid @enderror>
+
+                                                            @error('bnb_wallet_qpr_code')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
 
                                                         </div>
                                                         <div class="form-group mb-0">

@@ -18,7 +18,7 @@ class WithdrawalSeeder extends Seeder
             'amount' => 500,
             'token' => '4r3io4ro3i4jr',
             'wallet_id' => '43j4394irf39',
-            'wallet_qpr' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
+            'wallet_qpr' => 'mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1',
         ]);
         DB::table('withdrawals')->insert([

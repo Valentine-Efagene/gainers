@@ -40,7 +40,8 @@
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="traderstat.html"><i class="dw dw-edit2"></i>
+                                            <a class="dropdown-item" href="{{ route('admin.trader_stat') }}"><i
+                                                    class="dw dw-edit2"></i>
                                                 Edit</a>
                                         </div>
                                     </div>
@@ -57,7 +58,7 @@
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="system_wallet.html"><i
+                                            <a class="dropdown-item" href="{{ route('admin.system_wallet') }}"><i
                                                     class="dw dw-edit2"></i> Edit</a>
                                         </div>
                                     </div>

@@ -11,7 +11,8 @@
                     </div>
                     <div class="col-md-8">
                         <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                            Welcome back <div class="weight-600 font-30 text-blue">Admin's name</div>
+                            Welcome back <div class="weight-600 font-30 text-blue">{{ Auth::guard('admin')->user()->name }}
+                            </div>
                         </h4>
                         <p class="font-18 max-width-600"></p>
                     </div>

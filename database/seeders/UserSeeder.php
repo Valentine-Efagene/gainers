@@ -33,5 +33,8 @@ class UserSeeder extends Seeder
             'gender' => 'Male',
             'username' => 'John',
         ]);
+
+        // password: secret
+        \App\Models\User::factory(10)->create();
     }
 }
