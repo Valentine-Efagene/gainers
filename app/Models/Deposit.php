@@ -20,7 +20,7 @@ class Deposit extends Model
     // STATUS
     const PENDING = 'PENDING';
     const APPROVED = 'APPROVED';
-    const DENIED = 'DENIED';
+    const DECLINED = 'DECLINED';
     const TERMINATED = 'TERMINATED';
 
 

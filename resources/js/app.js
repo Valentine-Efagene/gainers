@@ -13,3 +13,7 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./components/AssessButton')
+require('./components/ProfitButton')
+require('./components/CopyButton')
+require('./components/AssessWithdrawalButton')

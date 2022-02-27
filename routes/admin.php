@@ -42,6 +42,9 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::view('/token', 'admin.token')->name('admin.token');
     Route::view('/withdrawals', 'admin.withdrawals')->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
+    Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
+    Route::patch('/deposits/approve', [DepositController::class, 'update'])->name('admin.deposits.approve');
+    Route::patch('/deposits/decline/{id}', [DepositController::class, 'update'])->name('admin.deposits.decline');
     Route::post('/system_wallet', [WalletController::class, 'update'])->name('admin.system_wallet');
     Route::view('/trader_stat', 'admin.trader_stat')->name('admin.trader_stat');
     Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');

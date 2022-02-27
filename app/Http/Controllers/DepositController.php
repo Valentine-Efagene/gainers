@@ -61,4 +61,27 @@ class DepositController extends Controller
         $success = $ret ? true : false;
         return view('deposit', compact('success'));
     }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'id' => ['required'],
+            'status' => ['string', 'required']
+        ]);
+        $deposit = Deposit::find($request->id);
+
+        if ($request->status) {
+            $deposit->status = $request->status;
+        }
+
+        $deposit->update();
+        return back();
+    }
+
+    public function delete($id)
+    {
+        dd($id);
+        Deposit::find($id)->delete();
+        return back();
+    }
 }

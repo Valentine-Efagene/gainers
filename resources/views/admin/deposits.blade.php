@@ -1,4 +1,5 @@
 @extends('layouts.admin_dashboard')
+@inject('Status', 'App\Models\Deposit')
 
 @section('content')
     <!--Welcome Note to user-->
@@ -11,8 +12,7 @@
                     </div>
                     <div class="col-md-8">
                         <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                            <div class="weight-600 font-30 text-blue">Deposits <div id="example"></div>
-                                <!-- Demo only -->
+                            <div class="weight-600 font-30 text-blue">Deposits
                             </div>
                         </h4>
                         <p class="font-18 max-width-600"></p>
@@ -30,6 +30,7 @@
                                 <th>Full Name</th>
                                 <th>User ID</th>
                                 <th>Investment Plan</th>
+                                <th>Status</th>
                                 <th>Amount</th>
                                 <th>Deposited Cryptocurrency</th>
                                 <th>Deposit Receipt</th>
@@ -45,8 +46,9 @@
                                         <td>{{ $deposit->user_id }}
                                         </td>
                                         <td>{{ $deposit->plan }}</td>
+                                        <td>{{ $deposit->status }}</td>
                                         <td>{{ $deposit->amount }}</td>
-                                        <td>{{ $deposit->plan }}</td>
+                                        <td></td>
                                         <td><a href="../storage/app/public/{{ $deposit['proof'] }}"><i
                                                     class="fa-solid fa-receipt fa-2x" style="color: goldenrod"></i></a></td>
                                         <td>
@@ -56,14 +58,33 @@
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Decline
-                                                        Investment</a>
-                                                    <a class="dropdown-item" href="profit.html"><i
+                                                    <form method="POST" action="{{ route('admin.deposits.approve') }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input name="id" type="hidden" value="{{ $deposit->id }}">
+                                                        <input name="status" type="hidden" value="{{ $Status::APPROVED }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-edit2"></i>Approve
+                                                            Investment</button>
+                                                    </form>
+                                                    <form method="POST"
+                                                        action="{{ route('admin.deposits.decline', ['id' => $deposit->id]) }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input name="id" type="hidden" value="{{ $deposit->id }}">
+                                                        <input name="status" type="hidden" value="{{ $Status::DECLINED }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-edit2"></i>Decline
+                                                            Investment</button>
+                                                    </form>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.profit', ['id' => $deposit->id, 'user' => $deposit->user_id]) }}"><i
                                                             class="dw dw-edit2"></i>Add
                                                         Profit</a>
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Approve
-                                                        Investment</a>
-                                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i>Delete
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.deposits.delete', ['id' => $deposit->id, 'user' => $deposit->user_id]) }}"><i
+                                                            class="dw dw-delete-3"></i>Delete
                                                         Investment</a>
                                                 </div>
                                             </div>
