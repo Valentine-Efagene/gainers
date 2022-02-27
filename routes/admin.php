@@ -48,5 +48,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
     Route::view('/system', 'admin.system')->name('admin.system');
     Route::view('/dashboard', 'admin.index')->name('admin.dashboard');
-    Route::view('/*', 'admin.index')->name('admin');
+    Route::get('/*', function () {
+        return redirect()->route('admin.dashboard');
+    })->name('admin');
 });

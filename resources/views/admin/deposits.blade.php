@@ -11,7 +11,9 @@
                     </div>
                     <div class="col-md-8">
                         <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                            <div class="weight-600 font-30 text-blue">Deposits</div>
+                            <div class="weight-600 font-30 text-blue">Deposits <div id="example"></div>
+                                <!-- Demo only -->
+                            </div>
                         </h4>
                         <p class="font-18 max-width-600"></p>
                     </div>
@@ -45,7 +47,7 @@
                                         <td>{{ $deposit->plan }}</td>
                                         <td>{{ $deposit->amount }}</td>
                                         <td>{{ $deposit->plan }}</td>
-                                        <td><a href="../storage/app/public/uploads/{{ $deposit['proof'] }}"><i
+                                        <td><a href="../storage/app/public/{{ $deposit['proof'] }}"><i
                                                     class="fa-solid fa-receipt fa-2x" style="color: goldenrod"></i></a></td>
                                         <td>
                                             <div class="dropdown">

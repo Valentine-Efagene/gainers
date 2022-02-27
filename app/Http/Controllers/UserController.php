@@ -14,11 +14,11 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        /*$this->middleware('auth', [
+        $this->middleware('auth', [
             'only' => [
-                'store'
+                'update'
             ]
-        ]);*/
+        ]);
 
         $this->middleware('admin_auth', [
             'only' => [
@@ -36,5 +36,37 @@ class UserController extends Controller
     {
         $users = User::paginate(10);
         return view('admin.total_users', compact('users'));
+    }
+
+    public function stripEmptyCustom($data)
+    {
+        foreach ($data as $key => $value) {
+            if (empty($value)) {
+                unset($data[$key]);
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Paginate all users
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function update(Request $request)
+    {
+        $data = $request->validate([
+            'email' => [],
+            'phone_number' => [],
+            'profile_photo' => [],
+        ]);
+        if ($request->file('profile_photo')) {
+            $data['profile_photo'] = $request->file('profile_photo')->store('uploads', 'public');
+        }
+        $data = $this->stripEmptyCustom($data);
+        //dd($data);
+        User::where('id', auth()->id())->update($data);
+        return view('profile');
     }
 }

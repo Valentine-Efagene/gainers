@@ -47,8 +47,7 @@
                                                             <input name="bitcoin_wallet_qpr_code"
                                                                 class="@error('bitcoin_wallet_qpr_code') is-invalid @enderror"
                                                                 id="bitcoin_wallet_qpr_code"
-                                                                value="{{ old('bitcoin_wallet_qpr_code') }}" type="file"
-                                                                @error('bitcoin_wallet_qpr_code') is-invalid @enderror>
+                                                                value="{{ old('bitcoin_wallet_qpr_code') }}" type="file">
                                                             @error('bitcoin_wallet_qpr_code')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -83,8 +82,7 @@
                                                             <input name="bnb_wallet_qpr_code"
                                                                 class="@error('bnb_wallet_qpr_code') is-invalid @enderror"
                                                                 id="bnb_wallet_qpr_code"
-                                                                value="{{ old('bnb_wallet_qpr_code') }}" type="file"
-                                                                @error('bnb_wallet_qpr_code') is-invalid @enderror>
+                                                                value="{{ old('bnb_wallet_qpr_code') }}" type="file">
 
                                                             @error('bnb_wallet_qpr_code')
                                                                 <span class="invalid-feedback" role="alert">

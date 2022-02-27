@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WithdrawalController;
 
 /*
@@ -37,7 +38,7 @@ Route::get('test', function () {
 Auth::routes();
 // Client Dashboard
 Route::group(['middleware' => 'auth'], function () {
-  //Route::get('/profile', [LoginController::class, 'logout'])->name('logout');
+  Route::post('/profile', [UserController::class, 'update'])->name('user.update_profile');
   Route::view('/profile', 'profile')->name('user.profile');
   Route::view('/withdrawal', 'withdrawal')->name('user.withdrawal');
   Route::view('/deposit', 'deposit')->name('user.deposit');

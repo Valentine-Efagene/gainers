@@ -28,6 +28,8 @@
         href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
 
+    <script src="{{ url('asset/js/app.js') }}" defer></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
     <script>
@@ -53,7 +55,9 @@
                         <span class="user-icon">
                             <img src="{{ asset('vendors/images/photo1.jpg') }}" alt="">
                         </span>
-                        <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
+                        @if (Auth::guard('admin')->check())
+                            <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
+                        @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                         <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
@@ -177,6 +181,7 @@
                             <!--BOTH THOSE WHO INVESTED AND THOSE WHO HAS NOT INVESTED-->
                             <li><a href="{{ route('admin.withdrawals') }}">Withdrawals</a></li>
                             <li><a href="{{ route('admin.deposits') }}">Deposits</a></li>
+                            <li><a href="{{ route('admin.system_wallet') }}">System Wallet</a></li>
                             <li><a href="{{ route('admin.system') }}">System Statistics and Update Settings</a></li>
                             <!--Only Available to Grand Admin. Other Admin only eligible to process
        withdrawals and Deposits-->
@@ -195,7 +200,9 @@
     <!--Footer Starts-->
     @if (Auth::guard('admin')->check())
         <div class="footer-wrap pd-20 mb-20 card-box">
-            247Gainers Admin: {{ Auth::guard('admin')->user()->name }}
+            @if (Auth::guard('admin')->check())
+                247Gainers Admin: {{ Auth::guard('admin')->user()->name }}
+            @endif
         </div>
     @endif
     <!--Footer ends-->
