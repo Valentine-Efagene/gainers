@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminAuth\ResetPasswordController;
 use App\Http\Controllers\adminDashboard\DepositsController;
 use App\Http\Controllers\adminDashboard\TotalUsers;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\ProfitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
 
@@ -38,7 +39,8 @@ Route::get('password/reset/{token}', [ResetPasswordController::class, 'showReset
 Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
 Route::group(['middleware' => 'admin_auth'], function () {
-    Route::view('/profit', 'admin.profit')->name('admin.profit');
+    Route::get('/profit', [ProfitController::class, 'create'])->name('admin.deposit.profit');
+    Route::post('/profit', [ProfitController::class, 'store'])->name('admin.profit.store');
     Route::view('/token', 'admin.token')->name('admin.token');
     Route::view('/withdrawals', 'admin.withdrawals')->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');

@@ -60,7 +60,8 @@
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+                        <a class="dropdown-item" href="{{ route('admin.login') }}"><i class="dw dw-logout"></i> Log
+                            Out</a>
                     </div>
                 </div>
             </div>
@@ -162,7 +163,7 @@
     <!--Side bar begins-->
     <div class="left-side-bar">
         <div class="brand-logo">
-            <a href="index.html">
+            <a href="{{ route('index') }}">
                 <img src="{{ asset('vendors/images/logo.png') }}" alt="" class="light-logo">
             </a>
             <div class="close-sidebar" data-toggle="left-sidebar-close">

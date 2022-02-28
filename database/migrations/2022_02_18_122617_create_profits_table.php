@@ -15,6 +15,14 @@ class CreateProfitsTable extends Migration
     {
         Schema::create('profits', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('deposit_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('profit_description')->nullable();
+            $table->float('profit_amount')->default(0);
+            $table->string('bonus_description')->nullable();
+            $table->float('bonus_amount')->default(0);
             $table->timestamps();
         });
     }

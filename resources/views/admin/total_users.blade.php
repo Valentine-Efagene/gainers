@@ -22,7 +22,7 @@
                 <div class="card-box mb-30">
                     <h2 class="h4 pd-20">Total User</h2>
                     <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawl heading
-                                                                             in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
+                                                                                 in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
@@ -53,7 +53,7 @@
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                    <a class="dropdown-item" href="token.html"><i
+                                                    <a class="dropdown-item" href="{{ route('token') }}"><i
                                                             class="dw dw-edit2"></i>Assign
                                                         new Withdrawal token/password/username</a>
                                                     <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Add bonus to

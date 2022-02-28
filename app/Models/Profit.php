@@ -9,7 +9,7 @@ class Profit extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['investment_id', 'amount'];
+    protected $fillable = ['deposit_id', 'profit_amount', 'profit_description', 'bonus_description', 'bonus_amount'];
 
     public function deposit()
     {

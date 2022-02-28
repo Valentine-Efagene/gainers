@@ -28,7 +28,8 @@
                                                     <h1>Earning passively and regularly</h1>
                                                     <p>Helping you trade on the Foreign Exchange market risk free.
                                                     </p>
-                                                    <a class="read_more" href="signup.html">Get Started </a>
+                                                    <a class="read_more" href="{{ route('signup') }}">Get Started
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -52,7 +53,8 @@
                                                     <p>Giving personal guide on which Crypto Assets to invest on at the
                                                         right time.
                                                     </p>
-                                                    <a class="read_more" href="signup.html">Get Started</a>
+                                                    <a class="read_more" href="{{ route('register') }}">Get
+                                                        Started</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -76,7 +78,8 @@
                                                     <p>With list of our choice of stock, you can chose to invest into
                                                         company stocks across U.S and the world.
                                                     </p>
-                                                    <a class="read_more" href="signup.html">Get Started</a>
+                                                    <a class="read_more" href="{{ route('register') }}">Get
+                                                        Started</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +102,8 @@
                                                     <h1>Sign Up Bonus</h1>
                                                     <p>Get Bonus up to 500 Dollar when you sign up and Invest
                                                     </p>
-                                                    <a class="read_more" href="signup.html">Sign Up Now</a>
+                                                    <a class="read_more" href="{{ route('register') }}">Sign Up
+                                                        Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,7 +128,7 @@
                                                     <p>Our Investment plans are as popular demands with the best and sincere
                                                         ROI
                                                     </p>
-                                                    <a class="read_more" href="login.html">Login</a>
+                                                    <a class="read_more" href="{{ route('login') }}">Login</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -228,7 +232,7 @@
                                     <p>GAINERS BAY is a forex trading account managing and crypto currencies investment
                                         platform. Giving Investors the best ROI and guidance on crypto trading...</p>
                                     <p>We gain on the bull market as well as on the bear market!</p>
-                                    <a class="read_more" href="about.html">Read More</a>
+                                    <a class="read_more" href="{{ route('about') }}">Read More</a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -263,7 +267,9 @@
                                         <h3>BASIC</h3>
                                         <p>The Basic plan has an investment capital of $500 to $1000 and ROI of 4X within
                                             the Period of 7 days.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
@@ -272,7 +278,9 @@
                                         <h3>BRONZE</h3>
                                         <p>The Bronze plan has an investment capital of $1001 to $2000 and ROI of 6X within
                                             the Period of 7 days.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
@@ -281,7 +289,9 @@
                                         <h3>SILVER</h3>
                                         <p>The Silver Plan has an investment capital of $2001 to $3000 and ROI of 8x within
                                             the Period of 7 days.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
@@ -290,7 +300,9 @@
                                         <h3>DIAMOND</h3>
                                         <p>The Diamond Plan has an investment capital of $3001 to $5000 and ROI of 8x within
                                             the Period of 9 days.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
@@ -299,7 +311,9 @@
                                         <h3>PREMIUM</h3>
                                         <p>The PREMIUM Plan has an investment capital of $5001 to investor's choice and ROI
                                             of 12x within the Period of 10 days.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
@@ -308,7 +322,9 @@
                                         <h3>CRYPTO</h3>
                                         <p>The Crypto Plan has an investment capital of $1000 to $50,000 and ROI of 14x
                                             within the Period of 21 days.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
@@ -317,7 +333,9 @@
                                         <h3>STOCKS</h3>
                                         <p>The Stock market Plan has an investment capital of $1000 to $50,000 and ROI of
                                             14x within the Period of 6 months.</p>
-                                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get
+                                                Started</a>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>

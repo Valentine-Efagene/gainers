@@ -78,14 +78,16 @@
                                                             Investment</button>
                                                     </form>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.profit', ['id' => $deposit->id, 'user' => $deposit->user_id]) }}"><i
+                                                        href="{{ route('admin.deposit.profit', ['id' => $deposit->id]) }}"><i
                                                             class="dw dw-edit2"></i>Add
                                                         Profit</a>
-
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('admin.deposits.delete', ['id' => $deposit->id, 'user' => $deposit->user_id]) }}"><i
-                                                            class="dw dw-delete-3"></i>Delete
-                                                        Investment</a>
+                                                    <form method="POST" action="{{ route('admin.deposits.delete') }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input name="id" type="hidden" value="{{ $deposit->id }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-delete-3"></i>Delete Investment</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>

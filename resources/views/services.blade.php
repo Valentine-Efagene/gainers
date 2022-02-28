@@ -19,7 +19,8 @@
                         <p>Subscribing to our Forex Signal plans, we also provide signals to our investors who wish to trade
                             personally.</p>
                         <p>We provide forex signal plans with probability of success ranging from 0.60 to 0.85</p>
-                        <h3 style="border-style: solid;"><a href="signup.html">Subscribe to our Forex Signal</a></h3>
+                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Subscribe to our Forex Signal</a>
+                        </h3>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
@@ -28,7 +29,7 @@
                         <h3>BITCOIN AND OTHER ALTCOINS INVESTMENT</h3>
                         <p>It also in our earnest desire to guide our investors on which crypto currency to invest their
                             money on.</p>
-                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get Started</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
@@ -37,7 +38,7 @@
                         <h3>Forex trading account Management</h3>
                         <p>Our major concern is to trade for our investors and make sure all risk are minimized with our
                             expert analysis on trades.</p>
-                        <h3 style="border-style: solid;"><a href="signup.html">Get Started</a></h3>
+                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Get Started</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
@@ -46,7 +47,7 @@
                         <h3>GENERAL CRYPTO CURRENCY CONSULTANCY</h3>
                         <p>There are many investors who find it hard to venture into the digital money world. It risky, but
                             with our guidance and mentorship, they are successful.</p>
-                        <h3 style="border-style: solid;"><a href="signup.html">Subscribe here</a></h3>
+                        <h3 style="border-style: solid;"><a href="{{ route('register') }}">Subscribe here</a></h3>
                     </div>
                 </div>
             </div>

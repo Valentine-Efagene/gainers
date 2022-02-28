@@ -250,15 +250,15 @@
                             <h3>Useful Link</h3>
                             <ul>
 
-                                <li><a href="team.html">Team</a>
+                                <li><a href="{{ route('team') }}">Team</a>
                                 </li>
-                                <li><a href="terms.html">Terms and Condition</a>
+                                <li><a href="{{ route('terms') }}">Terms and Condition</a>
                                 </li>
-                                <li><a href="terms.html">Privacy Policies</a>
+                                <li><a href="{{ route('terms') }}">Privacy Policies</a>
                                 </li>
-                                <li><a href="legal.html">Legal</a>
+                                <li><a href="{{ route('legal') }}">Legal</a>
                                 </li>
-                                <li><a href="market.html">Cryptocurrency Market Updates</a>
+                                <li><a href="{{ route('market') }}">Cryptocurrency Market Updates</a>
                                 </li>
                                 <li><a href="#">Binance Exchange</a>
                                 </li>

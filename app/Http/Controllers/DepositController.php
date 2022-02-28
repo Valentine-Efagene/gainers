@@ -78,10 +78,13 @@ class DepositController extends Controller
         return back();
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        dd($id);
-        Deposit::find($id)->delete();
+        $request->validate([
+            'id' => ['required'],
+        ]);
+
+        Deposit::find($request->id)->delete();
         return back();
     }
 }
