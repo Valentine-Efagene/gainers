@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Withdrawal;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,7 @@ class CreateWithdrawalsTable extends Migration
                 ->onDelete('cascade');
             $table->string('wallet_id')->nullable();
             $table->string('wallet_qpr')->nullable();
+            $table->enum('status', [Withdrawal::PENDING, Withdrawal::APPROVED, Withdrawal::DECLINED, Withdrawal::TERMINATED])->default(Withdrawal::PENDING);
             $table->string('token');
             $table->float('amount');
             $table->timestamps();

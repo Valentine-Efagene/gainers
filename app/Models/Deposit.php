@@ -22,6 +22,7 @@ class Deposit extends Model
     const APPROVED = 'APPROVED';
     const DECLINED = 'DECLINED';
     const TERMINATED = 'TERMINATED';
+    const EXPIRED = 'EXPIRED';
 
 
     use HasFactory;

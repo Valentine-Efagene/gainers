@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\WithdrawalController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::view('/deposit', 'deposit')->name('user.deposit');
   Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
   Route::post('/withdrawal', [WithdrawalController::class, 'store'])->name('withdrawal.store');
-  Route::view('/activities', 'activities')->name('user.activities');
-  Route::view('/dashboard', 'dashboard')->name('user.dashboard');
+  Route::get('/activities', [UserDashboardController::class, 'activities'])->name('user.activities');
+  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 });
 
 //Route::get('/adminLogin', [App\Http\Controllers\Auth\AdminAuthController::class, 'login'])->name('log');

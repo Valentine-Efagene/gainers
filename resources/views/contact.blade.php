@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 "">
-                                          <div class="      Informa helpful">
+                                              <div class="       Informa helpful">
                         <h3>Useful Link</h3>
                         <ul>
 
@@ -73,7 +73,7 @@
                             </li>
                             <li><a href="{{ route('terms') }}">Privacy Policies</a>
                             </li>
-                            <li><a href="{{ route('legal') }}">Legal</a>
+                            <li><a href="{{ route('terms') }}">Legal</a>
                             </li>
                             <li><a href="{{ route('market') }}">Cryptocurrency Market Updates</a>
                             </li>

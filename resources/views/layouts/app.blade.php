@@ -256,7 +256,7 @@
                                 </li>
                                 <li><a href="{{ route('terms') }}">Privacy Policies</a>
                                 </li>
-                                <li><a href="{{ route('legal') }}">Legal</a>
+                                <li><a href="{{ route('terms') }}">Legal</a>
                                 </li>
                                 <li><a href="{{ route('market') }}">Cryptocurrency Market Updates</a>
                                 </li>

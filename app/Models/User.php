@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function profit()
     {
-        return $this->hasManyThrough(Profit::class, Investment::class);
+        return $this->hasManyThrough(Profit::class, Deposit::class);
     }
 
     /**

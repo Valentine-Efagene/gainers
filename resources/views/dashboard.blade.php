@@ -15,7 +15,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">BALANCE</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        $53,000
+                                        {{ $balance }}
                                     </h5>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">ACTIVE EQUITY</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        2,300
+                                        {{ $active_equity }}
                                     </h5>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">ACTIVE PROFIT</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        +3,462
+                                        {{ $active_profit }}
                                     </h5>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">TOTAL WITHDRAWAL</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        $103,430
+                                        {{ $total_withdrawal }}
                                     </h5>
                                 </div>
                             </div>

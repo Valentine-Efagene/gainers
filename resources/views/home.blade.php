@@ -28,7 +28,7 @@
                                                     <h1>Earning passively and regularly</h1>
                                                     <p>Helping you trade on the Foreign Exchange market risk free.
                                                     </p>
-                                                    <a class="read_more" href="{{ route('signup') }}">Get Started
+                                                    <a class="read_more" href="{{ route('register') }}">Get Started
                                                     </a>
                                                 </div>
                                             </div>

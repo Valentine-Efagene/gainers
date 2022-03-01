@@ -20,7 +20,7 @@ class WithdrawalController extends Controller
 
     public function store(Request $request)
     {
-        $balance = Auth::user()->deposit->sum('amount') - Auth::user()->withdrawal->sum('amount');
+        $balance = Auth::user()->deposit->sum('amount') + Auth::user()->profit->sum('bonus_amount') + Auth::user()->profit->sum('profit_amount') - Auth::user()->withdrawal->sum('amount');
 
         $request->validate([
             'wallet_id' => ['string'],
