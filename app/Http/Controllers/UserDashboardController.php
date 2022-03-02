@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
-use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
@@ -25,7 +24,7 @@ class UserDashboardController extends Controller
 
         foreach ($withdrawals as $withdrawal) {
             $activity = new Activity;
-            $activity->type = 'Withdrawal';
+            $activity->type = 'WITHDRAWAL';
             $activity->id = $withdrawal->id;
             $activity->amount = $withdrawal->amount;
             $activity->created_at = $withdrawal->created_at;
@@ -34,14 +33,16 @@ class UserDashboardController extends Controller
 
         foreach ($deposits as $deposit) {
             $activity = new Activity;
-            $activity->type = 'Deposit';
+            $activity->type = 'DEPOSIT';
             $activity->id = $deposit->id;
+            $activity->status = $deposit->status;
             $activity->plan = $deposit->plan;
             $activity->amount = $deposit->amount;
             $activity->created_at = $deposit->created_at;
             $activities->add($activity);
         }
 
+        $activities = $activities->sortByDesc('created_at');
         return view('activities', compact('activities'));
     }
 }

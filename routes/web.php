@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/profile', [UserController::class, 'update'])->name('user.update_profile');
   Route::view('/profile', 'profile')->name('user.profile');
   Route::view('/withdrawal', 'withdrawal')->name('user.withdrawal');
-  Route::view('/deposit', 'deposit')->name('user.deposit');
+  Route::get('/deposit', [DepositController::class, 'create'])->name('user.deposit');
   Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
   Route::post('/withdrawal', [WithdrawalController::class, 'store'])->name('withdrawal.store');
   Route::get('/activities', [UserDashboardController::class, 'activities'])->name('user.activities');

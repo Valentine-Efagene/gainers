@@ -1,4 +1,5 @@
 @extends('layouts.dashboard')
+@inject('Status', 'App\Models\Deposit')
 
 @section('content')
     <div class="container-fluid py-4">
@@ -26,88 +27,64 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Transfer: Widthdrawal to account
-                                                        Yhookjiejeifeiureirueoirueir</h6>
-                                                    <p class="text-xs text-secondary mb-0">Dec 23, 2020</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Debit</p>
-                                            <p class="text-xs text-secondary mb-0">ID: 235845740540</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">Completed</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/12/2020</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Deposit of Basic Plan: $520</h6>
-                                                    <p class="text-xs text-secondary mb-0">Dec 23, 2020</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Investment</p>
-                                            <p class="text-xs text-secondary mb-0">ID: 235845740540</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">Active</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/12/2020</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Deposit of Standard plan</h6>
-                                                    <p class="text-xs text-secondary mb-0">Dec 23, 2020</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Investment</p>
-                                            <p class="text-xs text-secondary mb-0">ID: 235845740540</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-info">Expired</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/12/2020</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Transfer: Widthdrawal to account
-                                                        Yhookjiejeifeiureirueoirueir</h6>
-                                                    <p class="text-xs text-secondary mb-0">Dec 23, 2020</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Debit</p>
-                                            <p class="text-xs text-secondary mb-0">ID: 235845740540</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-warning">Denied</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/12/2020</span>
-                                        </td>
-                                    </tr>
+                                    @if ($activities)
+                                        @foreach ($activities as $activity)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{ Str::title($activity->type) }}
+                                                                {{ $activity->type == 'DEPOSIT' ? '(' . Str::title($activity->plan) . ' Plan) ' : '' }}:
+                                                                ${{ $activity->amount }}
+                                                            </h6>
+                                                            <p class="text-xs text-secondary mb-0">
+                                                                {{ $activity->created_at }}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ $activity->type == 'DEPOSIT' ? 'Credt' : 'Debit' }}</p>
+                                                    <p class="text-xs text-secondary mb-0">ID: {{ $activity->id }}</p>
+                                                </td>
+                                                @switch($activity->status)
+                                                    @case($Status::PENDING)
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-gradient-info">{{ $activity->status }}
+                                                            </span>
+                                                        </td>
+                                                    @break
+
+                                                    @case($Status::APPROVED)
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span
+                                                                class="badge badge-sm bg-gradient-success">{{ $activity->status }}
+                                                            </span>
+                                                        </td>
+                                                    @break
+
+                                                    @case($Status::DECLINED)
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-gradient-warning">Denied</span>
+                                                        </td>
+                                                    @break
+
+                                                    @case($Status::EXPIRED)
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-gradient-danger">Expired</span>
+                                                        </td>
+                                                    @break
+
+                                                    @default
+                                                @endswitch
+
+                                                <td class="align-middle text-center">
+                                                    <span
+                                                        class="text-secondary text-xs font-weight-bold">{{ $activity->created_at }}</span>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

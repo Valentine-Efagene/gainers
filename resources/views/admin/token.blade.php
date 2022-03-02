@@ -21,7 +21,8 @@
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form>
+                                            <form method="POST" action="{{ route('admin.token') }}">
+                                                @csrf
                                                 <ul class="profile-edit-list row">
                                                     <li class="weight-500 col-md-6">
                                                         <h4 class="text-blue h5 mb-20">Edit/Update Token/Username</h4>
@@ -29,15 +30,36 @@
                                                         <!--Edit  starts-->
                                                         <div class="form-group">
                                                             <label>USER NAME</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input name="username"
+                                                                class="form-control form-control-lg @error('username') is-invalid @enderror"
+                                                                type="text">
+                                                            @error('username')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group">
                                                             <label>TOKEN</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input name="token"
+                                                                class="form-control form-control-lg @error('token') is-invalid @enderror"
+                                                                type="text">
+                                                            @error('token')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group">
                                                             <label>PASSWORD</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input name="password"
+                                                                class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                                                type="text">
+                                                            @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group mb-0">
                                                             <input type="submit" class="btn btn-primary"

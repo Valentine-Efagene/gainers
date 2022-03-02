@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepositController extends Controller
 {
@@ -36,6 +38,13 @@ class DepositController extends Controller
     {
         $deposits = Deposit::paginate(10);
         return view('admin.deposits', compact('deposits'));
+    }
+
+    public function create()
+    {
+        $wallet = Wallet::find(1);
+        $deposits = Auth::user()->deposit->sortByDesc('id');
+        return view('deposit', compact('deposits', 'wallet'));
     }
 
     /**

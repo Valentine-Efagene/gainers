@@ -16,13 +16,15 @@
                                 <div class="form-group col-12 mb-3">
                                     <p class="text-white text-sm opacity-8 mb-0">Scan the Wallet QPR Code to make payment</p>
                                     <br>
-                                    <img src="../assets/img/logo-ct.png" alt="Wallet_QPR" width=200px height=200px>
+                                    <img src="storage/app/public/{{ $wallet->bitcoin_wallet_qpr_code }}" alt="Wallet_QPR"
+                                        width=200px height=200px>
                                     <div class="me-4">
                                         <p class="text-white text-sm opacity-8 mb-0">Or Use the Bitcoin Wallet Address Code:
                                         </p>
                                     </div>
                                     <div>
-                                        <h4 class="text-white text-sm opacity-8 mb-0">QERI3549JBN3545</h4>
+                                        <h4 class="text-white text-sm opacity-8 mb-0">{{ $wallet->bitcoin_wallet_id }}
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +115,7 @@
                                     <div class="form-group col-4 mb-3">
                                         <label>Amount paid: $</label>
                                         <input name="amount" class="form-control @error('amount') is-invalid @enderror"
-                                            id="cnumber" required="required" type="text"
+                                            id="amount" required="required" type="text"
                                             placeholder="Enter amount deposited in USD">
 
                                         @error('amount')
@@ -177,13 +179,15 @@
                                 <div class="form-group col-12 mb-3">
                                     <p class="text-white text-sm opacity-8 mb-0">Scan the Wallet QPR Code to make payment
                                     </p><br>
-                                    <img src="../assets/img/logo-ct.png" alt="Wallet_QPR" width=200px height=200px>
+                                    <img src="storage/app/public/{{ $wallet->bnb_wallet_qpr_code }}" alt="Wallet_QPR"
+                                        width=200px height=200px>
                                     <div class="me-4">
                                         <p class="text-white text-sm opacity-8 mb-0">Or Use the Binance (BNB) Coin Wallet
                                             Address Code:</p>
                                     </div>
                                     <div>
-                                        <h4 class="text-white text-sm opacity-8 mb-0">QERI3549JBN3545</h4>
+                                        <h4 class="text-white text-sm opacity-8 mb-0">
+                                            {{ $wallet ? $wallet->bnb_wallet_id : '' }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +202,8 @@
                     <div class="card">
                         <div class="card-header mx-4 p-3 text-center">
                             <div>
-                                <img src="../assets/img/logo-ct.png" alt="Wallet_QPR" width=70px height=70px>
+                                <img src="storage/app/public/{{ $wallet->bitcoin_wallet_qpr_code }}" alt="Wallet_QPR"
+                                    width=70px height=70px>
                             </div>
                         </div>
                         <div class="card-body pt-0 p-3 text-center">
@@ -299,61 +304,22 @@
             </div>
             <div class="card-body p-3 pb-0">
                 <ul class="list-group">
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
-                            <span class="text-xs">#MS-415646</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $180
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                                    class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                    </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">February, 10, 2021</h6>
-                            <span class="text-xs">#RV-126749</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $250
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                                    class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                    </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">April, 05, 2020</h6>
-                            <span class="text-xs">#FB-212562</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $560
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                                    class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                    </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">June, 25, 2019</h6>
-                            <span class="text-xs">#QW-103578</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $120
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                                    class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                    </li>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">March, 01, 2019</h6>
-                            <span class="text-xs">#AR-803481</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $300
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                                    class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                    </li>
+                    @if ($deposits)
+                        @foreach ($deposits as $deposit)
+                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $deposit->created_at }}</h6>
+                                    <span class="text-xs">{{ $deposit->id }}</span>
+                                </div>
+                                <div class="d-flex align-items-center text-sm">
+                                    ${{ $deposit->amount }}
+                                    <a target="_blank" href="storage/app/public/{{ $deposit->proof }}"
+                                        class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
+                                            class="fas fa-file-pdf text-lg me-1"></i> PDF</a>
+                                </div>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>

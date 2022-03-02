@@ -11,8 +11,8 @@ class Wallet extends Model
 
     protected $fillable = [
         'bitcoin_wallet_id',
-        'bitcoin_qpr_code',
+        'bitcoin_wallet_qpr_code',
         'bnb_wallet_id',
-        'bnb_qpr_code'
+        'bnb_wallet_qpr_code'
     ];
 }
