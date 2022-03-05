@@ -14,7 +14,7 @@ class Withdrawal extends Model
     const EXPIRED = 'EXPIRED';
 
     use HasFactory;
-    protected $fillable = ['user_id', 'amount', 'token', 'status', 'wallet_id', 'wallet_id', 'wallet_qpr'];
+    protected $fillable = ['user_id', 'amount', 'token', 'status', 'wallet_id', 'wallet_type', 'wallet_qpr'];
 
     public function user()
     {

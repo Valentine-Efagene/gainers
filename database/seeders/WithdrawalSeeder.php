@@ -17,6 +17,7 @@ class WithdrawalSeeder extends Seeder
         DB::table('withdrawals')->insert([
             'amount' => 500,
             'token' => '4r3io4ro3i4jr',
+            'wallet_type' => 'Bitcoin',
             'wallet_id' => '43j4394irf39',
             'wallet_qpr' => 'mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1',
@@ -24,6 +25,7 @@ class WithdrawalSeeder extends Seeder
         DB::table('withdrawals')->insert([
             'amount' => 300,
             'token' => '4r3io4ro3i4jr',
+            'wallet_type' => 'Bitcoin',
             'wallet_id' => '43j4394irf39',
             'wallet_qpr' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1',
@@ -31,6 +33,7 @@ class WithdrawalSeeder extends Seeder
         DB::table('withdrawals')->insert([
             'amount' => 100,
             'token' => '4r3io4ro3i4jr',
+            'wallet_type' => 'Bitcoin',
             'wallet_id' => '43j4394irf39',
             'wallet_qpr' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1',

@@ -15,7 +15,23 @@ class WithdrawalController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', [
+            'only' => [
+                'store'
+            ]
+        ]);
+
+        $this->middleware('admin_auth', [
+            'only' => [
+                'index'
+            ]
+        ]);
+    }
+
+    public function index()
+    {
+        $withdrawals = Withdrawal::paginate(10);
+        return view('admin.withdrawals', compact('withdrawals'));
     }
 
     public function store(Request $request)
@@ -24,6 +40,7 @@ class WithdrawalController extends Controller
 
         $request->validate([
             'wallet_id' => ['string'],
+            'wallet_type' => ['string'],
             'amount' => ['required', 'numeric', function ($attribute, $value, $fail) use ($balance) {
                 if ($value > $balance) {
                     $fail('Amount exceeds your balance of ' . $balance . '.');

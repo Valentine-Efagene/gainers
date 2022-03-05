@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasManyThrough(Profit::class, Deposit::class);
     }
 
+    public function token()
+    {
+        return $this->hasOne(Token::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

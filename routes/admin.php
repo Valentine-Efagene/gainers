@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfitController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\WithdrawalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/profit', [ProfitController::class, 'store'])->name('admin.profit.store');
     Route::view('/token', 'admin.token')->name('admin.token');
     Route::post('/token', [TokenController::class, 'store'])->name('admin.token');
-    Route::view('/withdrawals', 'admin.withdrawals')->name('admin.withdrawals');
+    Route::get('/withdrawals', [WithdrawalController::class, 'index'])->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
     Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
     Route::patch('/deposits/approve', [DepositController::class, 'update'])->name('admin.deposits.approve');

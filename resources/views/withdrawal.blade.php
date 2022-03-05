@@ -31,6 +31,18 @@
                                                 action="{{ route('withdrawal.store') }}">
                                                 @csrf
                                                 <div class="form-group col-8 mb-3">
+                                                    <label>Wallet Type</label>
+                                                    <input class="form-control @error('wallet_type') is-invalid @enderror"
+                                                        id="wallet_type" name="wallet_type" required="required" type="text"
+                                                        placeholder="The type of wallet (crypto-currency)">
+
+                                                    @error('wallet_type')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-8 mb-3">
                                                     <label>Wallet ID</label>
                                                     <input class="form-control @error('wallet_id') is-invalid @enderror"
                                                         id="wallet_id" name="wallet_id" required="required" type="text"

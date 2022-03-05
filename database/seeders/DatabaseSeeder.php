@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             DepositSeeder::class,
             WithdrawalSeeder::class,
             WalletSeeder::class,
-            ProfitSeeder::class
+            ProfitSeeder::class,
+            TokenSeeder::class,
         ]);
     }
 }

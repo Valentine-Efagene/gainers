@@ -116,7 +116,7 @@
                             <li> <a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                             </li>
                             <span style="color:aliceblue">Open Hours: Mon-Fri: 9am -5pm GMT</span>
-                            <li><span style="color:aliceblue">Call: +44 7868 759514</span></li>
+                            <li><span style="color:aliceblue">Call: {{ env('PHONE_NO') }}</span></li>
                         </ul>
                     </div>
                     <div class="col-sm-4">
@@ -235,11 +235,11 @@
                                     </a>
                                 </li>
                                 <li> <a href="Javascript:void(0) "><i class="fa fa-phone "
-                                            aria-hidden="true "></i>WhatsApp: +44 7868759514
+                                            aria-hidden="true "></i>WhatsApp: {{ env('PHONE_NO') }}
                                     </a>
                                 </li>
                                 <li> <a href="Javascript:void(0) "> <i class="fa fa-envelope "
-                                            aria-hidden="true "></i>support@gainersbay.com
+                                            aria-hidden="true "></i>{{ env('SUPPORT_MAIL') }}
                                     </a>
                                 </li>
                             </ul>
@@ -301,6 +301,21 @@
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/process.js') }}"></script>
     <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/622249941ffac05b1d7cfee0/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 
 </html>

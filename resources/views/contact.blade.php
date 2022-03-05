@@ -52,18 +52,18 @@
                                     </a>
                                 </li>
                                 <li> <a href="Javascript:void(0) "><i class="fa fa-phone "
-                                            aria-hidden="true "></i>WhatsApp: +44 7868759514
+                                            aria-hidden="true "></i>WhatsApp: {{ env('PHONE_NO') }}
                                     </a>
                                 </li>
                                 <li> <a href="Javascript:void(0) "> <i class="fa fa-envelope "
-                                            aria-hidden="true "></i>support@gainersbay.com
+                                            aria-hidden="true "></i>{{ env('SUPPORT_MAIL') }}
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 "">
-                                              <div class="       Informa helpful">
+                                                              <div class=" Informa helpful">
                         <h3>Useful Link</h3>
                         <ul>
 
