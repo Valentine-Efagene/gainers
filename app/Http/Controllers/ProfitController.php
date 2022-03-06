@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bonus;
 use App\Models\Profit;
 use Illuminate\Http\Request;
 
@@ -29,11 +30,17 @@ class ProfitController extends Controller
     ]);
     $profit = new Profit;
     $profit->deposit_id = $request->id;
-    $profit->profit_amount = $request->profit_amount;
-    $profit->profit_description = $request->profit_description;
-    $profit->bonus_amount = $request->bonus_amount;
-    $profit->bonus_description = $request->bonus_description;
+    $profit->amount = $request->profit_amount;
+    $profit->description = $request->profit_description;
     $profit->save();
+
+    if ($request->bonus_amount) {
+      $bonus = new Bonus;
+      $bonus->amount = $request->bonus_amount;
+      $bonus->description = $request->bonus_description;
+      $bonus->save();
+    }
+
     return redirect('admin.deposits');
   }
 }

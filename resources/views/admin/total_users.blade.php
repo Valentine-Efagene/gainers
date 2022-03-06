@@ -22,7 +22,7 @@
                 <div class="card-box mb-30">
                     <h2 class="h4 pd-20">Total User</h2>
                     <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawl heading
-                                                                                                                         in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
+                                                                                                                                                     in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
@@ -45,7 +45,7 @@
                                         <td>{{ $user->country }}</td>
                                         <td>{{ $user->phone_number }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ 234343 }}</td>
+                                        <td>{{ $user->token ? $user->token->token : '' }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -56,14 +56,17 @@
                                                     <a class="dropdown-item" href="{{ route('admin.token') }}"><i
                                                             class="dw dw-edit2"></i>Assign
                                                         new Withdrawal token/password/username</a>
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Add bonus to
+                                                    <a class="dropdown-item" href="{{ route('admin.bonus.create') }}"><i
+                                                            class="dw dw-edit2"></i>Add bonus to
                                                         user</a>
                                                     <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Assign
                                                         Trader</a>
                                                     <a class="dropdown-item" href="{{ env('WEBMAIL_LINK') }}"><i
                                                             class="dw dw-edit2"></i>Message
                                                         User</a>
-                                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.users.delete', ['id', $user->id]) }}"><i
+                                                            class="dw dw-delete-3"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </td>

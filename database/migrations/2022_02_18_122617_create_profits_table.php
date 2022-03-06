@@ -19,10 +19,8 @@ class CreateProfitsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('profit_description')->nullable();
-            $table->float('profit_amount')->default(0);
-            $table->string('bonus_description')->nullable();
-            $table->float('bonus_amount')->default(0);
+            $table->string('description')->nullable();
+            $table->float('amount')->default(0);
             $table->timestamps();
         });
     }

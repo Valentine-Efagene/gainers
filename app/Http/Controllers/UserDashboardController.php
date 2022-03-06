@@ -3,17 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Deposit;
+use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Auth;
+
+use function PHPSTORM_META\type;
 
 class UserDashboardController extends Controller
 {
     public function index()
     {
-        $active_profit = Auth::user()->profit->sum('profit_amount');
-        $active_equity = Auth::user()->deposit->sum('amount') + Auth::user()->profit->sum('bonus_amount') + $active_profit;
+        $active_profit = Auth::user()->profit->sum('amount');
+        $active_equity = Auth::user()->deposit->sum('amount') + Auth::user()->bonus->sum('amount') + $active_profit;
         $total_withdrawal = Auth::user()->withdrawal->sum('amount');
         $balance = $active_equity - $total_withdrawal;
-        return view('dashboard', compact('balance', 'active_equity', 'total_withdrawal', 'balance', 'active_profit'));
+
+        // Last 5 transactions
+        $withdrawals = Auth::user()->withdrawal;
+        $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->latest()->take(5)->get();
+        $deposits = Deposit::where('user_id', Auth::user()->id)->latest()->take(5)->get();
+        $transactions = collect();
+
+        foreach ($withdrawals as $withdrawal) {
+            $transaction = new Activity;
+            $transaction->type = 'WITHDRAWAL';
+            $transaction->id = $withdrawal->id;
+            $transaction->wallet_id = $withdrawal->wallet_id;
+            $transaction->wallet_qpr = $withdrawal->wallet_qpr;
+            $transaction->amount = $withdrawal->amount;
+            $transaction->created_at = $withdrawal->created_at;
+            $transactions->add($transaction);
+        }
+
+        foreach ($deposits as $deposit) {
+            $transaction = new Activity;
+            $transaction->type = 'DEPOSIT';
+            $transaction->id = $deposit->id;
+            $transaction->status = $deposit->status;
+            $transaction->plan = $deposit->plan;
+            $transaction->amount = $deposit->amount;
+            $transaction->created_at = $deposit->created_at;
+            $transactions->add($transaction);
+        }
+
+        $transactions = $transactions->sortByDesc('created_at')->take(5);
+        return view('dashboard', compact('balance', 'active_equity', 'total_withdrawal', 'balance', 'active_profit', 'transactions'));
     }
 
     public function activities()

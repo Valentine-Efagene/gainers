@@ -22,7 +22,7 @@ class UserController extends Controller
 
         $this->middleware('admin_auth', [
             'only' => [
-                'index'
+                'index', 'delete'
             ]
         ]);
     }
@@ -36,6 +36,12 @@ class UserController extends Controller
     {
         $users = User::paginate(10);
         return view('admin.total_users', compact('users'));
+    }
+
+    public function delete($id)
+    {
+        User::find($id)->delete();
+        return back();
     }
 
     public function stripEmptyCustom($data)

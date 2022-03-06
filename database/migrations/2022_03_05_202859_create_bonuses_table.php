@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReferralBonusesTable extends Migration
+class CreateBonusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateReferralBonusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('referral_bonuses', function (Blueprint $table) {
+        Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
+            $table->string('description')->nullable();
+            $table->float('amount')->default(0);
         });
     }
 
@@ -26,6 +32,6 @@ class CreateReferralBonusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referral_bonuses');
+        Schema::dropIfExists('bonuses');
     }
 }

@@ -78,7 +78,7 @@
                                                             Investment</button>
                                                     </form>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.deposit.profit', ['id' => $deposit->id]) }}"><i
+                                                        href="{{ route('admin.profit.create', ['id' => $deposit->id]) }}"><i
                                                             class="dw dw-edit2"></i>Add
                                                         Profit</a>
                                                     <form method="POST" action="{{ route('admin.deposits.delete') }}">

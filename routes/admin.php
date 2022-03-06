@@ -41,12 +41,15 @@ Route::get('password/reset/{token}', [ResetPasswordController::class, 'showReset
 Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 
 Route::group(['middleware' => 'admin_auth'], function () {
-    Route::get('/profit', [ProfitController::class, 'create'])->name('admin.deposit.profit');
+    Route::get('/profit', [ProfitController::class, 'create'])->name('admin.profit.create');
     Route::post('/profit', [ProfitController::class, 'store'])->name('admin.profit.store');
+    Route::get('/bonus', [BonusController::class, 'create'])->name('admin.bonus.create');
+    Route::post('/bonus', [BonusController::class, 'store'])->name('admin.bonus.store');
     Route::view('/token', 'admin.token')->name('admin.token');
     Route::post('/token', [TokenController::class, 'store'])->name('admin.token');
     Route::get('/withdrawals', [WithdrawalController::class, 'index'])->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
+    Route::delete('/users/{id}', [UserController::class, 'delete'])->name('admin.users.delete');
     Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
     Route::patch('/deposits/approve', [DepositController::class, 'update'])->name('admin.deposits.approve');
     Route::patch('/deposits/decline/{id}', [DepositController::class, 'update'])->name('admin.deposits.decline');

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             WalletSeeder::class,
             ProfitSeeder::class,
             TokenSeeder::class,
+            BonusSeeder::class,
         ]);
     }
 }

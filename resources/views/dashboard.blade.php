@@ -328,53 +328,31 @@
                     </div>
                     <div class="card-body p-3">
                         <div class="timeline timeline-one-side">
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Withdrawal: $4500 to Wallet
-                                        Address: itueiuteirueoire89583958</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Deposit: $340</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Referal: User ID: ehiteo123:
-                                        Referral Bonus: $54</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Withdrawal: $589384</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                                </div>
-                            </div>
-                            <div class="timeline-block mb-3">
-                                <span class="timeline-step">
-                                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                                </span>
-                                <div class="timeline-content">
-                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Deposit: $567598</h6>
-                                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                                </div>
-                            </div>
+                            @isset($transactions)
+                                @foreach ($transactions as $transaction)
+                                    <div class="timeline-block mb-3">
+                                        <span class="timeline-step">
+                                            <i class="ni ni-bell-55 text-success text-gradient"></i>
+                                        </span>
+                                        <div class="timeline-content">
+                                            <h6 class="text-dark text-sm font-weight-bold mb-0">
+                                                @if ($transaction->type == 'WITHDRAWAL')
+                                                    {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                    @if ($transaction->wallet_id)
+                                                        to Wallet Address: {{ $transaction->wallet_id }}
+                                                    @endif
+                                                @elseif($transaction->type == 'DEPOSIT')
+                                                    {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                @elseif($transaction->type == 'REFERRAL')
+                                                    {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                @endif
+                                            </h6>
+                                            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">
+                                                {{ $transaction->created_at }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endisset
                         </div>
                     </div>
                 </div>
