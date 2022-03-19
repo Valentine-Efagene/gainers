@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trader;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class UserController extends Controller
 
         $this->middleware('admin_auth', [
             'only' => [
-                'index', 'delete'
+                'index', 'delete', 'setTrader'
             ]
         ]);
     }
@@ -35,12 +36,20 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('admin.total_users', compact('users'));
+        $traders = Trader::all();
+        return view('admin.total_users', compact('users', 'traders'));
     }
 
     public function delete($id)
     {
         User::find($id)->delete();
+        return back();
+    }
+
+    public function setTrader(Request $request)
+    {
+        $request->validate([]);
+        User::where('id', $request->user_id)->update(['trader_id' => $request->trader_id]);
         return back();
     }
 

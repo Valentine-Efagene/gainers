@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'trader_id',
         'name',
         'email',
         'password',
@@ -32,6 +33,11 @@ class User extends Authenticatable
     public function deposit()
     {
         return $this->hasMany(Deposit::class);
+    }
+
+    public function trader()
+    {
+        return $this->belongsTo(Trader::class);
     }
 
     public function withdrawal()

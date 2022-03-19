@@ -14,15 +14,15 @@ class TokenController extends Controller
         $request->validate([]);
 
         if ($request->token) {
-            Token::where('user_id', auth()->id())->update(['token' => $request->token]);
+            Token::where('user_id', $request->user_id)->update(['token' => $request->token]);
         }
 
         if ($request->password) {
-            User::where('id', auth()->id())->update(['password' => Hash::make($request->password)]);
+            User::where('id', $request->user_id)->update(['password' => Hash::make($request->password)]);
         }
 
         if ($request->username) {
-            User::where('id', auth()->id())->update(['username' => $request->username]);
+            User::where('id', $request->user_id)->update(['username' => $request->username]);
         }
 
         return back();

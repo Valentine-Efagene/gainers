@@ -44,7 +44,7 @@
                                                             <br><br>
                                                             <input name="profit_amount"
                                                                 class="form-control @error('profit_amount') is-invalid @enderror"
-                                                                id="profit_amount" required="required" type="text"
+                                                                id="profit_amount" type="text"
                                                                 placeholder="Enter amount of Profit in USD">
                                                             @error('profit_amount')
                                                                 <span class="invalid-feedback" role="alert">

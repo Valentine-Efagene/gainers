@@ -22,7 +22,7 @@
                 <div class="card-box mb-30">
                     <h2 class="h4 pd-20">Total User</h2>
                     <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawl heading
-                                                                                                                                                     in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
+                                                                                                                                                                                                                                                                         in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
@@ -47,25 +47,48 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->token ? $user->token->token : '' }}</td>
                                         <td>
+                                            <form action="{{ route('admin.traders.set') }}" method="post">
+                                                @csrf
+                                                <input type="text" name="user_id" readonly hidden id="user_id"
+                                                    value="{{ $user->id }}">
+                                                <select class="form-select" name="trader_id" id="trader_id"
+                                                    onchange='this.form.submit()' aria-label="Trader Select">
+                                                    @if ($user->trader_id)
+                                                        <option value="{{ $user->trader_id }}" selected>
+                                                            {{ $user->trader->name }}</option>
+                                                    @else
+                                                        <option selected>
+                                                            Assign Trader
+                                                        </option>
+                                                    @endif
+                                                    @foreach ($traders as $trader)
+                                                        <option value="{{ $trader->id }}">{{ $trader->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <noscript><input type="submit" value="Submit"></noscript>
+                                            </form>
+                                        </td>
+                                        <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
                                                     href="#" role="button" data-toggle="dropdown">
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                    <a class="dropdown-item" href="{{ route('admin.token') }}"><i
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.token', ['id' => $user->id]) }}"><i
                                                             class="dw dw-edit2"></i>Assign
                                                         new Withdrawal token/password/username</a>
-                                                    <a class="dropdown-item" href="{{ route('admin.bonus.create') }}"><i
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.bonus.create', ['id' => $user->id]) }}"><i
                                                             class="dw dw-edit2"></i>Add bonus to
                                                         user</a>
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Assign
-                                                        Trader</a>
                                                     <a class="dropdown-item" href="{{ env('WEBMAIL_LINK') }}"><i
                                                             class="dw dw-edit2"></i>Message
                                                         User</a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('admin.users.delete', ['id', $user->id]) }}"><i
+                                                        href="{{ route('admin.users.delete', ['id' => $user->id]) }}"><i
                                                             class="dw dw-delete-3"></i> Delete</a>
                                                 </div>
                                             </div>

@@ -26,7 +26,8 @@
                                                 <ul class="profile-edit-list row">
                                                     <li class="weight-500 col-md-6">
                                                         <h4 class="text-blue h5 mb-20">Edit/Update Token/Username</h4>
-
+                                                        <input name="user_id" id="user_id" hidden readonly
+                                                            value="{{ Request::get('id') }}">
                                                         <!--Edit  starts-->
                                                         <div class="form-group">
                                                             <label>USER NAME</label>
