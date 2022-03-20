@@ -9,7 +9,7 @@ class Trader extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'last_name', 'success_rate', 'roi'];
+    protected $fillable = ['name', 'success_rate', 'roi'];
 
     public function user()
     {

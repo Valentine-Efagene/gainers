@@ -1,10 +1,11 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTradersTable extends Migration
+class CreateSuccessesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,10 @@ class CreateTradersTable extends Migration
      */
     public function up()
     {
-        Schema::create('traders', function (Blueprint $table) {
+        Schema::create('successes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->float('roi')->default(90);
-            $table->float('success_rate')->default(80);
-
+            $table->date('date')->default(Carbon::now());
+            $table->float('success_rate');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateTradersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('traders');
+        Schema::dropIfExists('successes');
     }
 }

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             TokenSeeder::class,
             BonusSeeder::class,
             TraderSeeder::class,
+            SuccessSeeder::class,
         ]);
     }
 }

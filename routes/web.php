@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\SuccessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\WithdrawalController;
@@ -33,6 +34,7 @@ Route::view('/terms', 'terms')->name('terms');
 Route::view('/team', 'team')->name('team');
 Route::view('/statistics', 'statistics')->name('statistics');
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/success', [SuccessController::class, 'index']);
 Route::get('test', function () {
   return request()->segment(1);
 });

@@ -21,139 +21,119 @@
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form>
-                                                <ul class="profile-edit-list row">
-                                                    <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Edit/Update Trader 1</h4>
 
-                                                        <!--Edit trader1 starts-->
-                                                        <div class="form-group">
-                                                            <label>TRADER NAME</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>INVESTORS</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>AVERAGE ROI</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>SUCCESS RATE</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary"
-                                                                value="Upload/Update Trader1">
-                                                        </div>
-                                                        <!--edit trader1  ENDS-->
-                                                    </li>
-                                                    <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Edit/Update Trader 2</h4>
-
-                                                        <!--Edit trader2 starts-->
-                                                        <div class="form-group">
-                                                            <label>TRADER NAME</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>INVESTORS</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>AVERAGE ROI</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>SUCCESS RATE</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary"
-                                                                value="Upload/Update Trader2">
-                                                        </div>
-                                                        <!--edit trader2  ENDS-->
-                                                    </li>
-                                                    <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Edit/Update Trader 3</h4>
-
-                                                        <!--Edit trader3 starts-->
-                                                        <div class="form-group">
-                                                            <label>TRADER NAME</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>INVESTORS</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>AVERAGE ROI</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>SUCCESS RATE</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary"
-                                                                value="Upload/Update Trader3">
-                                                        </div>
-                                                        <!--edit trader3  ENDS-->
-                                                    </li>
-                                                    <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Edit/Update Trader 3</h4>
-
-                                                        <!--Edit trader4 starts-->
-                                                        <div class="form-group">
-                                                            <label>TRADER NAME</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>INVESTORS</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>AVERAGE ROI</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>SUCCESS RATE</label>
-                                                            <input class="form-control form-control-lg" type="text">
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary"
-                                                                value="Upload/Update Trader4">
-                                                        </div>
-                                                        <!--edit trader4  ENDS-->
-                                                    </li>
-                                                    <li class="weight-500 col-md-6">
+                                            <ul class="profile-edit-list row">
+                                                @foreach ($traders as $trader)
+                                                    <form action="{{ route('admin.trader.update') }}" method="post">
+                                                        @csrf
+                                                        <li class="weight-500 col-md-6">
+                                                            <h4 class="text-blue h5 mb-20">Edit/Update
+                                                                Trader {{ $trader->id }}</h4>
+                                                            <!--Edit trader1 starts-->
+                                                            <input type="text" hidden readonly name="id" id="id"
+                                                                value="{{ $trader->id }}">
+                                                            <div class="form-group">
+                                                                <label>TRADER NAME</label>
+                                                                <input name="name" id="name"
+                                                                    class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                                                    value="{{ $trader->name }}" type="text">
+                                                                @error('name')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>INVESTORS</label>
+                                                                @isset($trader->users)
+                                                                    <ul>
+                                                                        @foreach ($trader->users as $user)
+                                                                            <li>{{ $user->name }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endisset
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>AVERAGE ROI</label>
+                                                                <input name="roi" id="roi" value="{{ $trader->roi }}"
+                                                                    class="form-control form-control-lg @error('roi') is-invalid @enderror"
+                                                                    type="text">
+                                                                @error('roi')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>SUCCESS RATE</label>
+                                                                <input name="success_rate" id="success_rate"
+                                                                    class="form-control form-control-lg @error('success_rate') is-invalid @enderror"
+                                                                    type="text">
+                                                                @error('success_rate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group mb-0">
+                                                                <input type="submit" class="btn btn-primary"
+                                                                    value="Upload/Update Trader1">
+                                                            </div>
+                                                            <!--edit trader1  ENDS-->
+                                                        </li>
+                                                    </form>
+                                                @endforeach
+                                                <li class="weight-500 col-md-6">
+                                                    <form action="{{ route('admin.trader.store') }}" method="post">
+                                                        @csrf
                                                         <h4 class="text-blue h5 mb-20">ADD TRADER</h4>
 
                                                         <!--Edit trader4 starts-->
                                                         <div class="form-group">
                                                             <label>TRADER NAME</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input name="name" id="name"
+                                                                class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                                                type="text">
+                                                            @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
-                                                        <div class="form-group">
+                                                        {{-- <div class="form-group">
                                                             <label>INVESTORS</label>
                                                             <input class="form-control form-control-lg" type="text">
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="form-group">
                                                             <label>AVERAGE ROI</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input name="roi" id="roi"
+                                                                class="form-control form-control-lg @error('roi') is-invalid @enderror"
+                                                                type="text">
+                                                            @error('roi')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group">
                                                             <label>SUCCESS RATE</label>
-                                                            <input class="form-control form-control-lg" type="text">
+                                                            <input name="success_rate" id="success_rate"
+                                                                class="form-control form-control-lg @error('success_rate') is-invalid @enderror"
+                                                                type="text">
+                                                            @error('success_rate')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group mb-0">
                                                             <input type="submit" class="btn btn-primary" value="ADD TRADER">
                                                         </div>
                                                         <!--edit trader  ENDS-->
-                                                    </li>
-                                                </ul>
-                                            </form>
+                                                    </form>
+                                                </li>
+                                            </ul>
+
                                         </div>
                                         <!-- Setting Tab End -->
                                     </div>

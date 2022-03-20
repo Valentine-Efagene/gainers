@@ -10,6 +10,7 @@ use App\Http\Controllers\adminDashboard\TotalUsers;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ProfitController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\TraderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\WithdrawalController;
@@ -55,7 +56,9 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::patch('/deposits/approve', [DepositController::class, 'update'])->name('admin.deposits.approve');
     Route::patch('/deposits/decline/{id}', [DepositController::class, 'update'])->name('admin.deposits.decline');
     Route::post('/system_wallet', [WalletController::class, 'update'])->name('admin.system_wallet');
-    Route::view('/trader_stat', 'admin.trader_stat')->name('admin.trader_stat');
+    Route::get('/trader_stat', [TraderController::class, 'index'])->name('admin.trader_stat');
+    Route::post('/traders/update', [TraderController::class, 'update'])->name('admin.trader.update');
+    Route::post('/traders/store', [TraderController::class, 'store'])->name('admin.trader.store');
     Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');
     Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
     Route::view('/system', 'admin.system')->name('admin.system');

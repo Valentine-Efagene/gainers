@@ -45,7 +45,11 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
+    {{-- Messes with the UI in statuistics page --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}"> --}}
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 
 <body class="main-layout">
@@ -70,7 +74,7 @@
                 href="{{ route('stock') }}">Stock
                 Market</a>
             <a class="{{ Route::currentRouteName() == 'statistics' ? 'active' : '' }}"
-                href="statistic.html">Statistics</a>
+                href="{{ route('statistics') }}">Statistics</a>
             <a class="{{ Route::currentRouteName() == 'faq' ? 'active' : '' }}" href="{{ route('faq') }}">FAQ</a>
             <a class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}"
                 href="{{ route('contact') }}">Contact</a>
@@ -141,8 +145,9 @@
     <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
-        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener"
-                target="_blank"></a></div>
+        <div class="tradingview-widget-copyright">
+            <a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"></a>
+        </div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
             {
                 "symbols";
