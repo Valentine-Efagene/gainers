@@ -34,7 +34,7 @@ Route::view('/terms', 'terms')->name('terms');
 Route::view('/team', 'team')->name('team');
 Route::view('/statistics', 'statistics')->name('statistics');
 Route::get('/logout', [LoginController::class, 'logout']);
-Route::get('/success', [SuccessController::class, 'index']);
+Route::get('/success/get', [SuccessController::class, 'index'])->name('admin.success.get');
 Route::get('test', function () {
   return request()->segment(1);
 });

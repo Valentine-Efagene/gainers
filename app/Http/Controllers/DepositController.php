@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bonus;
 use App\Models\Deposit;
+use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,6 +69,17 @@ class DepositController extends Controller
         }
 
         $ret = $deposit->save();
+
+        $user = Auth::user();
+        if ($user->referrer) {
+            $referrer = User::find($user->referrer);
+            $bonus = new Bonus;
+            $bonus->user_id = $request->id;
+            $bonus->amount = $request->amount * 0.05;
+            $bonus->description = 'Referral bonus from ' . $user->first_name . $user->last_name;
+            $bonus->save();
+        }
+
         $success = $ret ? true : false;
         return view('deposit', compact('success'));
     }

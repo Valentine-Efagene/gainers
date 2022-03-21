@@ -11,41 +11,39 @@
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
                     <div class="card-box height-100-p overflow-hidden">
                         <div class="profile-tab height-100-p">
+                            <ul class="nav nav-tabs customtab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#setting" role="tab">Click to add
+                                        profit or bonus</a>
+                                </li>
+                            </ul>
                             <div class="tab height-100-p">
-                                <ul class="nav nav-tabs customtab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#setting" role="tab">Click to add
-                                            bonus</a>
-                                    </li>
-                                </ul>
                                 <div class="tab-content">
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form method="POST" action="{{ route('admin.bonus.store') }}">
+                                            <form method="POST" action="{{ route('admin.success.store') }}">
                                                 @csrf
-                                                <input name="id" type="hidden" value="{{ $id }}">
                                                 <ul class="profile-edit-list row">
                                                     <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Add Bonus</h4>
+                                                        <h4 class="text-blue h5 mb-20">Add Success</h4>
 
                                                         <!--Edit bonus starts-->
                                                         <div class="form-group">
-                                                            <label>Bonus</label>
-                                                            <input name="description"
-                                                                class="form-control @error('description') is-invalid @enderror"
-                                                                id="bonus_description" type="text"
-                                                                placeholder="Enter Bonus Description"><br><br>
-                                                            @error('description')
+                                                            <label>Date</label>
+                                                            <input name="date"
+                                                                class="form-control @error('date') is-invalid @enderror"
+                                                                id="date" type="date" placeholder="Enter date"><br><br>
+                                                            @error('date')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
-                                                            <input name="amount"
-                                                                class="form-control @error('amount') is-invalid @enderror"
-                                                                id="amount" type="text"
-                                                                placeholder="Enter amount of Bonus in USD">
-                                                            @error('amount')
+                                                            <input name="success_rate" required
+                                                                class="form-control @error('success_rate') is-invalid @enderror"
+                                                                id="success_rate" type="text"
+                                                                placeholder="Enter Success Rate in percentage">
+                                                            @error('success_rate')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>

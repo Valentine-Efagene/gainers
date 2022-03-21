@@ -36,6 +36,7 @@ class ProfitController extends Controller
 
     if ($request->bonus_amount) {
       $bonus = new Bonus;
+      $bonus->user_id = $request->id;
       $bonus->amount = $request->bonus_amount;
       $bonus->description = $request->bonus_description;
       $bonus->save();

@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
             'country' => 'UK',
             'gender' => 'Male',
             'username' => 'John',
+            'referrer' => '1',
         ]);
 
         // password: secret

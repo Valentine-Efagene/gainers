@@ -64,6 +64,22 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="table-plus">Add Success
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+                                            role="button" data-toggle="dropdown">
+                                            <i class="dw dw-more"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                            <a class="dropdown-item" href="{{ route('admin.success.create') }}"><i
+                                                    class="dw dw-edit2"></i>Add</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

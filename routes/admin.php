@@ -5,10 +5,9 @@ use App\Http\Controllers\AdminAuth\LoginController;
 use App\Http\Controllers\AdminAuth\RegisterController;
 use App\Http\Controllers\AdminAuth\ForgotPasswordController;
 use App\Http\Controllers\AdminAuth\ResetPasswordController;
-use App\Http\Controllers\adminDashboard\DepositsController;
-use App\Http\Controllers\adminDashboard\TotalUsers;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ProfitController;
+use App\Http\Controllers\SuccessController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TraderController;
 use App\Http\Controllers\UserController;
@@ -62,6 +61,8 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');
     Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
     Route::view('/system', 'admin.system')->name('admin.system');
+    Route::get('/success/create', [SuccessController::class, 'create'])->name('admin.success.create');
+    Route::post('/success/store', [SuccessController::class, 'store'])->name('admin.success.store');
     Route::view('/dashboard', 'admin.index')->name('admin.dashboard');
     Route::get('/*', function () {
         return redirect()->route('admin.dashboard');
