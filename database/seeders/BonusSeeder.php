@@ -21,11 +21,6 @@ class BonusSeeder extends Seeder
         ]);
         DB::table('bonuses')->insert([
             'user_id' => '1029543',
-            'description' => 'Bitcoin appreciated',
-            'amount' => 50
-        ]);
-        DB::table('bonuses')->insert([
-            'user_id' => '1029543',
             'description' => 'Referral bonus',
             'amount' => 5
         ]);

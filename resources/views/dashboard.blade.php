@@ -345,6 +345,14 @@
                                                     {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
                                                 @elseif($transaction->type == 'REFERRAL')
                                                     {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                @elseif($transaction->type == 'BONUS')
+                                                    {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                    ({{ $transaction->description }})
+                                                @elseif($transaction->type == 'PROFIT')
+                                                    {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                    @if ($transaction->description)
+                                                        ({{ $transaction->description }})
+                                                    @endif
                                                 @endif
                                             </h6>
                                             <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">

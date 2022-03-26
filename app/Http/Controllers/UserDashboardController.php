@@ -20,8 +20,8 @@ class UserDashboardController extends Controller
         $balance = $active_equity - $total_withdrawal;
 
         // Last 5 transactions
-        $profits = Auth::user()->profit->get(); //->latest()->take(5)->get();
-        dd($profits);
+        $profits = Auth::user()->profit->sortByDesc('id')->take(5);
+        // dd($profits);
         $withdrawals = Auth::user()->withdrawal;
         $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->latest()->take(5)->get();
         $deposits = Deposit::where('user_id', Auth::user()->id)->latest()->take(5)->get();
@@ -54,12 +54,23 @@ class UserDashboardController extends Controller
             $transaction = new Activity;
             $transaction->type = 'BONUS';
             $transaction->id = $bonus->id;
+            $transaction->description = $bonus->description;
             $transaction->amount = $bonus->amount;
             $transaction->created_at = $bonus->created_at;
             $transactions->add($transaction);
         }
 
-        $transactions = $transactions->sortByDesc('created_at')->take(5);
+        foreach ($profits as $profit) {
+            $transaction = new Activity;
+            $transaction->type = 'PROFIT';
+            $transaction->id = $profit->id;
+            $transaction->description = $profit->description;
+            $transaction->amount = $profit->amount;
+            $transaction->created_at = $profit->created_at;
+            $transactions->add($transaction);
+        }
+
+        $transactions = $transactions->sortByDesc('created_at')->take(50);
         return view('dashboard', compact('balance', 'active_equity', 'total_withdrawal', 'balance', 'active_profit', 'transactions'));
     }
 
