@@ -19,19 +19,19 @@ class DepositSeeder extends Seeder
             'amount' => 500,
             'plan' => Deposit::DIAMOND,
             'proof' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
-            'user_id' => '1',
+            'user_id' => '1029543',
         ]);
         DB::table('deposits')->insert([
             'amount' => 600,
             'plan' => Deposit::DIAMOND,
             'proof' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
-            'user_id' => '1',
+            'user_id' => '1029543',
         ]);
         DB::table('deposits')->insert([
             'amount' => 400,
             'plan' => Deposit::DIAMOND,
             'proof' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
-            'user_id' => '1',
+            'user_id' => '1029543',
         ]);
     }
 }

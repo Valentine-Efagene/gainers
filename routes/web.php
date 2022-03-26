@@ -32,6 +32,7 @@ Route::view('/market', 'market')->name('market');
 Route::view('/stock', 'stock')->name('stock');
 Route::view('/terms', 'terms')->name('terms');
 Route::view('/team', 'team')->name('team');
+Route::view('/mining', 'mining')->name('mining');
 Route::view('/statistics', 'statistics')->name('statistics');
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/success/get', [SuccessController::class, 'index'])->name('admin.success.get');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Bonus;
 use App\Models\Deposit;
 use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,12 @@ class UserDashboardController extends Controller
         $balance = $active_equity - $total_withdrawal;
 
         // Last 5 transactions
+        $profits = Auth::user()->profit->get(); //->latest()->take(5)->get();
+        dd($profits);
         $withdrawals = Auth::user()->withdrawal;
         $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->latest()->take(5)->get();
         $deposits = Deposit::where('user_id', Auth::user()->id)->latest()->take(5)->get();
+        $bonuses = Bonus::where('user_id', Auth::user()->id)->latest()->take(5)->get();
         $transactions = collect();
 
         foreach ($withdrawals as $withdrawal) {
@@ -43,6 +47,15 @@ class UserDashboardController extends Controller
             $transaction->plan = $deposit->plan;
             $transaction->amount = $deposit->amount;
             $transaction->created_at = $deposit->created_at;
+            $transactions->add($transaction);
+        }
+
+        foreach ($bonuses as $bonus) {
+            $transaction = new Activity;
+            $transaction->type = 'BONUS';
+            $transaction->id = $bonus->id;
+            $transaction->amount = $bonus->amount;
+            $transaction->created_at = $bonus->created_at;
             $transactions->add($transaction);
         }
 

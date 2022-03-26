@@ -75,6 +75,8 @@
                 Market</a>
             <a class="{{ Route::currentRouteName() == 'statistics' ? 'active' : '' }}"
                 href="{{ route('statistics') }}">Statistics</a>
+            <a class="{{ Route::currentRouteName() == 'mining' ? 'active' : '' }}"
+                href="{{ route('mining') }}">Mining</a>
             <a class="{{ Route::currentRouteName() == 'faq' ? 'active' : '' }}" href="{{ route('faq') }}">FAQ</a>
             <a class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}"
                 href="{{ route('contact') }}">Contact</a>
@@ -257,6 +259,8 @@
 
                                 <li><a href="{{ route('team') }}">Team</a>
                                 </li>
+                                <li><a href="{{ route('mining') }}">Mining</a>
+                                </li>
                                 <li><a href="{{ route('terms') }}">Terms and Condition</a>
                                 </li>
                                 <li><a href="{{ route('terms') }}">Privacy Policies</a>
@@ -276,18 +280,18 @@
                         <div class="Informa ">
                             <h3>Newsletter</h3>
                             <form class="newslatter_form ">
-                                <input class="ente " placeholder="Enter your email " type="text "
-                                    name="Enter your email ">
-                                <button class="subs_btn ">Subscribe</button>
+                                <input class="ente " placeholder="Enter your email " type="text"
+                                    name="Enter your email">
+                                <button class="subs_btn">Subscribe</button>
                             </form>
                         </div>
                     </div>
 
                 </div>
-                <div class="copyright text_align_center ">
+                <div class="copyright text_align_center">
                     <div class="container ">
                         <div class="row ">
-                            <div class="col-md-12 ">
+                            <div class="col-md-12">
                                 <p>gainers bay © 2021 All Rights Reserved</p>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ class TokenSeeder extends Seeder
     public function run()
     {
         DB::table('tokens')->insert([
-            'user_id' => '1',
+            'user_id' => '1029543',
             'token' => 'i4jo3j43j4ojoni',
         ]);
     }
