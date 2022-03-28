@@ -27,21 +27,20 @@
                                                         <form enctype='multipart/form-data' method="POST"
                                                             action="{{ route('admin.wallet.update') }}">
                                                             @csrf
-                                                            <h4 class="text-blue h5 mb-20">Edit/Update {{ $wallet->name }}
+                                                            <h4 class="text-blue h5 mb-20">Edit/Update
+                                                                {{ Str::title($wallet->name) }}
                                                                 Wallet</h4>
 
                                                             <!--BITCOIN WALLET UPDATE STARTS-->
-                                                            <input
-                                                                class="form-control form-control-lg @error('id') is-invalid @enderror"
-                                                                type="text" name="id" id="id" value={{ $wallet->id }}>
-                                                            />
-
                                                             <div class="form-group">
                                                                 <label>NAME</label>
+                                                                <input hidden readonly class="form-control form-control-lg"
+                                                                    type="text" name="id" id="id"
+                                                                    value="{{ $wallet->id }}">
                                                                 <input
                                                                     class="form-control form-control-lg @error('name') is-invalid @enderror"
                                                                     type="text" name="name" id="name"
-                                                                    value={{ $wallet->address }}>
+                                                                    value="{{ $wallet->name }}">
                                                                 @error('name')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -54,7 +53,7 @@
                                                                 <input
                                                                     class="form-control form-control-lg @error('acronym') is-invalid @enderror"
                                                                     type="text" name="acronym" id="acronym"
-                                                                    value={{ $wallet->address }}>
+                                                                    value="{{ $wallet->acronym }}">
                                                                 @error('acronym')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -67,7 +66,7 @@
                                                                 <input
                                                                     class="form-control form-control-lg @error('address') is-invalid @enderror"
                                                                     type="text" name="address" id="address"
-                                                                    value={{ $wallet->address }}>
+                                                                    value="{{ $wallet->address }}">
                                                                 @error('address')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -91,7 +90,7 @@
                                                             </div>
                                                             <div class="form-group mb-0">
                                                                 <input type="submit" class="btn btn-primary"
-                                                                    value="Upload/Update {{ $wallet->name }} Wallet">
+                                                                    value="Upload/Update {{ Str::title($wallet->name) }} Wallet">
                                                             </div>
 
                                                             <!--BITCOIN WALLET ENDS-->
@@ -109,7 +108,7 @@
                                                             <input
                                                                 class="form-control form-control-lg @error('name') is-invalid @enderror"
                                                                 type="text" name="name" id="name"
-                                                                value={{ $wallet->address }}>
+                                                                value="{{ old('name') }}">
                                                             @error('name')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -122,7 +121,7 @@
                                                             <input
                                                                 class="form-control form-control-lg @error('acronym') is-invalid @enderror"
                                                                 type="text" name="acronym" id="acronym"
-                                                                value={{ $wallet->address }}>
+                                                                value="{{ old('acronym') }}">
                                                             @error('acronym')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -133,7 +132,8 @@
                                                             <label>WALLET ID</label>
                                                             <input
                                                                 class="form-control form-control-lg @error('address') is-invalid @enderror"
-                                                                type="text" name="bitcoin_wallet_id" id="address">
+                                                                type="text" name="address" id="address"
+                                                                value="{{ old('address') }}">
                                                             @error('address')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -142,11 +142,10 @@
                                                         </div>
 
                                                         <div class="form-group">
-
                                                             <label>UPLOAD WALLET QPR CODE</label><br>
                                                             <input name="qr_code"
                                                                 class="@error('qr_code') is-invalid @enderror" id="qr_code"
-                                                                value="{{ $wallet->qr_code }}" type="file">
+                                                                value="{{ old('qr_code') }}" type="file">
                                                             @error('qr_code')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>

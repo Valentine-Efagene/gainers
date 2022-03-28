@@ -20,18 +20,21 @@ class DepositSeeder extends Seeder
             'plan' => Deposit::DIAMOND,
             'proof' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1029543',
+            'wallet' => 'bitcoin',
         ]);
         DB::table('deposits')->insert([
             'amount' => 600,
             'plan' => Deposit::DIAMOND,
             'proof' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1029543',
+            'wallet' => 'bitcoin',
         ]);
         DB::table('deposits')->insert([
             'amount' => 400,
             'plan' => Deposit::DIAMOND,
             'proof' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
             'user_id' => '1029543',
+            'wallet' => 'bitcoin',
         ]);
     }
 }

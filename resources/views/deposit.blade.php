@@ -3,7 +3,7 @@
 
 @section('content')
     @foreach ($wallets as $wallet)
-        <h3>{{ $wallet->name }} WALLET</h3>
+        <h3>{{ Str::upper($wallet->name) }} WALLET</h3>
         <!--BNB wallet-->
         <div class="row">
             <div class="col-xl-6 mb-xl-0 mb-4">
@@ -81,37 +81,39 @@
                                     <form id="contact-form" class="form" name="enq" enctype='multipart/form-data'
                                         method="POST" action="{{ route('deposit.store') }}">
                                         @csrf
+                                        <input hidden readonly type="text" name="wallet" id="wallet"
+                                            value="{{ $wallet->name }}">
                                         <div class="row">
                                             <div class="form-group col-12 mb-3">
                                                 <label>Choose an Investment plan</label><br>
                                                 <input id="rbBasic" type="radio" name="plan"
-                                                    value="{{ Plan::BASIC }}">Basic Plan
+                                                    value="{{ $Plan::BASIC }}">Basic Plan
                                                 ($500 -
                                                 $1000)
                                                 <br>
                                                 <input id="rbStarter" type="radio" name="plan"
-                                                    value="{{ Plan::BASIC }}">Bronze Plan ($1001
+                                                    value="{{ $Plan::BASIC }}">Bronze Plan ($1001
                                                 -
                                                 $2000)<br>
                                                 <input id="rbStandard" type="radio" name="plan"
-                                                    value="{{ Plan::BRONZE }}">Silver Plan ($2001
+                                                    value="{{ $Plan::BRONZE }}">Silver Plan ($2001
                                                 -
                                                 $3000)<br>
                                                 <input id="rbSuperStandard" type="radio" name="plan"
-                                                    value="{{ Plan::SILVER }}">Diamond Plan
+                                                    value="{{ $Plan::SILVER }}">Diamond Plan
                                                 ($3001 - $5000)
                                                 <br>
                                                 <input id="rbPremium" type="radio" name="plan">Premium Plan ($5000+)<br>
                                                 <input id="rbOther" type="radio" name="plan"
-                                                    value="{{ Plan::DIAMOND }}">Cryptocurrencies
+                                                    value="{{ $Plan::DIAMOND }}">Cryptocurrencies
                                                 ($1000 -
                                                 $50,000)
                                                 <br>
                                                 <input id="rbOther" type="radio" name="plan"
-                                                    value="{{ Plan::CRYPTOCURRENCIES }}">Stocks ($1000 -
+                                                    value="{{ $Plan::CRYPTOCURRENCIES }}">Stocks ($1000 -
                                                 $50,000)<br>
                                                 <input id="rbOther" type="radio" name="plan"
-                                                    value="{{ Plan::CUSTOM }}">Custom plan
+                                                    value="{{ $Plan::CUSTOM }}">Custom plan
                                             </div>
                                         </div>
                                         <div class="form-group col-4 mb-3">

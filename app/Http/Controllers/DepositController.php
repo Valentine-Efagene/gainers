@@ -58,6 +58,7 @@ class DepositController extends Controller
     {
         $request->validate([
             'plan' => ['required'],
+            'wallet' => [],
             'amount' => ['required', 'numeric', function ($attribute, $value, $fail) {
                 if ($value < 500) {
                     $fail('Insufficient deposit. If you have already made the payment, please contact our customer support.');
@@ -68,6 +69,7 @@ class DepositController extends Controller
         $deposit->user_id = auth()->id();
         $deposit->plan = $request->plan;
         $deposit->amount = $request->amount;
+        $deposit->wallet = $request->wallet;
 
         if (
             $deposit->plan == Deposit::BASIC ||

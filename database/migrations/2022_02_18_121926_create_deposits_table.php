@@ -25,6 +25,7 @@ class CreateDepositsTable extends Migration
             $table->enum('plan', [Deposit::BASIC, Deposit::BRONZE, Deposit::DIAMOND, Deposit::PREMIUM, Deposit::CRYPTOCURRENCIES, Deposit::STOCKS, Deposit::CUSTOM]);
             $table->enum('status', [Deposit::PENDING, Deposit::APPROVED, Deposit::DECLINED, Deposit::TERMINATED])->default(Deposit::PENDING);
             $table->string('proof');
+            $table->string('wallet');
         });
     }
 

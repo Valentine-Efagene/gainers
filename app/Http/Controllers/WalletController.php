@@ -17,9 +17,8 @@ class WalletController extends Controller
     {
         $request->validate([
             'address' => ['nullable', 'string'],
-            'qr_code' => ['nullable', 'string'],
             'name' => ['required', 'string'],
-            'acronym' => ['string'],
+            'acronym' => ['nullable', 'string'],
         ]);
 
         $wallet = new Wallet;
@@ -27,11 +26,14 @@ class WalletController extends Controller
         $wallet->name = $request->name;
         $wallet->address = $request->address;
         $wallet->acronym = $request->acronym;
-        $wallet->qr_code = $request->file('qr_code')->store('uploads', 'public');
+
+        if ($request->file('qr_code')) {
+            $wallet->qr_code = $request->file('qr_code')->store('uploads', 'public');
+        }
 
         $ret = $wallet->save();
         $success = $ret ? true : false;
-        return view('admin.system_wallet', compact('success'));
+        return back()->with(compact('success'));
     }
 
     public function update(Request $request)
@@ -45,6 +47,10 @@ class WalletController extends Controller
         ]);
 
         $wallet = Wallet::find($request->id);
+
+        if ($request->name) {
+            $wallet->name = $request->name;
+        }
 
         if ($request->address) {
             $wallet->address = $request->address;
@@ -60,6 +66,6 @@ class WalletController extends Controller
 
         $ret = $wallet->update();
         $success = $ret ? true : false;
-        return view('admin.system_wallet', compact('success'));
+        return back()->with(compact('success'));
     }
 }

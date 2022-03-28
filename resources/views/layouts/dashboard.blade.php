@@ -234,7 +234,7 @@
             navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
-                    <h6 class="font-weight-bolder mb-0">Withdrawal</h6>
+                    <h6 class="font-weight-bolder mb-0">{{ Str::title(last(request()->segments())) }}</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
