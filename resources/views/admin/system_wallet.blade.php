@@ -21,84 +21,146 @@
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form enctype='multipart/form-data' method="POST"
-                                                action="{{ route('admin.system_wallet') }}">
-                                                @csrf
-                                                <ul class="profile-edit-list row">
+                                            <ul class="profile-edit-list row">
+                                                @foreach ($wallets as $wallet)
                                                     <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Edit/Update Wallets</h4>
+                                                        <form enctype='multipart/form-data' method="POST"
+                                                            action="{{ route('admin.wallet.update') }}">
+                                                            @csrf
+                                                            <h4 class="text-blue h5 mb-20">Edit/Update {{ $wallet->name }}
+                                                                Wallet</h4>
 
-                                                        <!--BITCOIN WALLET UPDATE STARTS-->
-                                                        <div class="form-group">
-                                                            <label>BITCOIN WALLET ID</label>
+                                                            <!--BITCOIN WALLET UPDATE STARTS-->
                                                             <input
-                                                                class="form-control form-control-lg @error('bitcoin_wallet_id') is-invalid @enderror"
-                                                                type="text" name="bitcoin_wallet_id" id="bitcoin_wallet_id">
-                                                            @error('bitcoin_wallet_id')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
+                                                                class="form-control form-control-lg @error('id') is-invalid @enderror"
+                                                                type="text" name="id" id="id" value={{ $wallet->id }}>
+                                                            />
 
-                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <label>NAME</label>
+                                                                <input
+                                                                    class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                                                    type="text" name="name" id="name"
+                                                                    value={{ $wallet->address }}>
+                                                                @error('name')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
 
-                                                            <label>UPLOAD BITCOIN WALLET QPR CODE</label><br>
-                                                            <input name="bitcoin_wallet_qpr_code"
-                                                                class="@error('bitcoin_wallet_qpr_code') is-invalid @enderror"
-                                                                id="bitcoin_wallet_qpr_code"
-                                                                value="{{ old('bitcoin_wallet_qpr_code') }}" type="file">
-                                                            @error('bitcoin_wallet_qpr_code')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                            <div class="form-group">
+                                                                <label>ACRONYM</label>
+                                                                <input
+                                                                    class="form-control form-control-lg @error('acronym') is-invalid @enderror"
+                                                                    type="text" name="acronym" id="acronym"
+                                                                    value={{ $wallet->address }}>
+                                                                @error('acronym')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
 
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary"
-                                                                value="Upload/Update Bitcoin Wallet">
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label>WALLET ID</label>
+                                                                <input
+                                                                    class="form-control form-control-lg @error('address') is-invalid @enderror"
+                                                                    type="text" name="address" id="address"
+                                                                    value={{ $wallet->address }}>
+                                                                @error('address')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
 
-                                                        <!--BITCOIN WALLET ENDS-->
+                                                            <div class="form-group">
 
-                                                        <!--BNB WALLET UPDATE STARTS-->
-                                                        <BR><BR>
-                                                        <div class="form-group">
-                                                            <label>BNB WALLET ID</label>
-                                                            <input
-                                                                class="form-control form-control-lg @error('bnb_wallet_id') is-invalid @enderror"
-                                                                type="text" name="bnb_wallet_id" id="bnb_wallet_id">
-                                                            @error('bnb_wallet_id')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
+                                                                <label>UPLOAD WALLET QPR CODE</label><br>
+                                                                <input name="qr_code"
+                                                                    class="@error('qr_code') is-invalid @enderror"
+                                                                    id="qr_code" value="{{ $wallet->qr_code }}"
+                                                                    type="file">
+                                                                @error('qr_code')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
 
-                                                        <div class="form-group">
+                                                            </div>
+                                                            <div class="form-group mb-0">
+                                                                <input type="submit" class="btn btn-primary"
+                                                                    value="Upload/Update {{ $wallet->name }} Wallet">
+                                                            </div>
 
-                                                            <label>UPLOAD BNB WALLET QPR CODE</label><br>
-                                                            <input name="bnb_wallet_qpr_code"
-                                                                class="@error('bnb_wallet_qpr_code') is-invalid @enderror"
-                                                                id="bnb_wallet_qpr_code"
-                                                                value="{{ old('bnb_wallet_qpr_code') }}" type="file">
-
-                                                            @error('bnb_wallet_qpr_code')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary"
-                                                                value="Upload/Update BNB Wallet">
-                                                        </div>
-                                                        <!--BNB WALLET ENDS-->
+                                                            <!--BITCOIN WALLET ENDS-->
+                                                        </form>
                                                     </li>
-                                                </ul>
-                                            </form>
+                                                @endforeach
+                                                <li class="weight-500 col-md-6">
+                                                    <form enctype='multipart/form-data' method="POST"
+                                                        action="{{ route('admin.wallet.store') }}">
+                                                        @csrf
+                                                        <h4 class="text-blue h5 mb-20">Add Wallet</h4>
+                                                        <!--WALLET CREATION STARTS-->
+                                                        <div class="form-group">
+                                                            <label>NAME</label>
+                                                            <input
+                                                                class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                                                type="text" name="name" id="name"
+                                                                value={{ $wallet->address }}>
+                                                            @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>ACRONYM</label>
+                                                            <input
+                                                                class="form-control form-control-lg @error('acronym') is-invalid @enderror"
+                                                                type="text" name="acronym" id="acronym"
+                                                                value={{ $wallet->address }}>
+                                                            @error('acronym')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>WALLET ID</label>
+                                                            <input
+                                                                class="form-control form-control-lg @error('address') is-invalid @enderror"
+                                                                type="text" name="bitcoin_wallet_id" id="address">
+                                                            @error('address')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <label>UPLOAD WALLET QPR CODE</label><br>
+                                                            <input name="qr_code"
+                                                                class="@error('qr_code') is-invalid @enderror" id="qr_code"
+                                                                value="{{ $wallet->qr_code }}" type="file">
+                                                            @error('qr_code')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+
+                                                        </div>
+                                                        <div class="form-group mb-0">
+                                                            <input type="submit" class="btn btn-primary" value="Add Wallet">
+                                                        </div>
+                                                    </form>
+                                                    <!--WALLET ENDS-->
+                                                </li>
+                                            </ul>
                                         </div>
                                         <!-- Setting Tab End -->
                                     </div>

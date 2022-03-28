@@ -15,10 +15,17 @@ class WalletSeeder extends Seeder
     public function run()
     {
         DB::table('wallets')->insert([
-            'bitcoin_wallet_id' => '43i4j3oi4ijo34m',
-            'bitcoin_wallet_qpr_code' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
-            'bnb_wallet_id' => '43j4394irf39',
-            'bnb_wallet_qpr_code' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
+            'name' => 'bitcoin',
+            'address' => '43j4394irf39',
+            'qr_code' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
+            'acronym' => 'BTC',
+        ]);
+
+        DB::table('wallets')->insert([
+            'name' => 'binance',
+            'address' => 'knvksnlvknlweknwev3n',
+            'qr_code' => 'uploads/mgPPOelvZW1FRZar28XYkVuWjs5Bcgy9INJkzTCp.png',
+            'acronym' => 'BNB',
         ]);
     }
 }

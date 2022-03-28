@@ -7,32 +7,57 @@ use Illuminate\Http\Request;
 
 class WalletController extends Controller
 {
+    public function index()
+    {
+        $wallets = Wallet::all();
+        return view('admin.system_wallet', compact('wallets'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'address' => ['nullable', 'string'],
+            'qr_code' => ['nullable', 'string'],
+            'name' => ['required', 'string'],
+            'acronym' => ['string'],
+        ]);
+
+        $wallet = new Wallet;
+
+        $wallet->name = $request->name;
+        $wallet->address = $request->address;
+        $wallet->acronym = $request->acronym;
+        $wallet->qr_code = $request->file('qr_code')->store('uploads', 'public');
+
+        $ret = $wallet->save();
+        $success = $ret ? true : false;
+        return view('admin.system_wallet', compact('success'));
+    }
+
     public function update(Request $request)
     {
         $request->validate([
-            'bitcoin_wallet_id' => ['nullable', 'string'],
-            'bnb_wallet_id' => ['nullable', 'string'],
+            'address' => [],
+            'qr_code' => [],
+            'name' => [],
+            'id' => ['required'],
+            'acronym' => [],
         ]);
 
-        $wallet = Wallet::firstOrNew(['id' => 1]);
+        $wallet = Wallet::find($request->id);
 
-        if ($request->bitcoin_wallet_id) {
-            $wallet->bitcoin_wallet_id = $request->bitcoin_wallet_id;
+        if ($request->address) {
+            $wallet->address = $request->address;
         }
 
-        if ($request->file('bitcoin_wallet_qpr_code')) {
-            $wallet->bitcoin_wallet_qpr_code = $request->file('bitcoin_wallet_qpr_code')->store('uploads', 'public');
+        if ($request->acronym) {
+            $wallet->acronym = $request->acronym;
         }
 
-        if ($request->bnb_wallet_id) {
-            $wallet->bnb_wallet_id = $request->bnb_wallet_id;
+        if ($request->file('qr_code')) {
+            $wallet->qr_code = $request->file('qr_code')->store('uploads', 'public');
         }
 
-        if ($request->file('bnb_wallet_qpr_code')) {
-            $wallet->bnb_wallet_qpr_code = $request->file('bnb_wallet_qpr_code')->store('uploads', 'public');
-        }
-
-        //dd($wallet);
         $ret = $wallet->update();
         $success = $ret ? true : false;
         return view('admin.system_wallet', compact('success'));

@@ -16,10 +16,10 @@ class CreateWalletsTable extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('bitcoin_wallet_id')->nullable();
-            $table->string('bitcoin_wallet_qpr_code')->nullable();
-            $table->string('bnb_wallet_id')->nullable();
-            $table->string('bnb_wallet_qpr_code')->nullable();
+            $table->string('name');
+            $table->string('acronym')->nullable();
+            $table->string('address')->nullable();
+            $table->string('qr_code')->nullable();
         });
     }
 

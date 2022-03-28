@@ -44,9 +44,9 @@ class DepositController extends Controller
 
     public function create()
     {
-        $wallet = Wallet::find(1);
+        $wallets = Wallet::all();
         $deposits = Auth::user()->deposit->sortByDesc('id');
-        return view('deposit', compact('deposits', 'wallet'));
+        return view('deposit', compact('deposits', 'wallets'));
     }
 
     /**
@@ -57,12 +57,37 @@ class DepositController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'amount' => ['numeric']
+            'plan' => ['required'],
+            'amount' => ['required', 'numeric', function ($attribute, $value, $fail) {
+                if ($value < 500) {
+                    $fail('Insufficient deposit. If you have already made the payment, please contact our customer support.');
+                }
+            },]
         ]);
         $deposit = new Deposit;
         $deposit->user_id = auth()->id();
         $deposit->plan = $request->plan;
         $deposit->amount = $request->amount;
+
+        if (
+            $deposit->plan == Deposit::BASIC ||
+            $deposit->plan == Deposit::BRONZE ||
+            $deposit->plan == Deposit::SILVER ||
+            $deposit->plan == Deposit::DIAMOND ||
+            $deposit->plan == Deposit::PREMIUM
+        ) {
+            if ($deposit->amount >= 500 && $deposit->amount <= 1000) {
+                $deposit->plan = Deposit::BASIC;
+            } elseif ($deposit->amount >= 1001 && $deposit->amount <= 2000) {
+                $deposit->plan = Deposit::BRONZE;
+            } elseif ($deposit->amount >= 2001 && $deposit->amount <= 3000) {
+                $deposit->plan = Deposit::BRONZE;
+            } elseif ($deposit->amount >= 3001 && $deposit->amount <= 5000) {
+                $deposit->plan = Deposit::SILVER;
+            } elseif ($deposit->amount > 5000) {
+                $deposit->plan = Deposit::BRONZE;
+            }
+        }
 
         if ($request->file('proof')) {
             $deposit->proof = $request->file('proof')->store('uploads', 'public');

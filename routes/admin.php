@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuth\LoginController;
 use App\Http\Controllers\AdminAuth\RegisterController;
-use App\Http\Controllers\AdminAuth\ForgotPasswordController;
-use App\Http\Controllers\AdminAuth\ResetPasswordController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ProfitController;
 use App\Http\Controllers\SuccessController;
@@ -62,12 +60,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
     Route::patch('/deposits/approve', [DepositController::class, 'update'])->name('admin.deposits.approve');
     Route::patch('/deposits/decline/{id}', [DepositController::class, 'update'])->name('admin.deposits.decline');
-    Route::post('/system_wallet', [WalletController::class, 'update'])->name('admin.system_wallet');
+    Route::post('/system_wallet', [WalletController::class, 'update'])->name('admin.wallet.update');
+    Route::post('/system_wallet', [WalletController::class, 'store'])->name('admin.wallet.store');
     Route::get('/trader_stat', [TraderController::class, 'index'])->name('admin.trader_stat');
     Route::post('/traders/update', [TraderController::class, 'update'])->name('admin.trader.update');
     Route::post('/traders/store', [TraderController::class, 'store'])->name('admin.trader.store');
     Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');
-    Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
+    Route::view('/system_wallet', [WalletController::class, 'index'])->name('admin.system_wallet');
     Route::view('/system', 'admin.system')->name('admin.system');
     Route::get('/create-success', [SuccessController::class, 'create'])->name('admin.success.create');
     Route::post('/success/store', [SuccessController::class, 'store'])->name('admin.success.store');

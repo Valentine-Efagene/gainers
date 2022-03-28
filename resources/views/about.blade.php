@@ -22,7 +22,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="about_img">
-                                    <figure><img class="img_responsive" src="{{ asset('images/FOREX.jpeg') }}" alt="#" />
+                                    <figure>
+                                        <img class="img_responsive" src="{{ asset('images/FOREX.jpeg') }}" alt="#" />
                                     </figure>
                                 </div>
                             </div>
