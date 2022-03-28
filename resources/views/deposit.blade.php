@@ -123,7 +123,7 @@
                                         </div>
                                         <div>
                                             <label>Upload Receipt of payment (jpeg, png, jpg format only)</label><br>
-                                            <input name="proof" id="cphoto" type="file" required="required">
+                                            <input name="proof" id="cphoto" type="file" required>
                                         </div><br><br>
 
                                         <div class="col-md-6 text-right">

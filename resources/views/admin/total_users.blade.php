@@ -31,6 +31,7 @@
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Assigned Withdrawal token</th>
+                                <th>Assigned Trader</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>

@@ -17,7 +17,7 @@ class UserDashboardController extends Controller
         $bonus = Auth::user()->bonus->sum('amount');
         $deposit = Auth::user()->deposit->where('status', Deposit::APPROVED)->sum('amount');
         $active_equity = $deposit + $active_profit + $bonus;
-        $total_withdrawal = Auth::user()->withdrawal->sum('amount');
+        $total_withdrawal = Auth::user()->withdrawal->where('status', Withdrawal::APPROVED)->sum('amount');
         $balance = $active_equity - $total_withdrawal;
 
         // Last 5 transactions

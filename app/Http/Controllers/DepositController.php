@@ -26,7 +26,7 @@ class DepositController extends Controller
 
         $this->middleware('admin_auth', [
             'only' => [
-                'index'
+                'index', 'update', 'delete'
             ]
         ]);
     }
@@ -108,7 +108,7 @@ class DepositController extends Controller
         }
 
         $success = $ret ? true : false;
-        return view('deposit', compact('success'));
+        return back()->with(compact('success'));
     }
 
     public function update(Request $request)

@@ -58,7 +58,7 @@
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                    <form method="POST" action="{{ route('admin.deposits.approve') }}">
+                                                    <form method="POST" action="{{ route('admin.deposits.update') }}">
                                                         @csrf
                                                         @method('PATCH')
                                                         <input name="id" type="hidden" value="{{ $deposit->id }}">
@@ -67,8 +67,7 @@
                                                                 class="dw dw-edit2"></i>Approve
                                                             Investment</button>
                                                     </form>
-                                                    <form method="POST"
-                                                        action="{{ route('admin.deposits.decline', ['id' => $deposit->id]) }}">
+                                                    <form method="POST" action="{{ route('admin.deposits.update') }}">
                                                         @csrf
                                                         @method('PATCH')
                                                         <input name="id" type="hidden" value="{{ $deposit->id }}">

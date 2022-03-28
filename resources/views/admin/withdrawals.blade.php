@@ -1,4 +1,5 @@
 @extends('layouts.admin_dashboard')
+@inject('Status', 'App\Models\Withdrawal')
 
 @section('content')
     <!--Welcome Note to user-->
@@ -20,9 +21,9 @@
 
             <div class="pd-ltr-20">
                 <div class="card-box mb-30">
-                    <h2 class="h4 pd-20">Approve Withdrawals (1 New)</h2>
+                    <h2 class="h4 pd-20">Approve Withdrawals</h2>
                     <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawl heading
-                                                        in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
+                                                                                                                            in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
@@ -31,6 +32,7 @@
                                 <th>Wallet Address Type</th>
                                 <th>Wallet Address Code</th>
                                 <th>Address QPR</th>
+                                <th>Status</th>
                                 <th>Inputted Withdrawal Token</th>
                                 <th>Original Withdrawal Token</th>
                                 <!--Check the user's initial token if matched with the one inputted for withdrawal. If matched, Output: Matched, if not tick Invalid Token-->
@@ -47,6 +49,7 @@
                                         <td>{{ $withdrawal->wallet_type }}</td>
                                         <td>{{ $withdrawal->wallet_id }}</td>
                                         <td>{{ $withdrawal->wallet_qpr }}</td>
+                                        <td>{{ $withdrawal->status }}</td>
                                         <td>{{ $withdrawal->token }}</td>
                                         <td>{{ $withdrawal->user->token->token }}</td>
                                         <td>
@@ -56,10 +59,37 @@
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>pending</a>
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Approve</a>
-                                                    <a class="dropdown-item" href=""><i class="dw dw-edit2"></i>Decline</a>
-                                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                                    <form method="POST" action="{{ route('admin.withdrawals.update') }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input name="id" type="hidden" value="{{ $withdrawal->id }}">
+                                                        <input name="status" type="hidden" value="{{ $Status::PENDING }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-edit2"></i>Pend</button>
+                                                    </form>
+                                                    <form method="POST" action="{{ route('admin.withdrawals.update') }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input name="id" type="hidden" value="{{ $withdrawal->id }}">
+                                                        <input name="status" type="hidden" value="{{ $Status::APPROVED }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-edit2"></i>Approve</button>
+                                                    </form>
+                                                    <form method="POST" action="{{ route('admin.withdrawals.update') }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input name="id" type="hidden" value="{{ $withdrawal->id }}">
+                                                        <input name="status" type="hidden" value="{{ $Status::DECLINED }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-edit2"></i>Decline</button>
+                                                    </form>
+                                                    <form method="POST" action="{{ route('admin.withdrawals.delete') }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input name="id" type="hidden" value="{{ $withdrawal->id }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-delete-3"></i>Delete</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>

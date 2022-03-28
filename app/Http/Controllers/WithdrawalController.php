@@ -24,7 +24,7 @@ class WithdrawalController extends Controller
 
         $this->middleware('admin_auth', [
             'only' => [
-                'index'
+                'index', 'update', 'delete'
             ]
         ]);
     }
@@ -41,7 +41,7 @@ class WithdrawalController extends Controller
         $bonus = Auth::user()->bonus->sum('amount');
         $deposit = Auth::user()->deposit->where('status', Deposit::APPROVED)->sum('amount');
         $active_equity = $deposit + $active_profit + $bonus;
-        $total_withdrawal = Auth::user()->withdrawal->sum('amount');
+        $total_withdrawal = Auth::user()->withdrawal->where('status', Withdrawal::APPROVED)->sum('amount');
         $balance = $active_equity - $total_withdrawal;
 
         $request->validate([
@@ -66,12 +66,38 @@ class WithdrawalController extends Controller
 
         $ret = $withdrawal->save();
         $success = $ret ? true : false;
-        return view('withdrawal', compact('success'));
+        return back()->with(compact('success'));
     }
 
     public function create()
     {
         $withdrawals = Auth::user()->withdrawal->sortByDesc('created_at');
         return view('withdrawal', compact('withdrawals'));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'id' => ['required'],
+            'status' => ['string', 'required']
+        ]);
+        $withdrawal = Withdrawal::find($request->id);
+
+        if ($request->status) {
+            $withdrawal->status = $request->status;
+        }
+
+        $withdrawal->update();
+        return back();
+    }
+
+    public function delete(Request $request)
+    {
+        $request->validate([
+            'id' => ['required'],
+        ]);
+
+        Withdrawal::find($request->id)->delete();
+        return back();
     }
 }
