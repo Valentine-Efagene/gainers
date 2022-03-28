@@ -21,7 +21,8 @@
                                             <img src="storage/app/public/{{ $wallet->qr_code }}" alt="Wallet_QPR" width=200px
                                                 height=200px>
                                             <div class="me-4">
-                                                <p class="text-white text-sm opacity-8 mb-0">Or Use the {{ $wallet->name }}
+                                                <p class="text-white text-sm opacity-8 mb-0">Or Use the
+                                                    {{ Str::title($wallet->name) }}
                                                     Coin
                                                     Wallet
                                                     Address Code:</p>
@@ -51,9 +52,10 @@
                                 </div>
                             </div>
                             <div class="card-body pt-0 p-3 text-center">
-                                <h6 class="text-center mb-0">{{ $wallet->name }} Coin Wallet</h6>
+                                <h6 class="text-center mb-0">{{ Str::title($wallet->name) }} Coin Wallet</h6>
                                 <hr class="horizontal dark my-3">
-                                <h5 class="mb-0">Only Deposit {{ $wallet->name }} Coin to this Address</h5>
+                                <h5 class="mb-0">Only Deposit {{ Str::title($wallet->name) }} Coin to this
+                                    Address</h5>
                             </div>
                         </div>
                     </div>
