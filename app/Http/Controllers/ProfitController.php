@@ -42,6 +42,6 @@ class ProfitController extends Controller
       $bonus->save();
     }
 
-    return redirect('admin.deposits');
+    return redirect('admin/deposits');
   }
 }

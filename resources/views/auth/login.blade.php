@@ -71,9 +71,9 @@
                                 <div class="col-sm-12">
                                     <div class="input-group mb-0">
                                         <!--
-                                                                                            use code for form submit
-                                                                                            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
-                                                                                         -->
+                                                                                                                    use code for form submit
+                                                                                                                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
+                                                                                                                 -->
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
                                             {{ __('Login') }}
                                         </button>

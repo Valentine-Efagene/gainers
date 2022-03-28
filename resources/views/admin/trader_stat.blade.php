@@ -45,9 +45,9 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>INVESTORS</label>
-                                                                @isset($trader->users)
+                                                                @isset($trader->user)
                                                                     <ul>
-                                                                        @foreach ($trader->users as $user)
+                                                                        @foreach ($trader->user as $user)
                                                                             <li>{{ $user->name }}</li>
                                                                         @endforeach
                                                                     </ul>
@@ -67,6 +67,7 @@
                                                             <div class="form-group">
                                                                 <label>SUCCESS RATE</label>
                                                                 <input name="success_rate" id="success_rate"
+                                                                    value="{{ $trader->success_rate }}"
                                                                     class="form-control form-control-lg @error('success_rate') is-invalid @enderror"
                                                                     type="text">
                                                                 @error('success_rate')
@@ -77,7 +78,7 @@
                                                             </div>
                                                             <div class="form-group mb-0">
                                                                 <input type="submit" class="btn btn-primary"
-                                                                    value="Upload/Update Trader1">
+                                                                    value="Upload/Update Trader {{ $trader->id }}">
                                                             </div>
                                                             <!--edit trader1  ENDS-->
                                                         </li>

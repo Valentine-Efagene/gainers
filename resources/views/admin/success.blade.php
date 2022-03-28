@@ -14,7 +14,7 @@
                             <ul class="nav nav-tabs customtab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#setting" role="tab">Click to add
-                                        profit or bonus</a>
+                                        Success</a>
                                 </li>
                             </ul>
                             <div class="tab height-100-p">

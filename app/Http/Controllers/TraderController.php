@@ -29,8 +29,10 @@ class TraderController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([]);
-        dd($request->request);
+        $request->validate([
+            'roi' => ['numeric'],
+            'success_rate' => ['numeric']
+        ]);
         $trader = new Trader;
         $trader->name = $request->name;
         $trader->roi = $request->roi;
@@ -43,7 +45,6 @@ class TraderController extends Controller
     public function update(Request $request)
     {
         $request->validate([]);
-        dd($request->request);
         $trader = Trader::find($request->id);
 
         if ($request->roi) {

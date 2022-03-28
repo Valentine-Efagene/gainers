@@ -28,7 +28,7 @@ trait ResetsPasswords
     {
         $token = $request->route()->parameter('token');
 
-        return view('auth.passwords.reset')->with(
+        return view('auth.admin.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
@@ -118,7 +118,7 @@ trait ResetsPasswords
 
         event(new PasswordReset($user));
 
-        $this->guard()->login($user);
+        $this->guard('admin')->login($user);
     }
 
     /**
@@ -187,6 +187,6 @@ trait ResetsPasswords
      */
     protected function guard()
     {
-        return Auth::guard();
+        return Auth::guard('admin');
     }
 }

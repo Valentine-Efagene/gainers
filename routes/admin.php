@@ -32,13 +32,21 @@ Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 // Registration Routes...
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('admin.register');
-Route::post('register', [RegisterController::class, 'admin.register']);
+Route::post('register', [RegisterController::class, 'register'])->name('admin.register');
 
+/*
 // Password Reset Routes...
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
-Route::post('password/reset', [ResetPasswordController::class, 'reset']);
+Route::post('admin/password/reset', [ResetPasswordController::class, 'reset'])->name('admin.password.update');
+Route::post('admin/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
+
+Route::get('/forgot-password', function () {
+    return view('auth.admin.passwords.email');
+})->middleware('guest')->name('admin.password.request');
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.admin.passwords.reset', ['token' => $token]);
+})->middleware('guest')->name('admin.password.reset');
+*/
 
 Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/profit', [ProfitController::class, 'create'])->name('admin.profit.create');
@@ -61,7 +69,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');
     Route::view('/system_wallet', 'admin.system_wallet')->name('admin.system_wallet');
     Route::view('/system', 'admin.system')->name('admin.system');
-    Route::get('/success/create', [SuccessController::class, 'create'])->name('admin.success.create');
+    Route::get('/create-success', [SuccessController::class, 'create'])->name('admin.success.create');
     Route::post('/success/store', [SuccessController::class, 'store'])->name('admin.success.store');
     Route::view('/dashboard', 'admin.index')->name('admin.dashboard');
     Route::get('/*', function () {

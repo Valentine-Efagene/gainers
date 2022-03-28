@@ -159,7 +159,6 @@
     </div>
     <!--interface customizing ends-->
 
-
     <!--Side bar begins-->
     <div class="left-side-bar">
         <div class="brand-logo">
@@ -180,10 +179,18 @@
                         <ul class="submenu">
                             <li><a href="{{ route('admin.total_users') }}">Total Users</a></li>
                             <!--BOTH THOSE WHO INVESTED AND THOSE WHO HAS NOT INVESTED-->
-                            <li><a href="{{ route('admin.withdrawals') }}">Withdrawals</a></li>
-                            <li><a href="{{ route('admin.deposits') }}">Deposits</a></li>
-                            <li><a href="{{ route('admin.system_wallet') }}">System Wallet</a></li>
-                            <li><a href="{{ route('admin.system') }}">System Statistics and Update Settings</a></li>
+                            <li><a href="{{ route('admin.withdrawals') }}"
+                                    class="{{ Route::currentRouteName() == 'admin.withdrawals' ? 'active' : '' }}">Withdrawals</a>
+                            </li>
+                            <li><a href="{{ route('admin.deposits') }}"
+                                    class="{{ Route::currentRouteName() == 'admin.deposits' ? 'active' : '' }}">Deposits</a>
+                            </li>
+                            <li><a href="{{ route('admin.system_wallet') }}"
+                                    class="{{ Route::currentRouteName() == 'admin.system_wallet' ? 'active' : '' }}">System
+                                    Wallet</a></li>
+                            <li><a href="{{ route('admin.system') }}"
+                                    class="{{ Route::currentRouteName() == 'admin.system' ? 'active' : '' }}">System
+                                    Statistics and Update Settings</a></li>
                             <!--Only Available to Grand Admin. Other Admin only eligible to process
        withdrawals and Deposits-->
                             <li><a href="{{ route('admin.logout') }}">Log Out</a></li>
@@ -207,8 +214,6 @@
         </div>
     @endif
     <!--Footer ends-->
-    </div>
-    </div>
     <!-- js -->
     <script src="{{ asset('vendors/scripts/core.js') }}"></script>
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>

@@ -10,11 +10,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="../{{ asset('js/app.js') }}" defer></script>
     <script src="js/app.js" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="../{{ asset('css/app.css') }}" rel="stylesheet">
 
     {{-- Theo --}}
     <!-- basic -->
@@ -22,18 +22,18 @@
     <!-- mobile metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="../{{ asset('images/favicon.png') }}">
     <!-- site metas -->
     <title>GAINERS BAY</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="../{{ asset('css/bootstrap.min.css') }}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="../{{ asset('css/style.css') }}">
     <!-- responsive-->
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="../{{ asset('css/responsive.css') }}">
     <!-- awesome fontfamily -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--[if lt IE 9]>
@@ -43,10 +43,10 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="../{{ asset('vendors/styles/core.css') }}">
+    <link rel="stylesheet" type="text/css" href="../{{ asset('vendors/styles/icon-font.min.css') }}">
     {{-- Messes with the UI in statuistics page --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="../{{ asset('vendors/styles/style.css') }}"> --}}
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -55,7 +55,7 @@
 <body class="main-layout">
     <!-- loader  -->
     <div class="loader_bg">
-        <div class="loader"><img src="{{ asset('images/loading.gif') }}" alt="" /></div>
+        <div class="loader"><img src="../{{ asset('images/loading.gif') }}" alt="" /></div>
     </div>
     <!-- end loader -->
     @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'Register')
@@ -134,7 +134,7 @@
                             @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'Register')
                                 <li>
                                     <button class="openbtn" onclick="openNav()"><img
-                                            src="{{ asset('images/menu_btn.png') }}"></button>
+                                            src="../{{ asset('images/menu_btn.png') }}"></button>
                                 </li>
                             @endif
                         </ul>
@@ -238,7 +238,7 @@
                             <h3>Contact Us</h3>
                             <ul>
                                 <li> <a href="Javascript:void(0) "> <i class="fa fa-map-marker "
-                                            aria-hidden="true "></i>{{ env('LOCATION') }}
+                                            aria-hidden="true "></i>London, England
                                     </a>
                                 </li>
                                 <li> <a href="Javascript:void(0) "><i class="fa fa-phone "
@@ -246,7 +246,7 @@
                                     </a>
                                 </li>
                                 <li> <a href="Javascript:void(0) "> <i class="fa fa-envelope "
-                                            aria-hidden="true "></i>{{ env('SUPPORT_EMAIL') }}
+                                            aria-hidden="true "></i>{{ env('SUPPORT_MAIL') }}
                                     </a>
                                 </li>
                             </ul>
@@ -302,14 +302,14 @@
     </footer>
     <!-- end footer -->
     <!-- Javascript files-->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
-    <script src="{{ asset('vendors/scripts/core.js') }}"></script>
-    <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
-    <script src="{{ asset('vendors/scripts/process.js') }}"></script>
-    <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
+    <script src="../{{ asset('js/jquery.min.js') }}"></script>
+    <script src="../{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="../{{ asset('js/jquery-3.0.0.min.js') }}"></script>
+    <script src="../{{ asset('js/custom.js') }}"></script>
+    <script src="../{{ asset('vendors/scripts/core.js') }}"></script>
+    <script src="../{{ asset('vendors/scripts/script.min.js') }}"></script>
+    <script src="../{{ asset('vendors/scripts/process.js') }}"></script>
+    <script src="../{{ asset('vendors/scripts/layout-settings.js') }}"></script>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},

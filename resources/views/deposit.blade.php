@@ -16,16 +16,18 @@
                                 <div class="form-group col-12 mb-3">
                                     <p class="text-white text-sm opacity-8 mb-0">Scan the Wallet QPR Code to make payment</p>
                                     <br>
-                                    <img src="storage/app/public/{{ $wallet->bitcoin_wallet_qpr_code }}" alt="Wallet_QPR"
-                                        width=200px height=200px>
-                                    <div class="me-4">
-                                        <p class="text-white text-sm opacity-8 mb-0">Or Use the Bitcoin Wallet Address Code:
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-white text-sm opacity-8 mb-0">{{ $wallet->bitcoin_wallet_id }}
-                                        </h4>
-                                    </div>
+                                    @isset($wallet)
+                                        <img src="storage/app/public/{{ $wallet->bitcoin_wallet_qpr_code }}" alt="Wallet_QPR"
+                                            width=200px height=200px>
+                                        <div class="me-4">
+                                            <p class="text-white text-sm opacity-8 mb-0">Or Use the Bitcoin Wallet Address Code:
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white text-sm opacity-8 mb-0">{{ $wallet->bitcoin_wallet_id }}
+                                            </h4>
+                                        </div>
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -138,7 +140,8 @@
                                     </div><br><br>
 
                                     <div class="col-md-6 text-right">
-                                        <button type="submit" class="btn bg-gradient-dark mb-0" href="javascript:;"><i
+                                        <button @if (!($wallet && ($wallet->bitcoin_wallet_id || $wallet->bitcoin_wallet_qpr_code))) disabled @endif type="submit"
+                                            class="btn bg-gradient-dark mb-0" href="javascript:;"><i
                                                 class="fas fa-plus"></i>&nbsp;&nbsp; SUBMIT</button>
                                     </div>
                                     <hr>
@@ -179,16 +182,18 @@
                                 <div class="form-group col-12 mb-3">
                                     <p class="text-white text-sm opacity-8 mb-0">Scan the Wallet QPR Code to make payment
                                     </p><br>
-                                    <img src="storage/app/public/{{ $wallet->bnb_wallet_qpr_code }}" alt="Wallet_QPR"
-                                        width=200px height=200px>
-                                    <div class="me-4">
-                                        <p class="text-white text-sm opacity-8 mb-0">Or Use the Binance (BNB) Coin Wallet
-                                            Address Code:</p>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-white text-sm opacity-8 mb-0">
-                                            {{ $wallet ? $wallet->bnb_wallet_id : '' }}</h4>
-                                    </div>
+                                    @isset($wallet)
+                                        <img src="storage/app/public/{{ $wallet->bnb_wallet_qpr_code }}" alt="Wallet_QPR"
+                                            width=200px height=200px>
+                                        <div class="me-4">
+                                            <p class="text-white text-sm opacity-8 mb-0">Or Use the Binance (BNB) Coin Wallet
+                                                Address Code:</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white text-sm opacity-8 mb-0">
+                                                {{ $wallet ? $wallet->bnb_wallet_id : '' }}</h4>
+                                        </div>
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -202,8 +207,10 @@
                     <div class="card">
                         <div class="card-header mx-4 p-3 text-center">
                             <div>
-                                <img src="storage/app/public/{{ $wallet->bitcoin_wallet_qpr_code }}" alt="Wallet_QPR"
-                                    width=70px height=70px>
+                                @isset($wallet)
+                                    <img src="storage/app/public/{{ $wallet->bitcoin_wallet_qpr_code }}" alt="Wallet_QPR"
+                                        width=70px height=70px>
+                                @endisset
                             </div>
                         </div>
                         <div class="card-body pt-0 p-3 text-center">
@@ -265,8 +272,9 @@
                                     </div><br><br>
 
                                     <div class="col-md-6 text-right">
-                                        <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                                                class="fas fa-plus"></i>&nbsp;&nbsp; SUBMIT</a>
+                                        <button @if (!($wallet && ($wallet->bnb_wallet_qpr_code || $wallet->bnb_wallet_id))) disabled @endif type="submit"
+                                            class="btn bg-gradient-dark mb-0" href="javascript:;"><i
+                                                class="fas fa-plus"></i>&nbsp;&nbsp; SUBMIT</button>
                                     </div>
                                     <!--BnB Wallet Ends-->
                                     <hr>

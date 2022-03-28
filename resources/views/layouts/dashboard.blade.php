@@ -36,7 +36,8 @@
         <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.dashboard') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'user.dashboard' ? 'active' : '' }}"
+                        href="{{ route('user.dashboard') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -63,7 +64,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ route('user.activities') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'user.activities' ? 'active' : '' }}"
+                        href="{{ route('user.activities') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -90,7 +92,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.deposit') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'user.deposit' ? 'active' : '' }}"
+                        href="{{ route('user.deposit') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -117,7 +120,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('user.withdrawal') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'user.withdrawal' ? 'active' : '' }}"
+                        href="{{ route('user.withdrawal') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -147,7 +151,8 @@
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.profile') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'user.profile' ? 'active' : '' }}"
+                        href="{{ route('user.profile') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -177,7 +182,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ route('logout') }}">
+                    <a class="nav-link" href="{{ route('logout') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"

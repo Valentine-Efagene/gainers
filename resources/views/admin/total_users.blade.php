@@ -21,8 +21,7 @@
             <div class="pd-ltr-20">
                 <div class="card-box mb-30">
                     <h2 class="h4 pd-20">Total User</h2>
-                    <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawl heading
-                                                                                                                                                                                                                                                                         in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
+                    <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawal heading                                                                                                                                                                                                                                     in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
@@ -66,7 +65,7 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                <noscript><input type="submit" value="Submit"></noscript>
+                                                <noscript><input hidden type="submit" value="Submit"></noscript>
                                             </form>
                                         </td>
                                         <td>

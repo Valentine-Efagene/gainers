@@ -122,7 +122,7 @@
             <div class="col-lg-5">
                 <div class="card h-100 p-3">
                     <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100"
-                        style="background-image: url('{{ 'dashboard/img/logo-ct.png' }}')">
+                        style="background-image: url('{{ 'asset/dashboard/img/logo-ct.png' }}')">
                         <span class="mask bg-gradient-dark"></span>
                         <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
                             <h5 class="text-white font-weight-bolder mb-4 pt-2">Your Accounts</h5>
@@ -182,138 +182,48 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Chris Bunner</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                                <p>345</p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                                <p>Your Trader</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">60%</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <div class="progress-wrapper w-75 mx-auto">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">100%</span>
+                                    @isset($traders)
+                                        @foreach ($traders as $trader)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{ $trader->name }}</h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-info w-100" role="progressbar"
-                                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Christina Joel</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p>203</p>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold"> 68% </span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <div class="progress-wrapper w-75 mx-auto">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">66%</span>
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-group mt-2">
+                                                        <p>{{ $trader->user->count() }}</p>
                                                     </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-info w-70" role="progressbar"
-                                                        aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Purma Jude</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p>124</p>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">65%</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <div class="progress-wrapper w-75 mx-auto">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">67%</span>
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-group mt-2">
+                                                        @if ($trader->id == Auth::user()->trader->id)
+                                                            <p>Your Trader</p>
+                                                        @endif
                                                     </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-success w-70" role="progressbar"
-                                                        aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Natheniel Woodman</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p>121</p>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">62%</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <div class="progress-wrapper w-75 mx-auto">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">60%</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="text-xs font-weight-bold">{{ $trader->roi }}</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="progress-wrapper w-75 mx-auto">
+                                                        <div class="progress-info">
+                                                            <div class="progress-percentage">
+                                                                <span
+                                                                    class="text-xs font-weight-bold">{{ $trader->success_rate }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-gradient-info w-100" role="progressbar"
+                                                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-success w-60" role="progressbar"
-                                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endisset
                                 </tbody>
                             </table>
                         </div>

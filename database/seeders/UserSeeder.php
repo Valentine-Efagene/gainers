@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'country' => 'UK',
             'gender' => 'Female',
             'username' => 'Jane',
+            'trader_id' => 1
         ]);
         DB::table('users')->insert([
             'name' => 'John Doe',

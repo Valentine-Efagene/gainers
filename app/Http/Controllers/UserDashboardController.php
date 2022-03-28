@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Bonus;
 use App\Models\Deposit;
+use App\Models\Trader;
 use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Auth;
-
-use function PHPSTORM_META\type;
 
 class UserDashboardController extends Controller
 {
     public function index()
     {
         $active_profit = Auth::user()->profit->sum('amount');
-        $active_equity = Auth::user()->deposit->sum('amount') + Auth::user()->bonus->sum('amount') + $active_profit;
+        $bonus = Auth::user()->bonus->sum('amount');
+        $deposit = Auth::user()->deposit->sum('amount');
+        $active_equity = $deposit + $active_profit + $bonus;
         $total_withdrawal = Auth::user()->withdrawal->sum('amount');
         $balance = $active_equity - $total_withdrawal;
 
         // Last 5 transactions
         $profits = Auth::user()->profit->sortByDesc('id')->take(5);
-        // dd($profits);
         $withdrawals = Auth::user()->withdrawal;
         $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->latest()->take(5)->get();
         $deposits = Deposit::where('user_id', Auth::user()->id)->latest()->take(5)->get();
@@ -70,8 +70,10 @@ class UserDashboardController extends Controller
             $transactions->add($transaction);
         }
 
+        $traders = Trader::all();
+
         $transactions = $transactions->sortByDesc('created_at')->take(50);
-        return view('dashboard', compact('balance', 'active_equity', 'total_withdrawal', 'balance', 'active_profit', 'transactions'));
+        return view('dashboard', compact('balance', 'active_equity', 'total_withdrawal', 'balance', 'active_profit', 'transactions', 'traders'));
     }
 
     public function activities()

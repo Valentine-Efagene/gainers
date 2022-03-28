@@ -17,7 +17,7 @@ class WithdrawalController extends Controller
     {
         $this->middleware('auth', [
             'only' => [
-                'store'
+                'store', 'create'
             ]
         ]);
 
@@ -36,7 +36,12 @@ class WithdrawalController extends Controller
 
     public function store(Request $request)
     {
-        $balance = Auth::user()->deposit->sum('amount') + Auth::user()->profit->sum('bonus_amount') + Auth::user()->profit->sum('profit_amount') - Auth::user()->withdrawal->sum('amount');
+        $active_profit = Auth::user()->profit->sum('amount');
+        $bonus = Auth::user()->bonus->sum('amount');
+        $deposit = Auth::user()->deposit->sum('amount');
+        $active_equity = $deposit + $active_profit + $bonus;
+        $total_withdrawal = Auth::user()->withdrawal->sum('amount');
+        $balance = $active_equity - $total_withdrawal;
 
         $request->validate([
             'wallet_id' => ['string'],
@@ -61,5 +66,11 @@ class WithdrawalController extends Controller
         $ret = $withdrawal->save();
         $success = $ret ? true : false;
         return view('withdrawal', compact('success'));
+    }
+
+    public function create()
+    {
+        $withdrawals = Auth::user()->withdrawal->sortByDesc('created_at');
+        return view('withdrawal', compact('withdrawals'));
     }
 }

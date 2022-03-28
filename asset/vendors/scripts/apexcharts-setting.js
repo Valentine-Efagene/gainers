@@ -1,7 +1,7 @@
 
 const fetchData = () => {
 	// axios.get('https://api.ipify.org/?format=json')
-	axios.get('/247gainers/success/get')
+	axios.get('success/get')
 		.then(response => {
 			const success_rates = response.data;
 			console.log(`GET success rate array`, success_rates);

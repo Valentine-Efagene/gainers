@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\SuccessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\WithdrawalController;
+use App\Mail\Welcome;
+use Illuminate\Support\Facades\Mail;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -41,16 +45,31 @@ Route::get('test', function () {
 });
 
 Auth::routes();
+
+// Password
+Route::get('/forgot-password', function () {
+  return view('auth.passwords.email');
+})->middleware('guest')->name('password.request');
+
+Route::get('/reset-password/{token}', function ($token) {
+  return view('auth.passwords.reset', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
 // Client Dashboard
 Route::group(['middleware' => 'auth'], function () {
   Route::post('/profile', [UserController::class, 'update'])->name('user.update_profile');
   Route::view('/profile', 'profile')->name('user.profile');
-  Route::view('/withdrawal', 'withdrawal')->name('user.withdrawal');
+  Route::get('/withdrawal', [WithdrawalController::class, 'create'])->name('user.withdrawal');
   Route::get('/deposit', [DepositController::class, 'create'])->name('user.deposit');
   Route::post('/deposit', [DepositController::class, 'store'])->name('deposit.store');
   Route::post('/withdrawal', [WithdrawalController::class, 'store'])->name('withdrawal.store');
   Route::get('/activities', [UserDashboardController::class, 'activities'])->name('user.activities');
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 });
+
+Route::get('/welcome-email', [EmailController::class, 'welcome'])->name('email.welcome');
+Route::get('/mail-test', function () {
+  Mail::to('efagenevalentine@gmail.com')->send(new Welcome());
+})->name('email.welcome');
 
 //Route::get('/adminLogin', [App\Http\Controllers\Auth\AdminAuthController::class, 'login'])->name('log');
