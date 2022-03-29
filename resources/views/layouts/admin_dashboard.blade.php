@@ -45,44 +45,46 @@
 </head>
 
 <body>
+    @if (Auth::guard('admin')->check())
+        <div class="header">
+            <div class="header-right">
+                <!--User info-->
+                <div class="user-info-dropdown">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            <span class="user-icon">
+                                <img src="{{ asset('vendors/images/photo1.jpg') }}" alt="">
+                            </span>
+                            @if (Auth::guard('admin')->check())
+                                <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
+                            @endif
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                            <a class="dropdown-item  {{ Route::currentRouteName() == 'admin.total_users' ? 'active' : '' }}"
+                                href="{{ route('admin.total_users') }}">Total Users</a>
+                            <!--BOTH THOSE WHO INVESTED AND THOSE WHO HAS NOT INVESTED-->
+                            <a href="{{ route('admin.withdrawals') }}"
+                                class="dropdown-item {{ Route::currentRouteName() == 'admin.withdrawals' ? 'active' : '' }}">Withdrawals</a>
 
-    <div class="header">
-        <div class="header-right">
-            <!--User info-->
-            <div class="user-info-dropdown">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        <span class="user-icon">
-                            <img src="{{ asset('vendors/images/photo1.jpg') }}" alt="">
-                        </span>
-                        @if (Auth::guard('admin')->check())
-                            <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
-                        @endif
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item  {{ Route::currentRouteName() == 'admin.total_users' ? 'active' : '' }}"
-                            href="{{ route('admin.total_users') }}">Total Users</a>
-                        <!--BOTH THOSE WHO INVESTED AND THOSE WHO HAS NOT INVESTED-->
-                        <a href="{{ route('admin.withdrawals') }}"
-                            class="dropdown-item {{ Route::currentRouteName() == 'admin.withdrawals' ? 'active' : '' }}">Withdrawals</a>
+                            <a href="{{ route('admin.deposits') }}"
+                                class="dropdown-item {{ Route::currentRouteName() == 'admin.deposits' ? 'active' : '' }}">Deposits</a>
 
-                        <a href="{{ route('admin.deposits') }}"
-                            class="dropdown-item {{ Route::currentRouteName() == 'admin.deposits' ? 'active' : '' }}">Deposits</a>
-
-                        <a href="{{ route('admin.system_wallet') }}"
-                            class="dropdown-item {{ Route::currentRouteName() == 'admin.system_wallet' ? 'active' : '' }}">System
-                            Wallet</a>
-                        <a href="{{ route('admin.system') }}"
-                            class="dropdown-item {{ Route::currentRouteName() == 'admin.system' ? 'active' : '' }}">System
-                            Statistics and Update Settings</a>
-                        <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="dw dw-logout"></i>
-                            Log
-                            Out</a>
+                            <a href="{{ route('admin.system_wallet') }}"
+                                class="dropdown-item {{ Route::currentRouteName() == 'admin.system_wallet' ? 'active' : '' }}">System
+                                Wallet</a>
+                            <a href="{{ route('admin.system') }}"
+                                class="dropdown-item {{ Route::currentRouteName() == 'admin.system' ? 'active' : '' }}">System
+                                Statistics and Update Settings</a>
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}"><i
+                                    class="dw dw-logout"></i>
+                                Log
+                                Out</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <!--interface customizing-->
     <div class="right-sidebar">

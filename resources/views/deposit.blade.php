@@ -168,9 +168,9 @@
                     <div class="col-md-6 d-flex align-items-center">
                         <h6 class="mb-0">Deposit History</h6>
                     </div>
-                    <div class="col-md-6 text-right">
+                    {{-- <div class="col-md-6 text-right">
                         <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="card-body p-3 pb-0">

@@ -38,8 +38,8 @@
                             <img src="storage/app/public/{{ Auth::user()->profile_photo }}" alt="..."
                                 class="w-100 border-radius-lg shadow-sm">
                         </span>
-                        @if (Auth::guard('admin')->check())
-                            <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
+                        @if (Auth::guard()->check())
+                            <span class="user-name">{{ Auth::guard()->user()->name }}</span>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
