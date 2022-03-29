@@ -20,13 +20,13 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
     <!-- font awesome icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome-free-6.0.0-web\css\all.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
 
     <script src="{{ url('asset/js/app.js') }}" defer></script>
 
@@ -60,7 +60,23 @@
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="{{ route('admin.login') }}"><i class="dw dw-logout"></i> Log
+                        <a class="dropdown-item  {{ Route::currentRouteName() == 'admin.total_users' ? 'active' : '' }}"
+                            href="{{ route('admin.total_users') }}">Total Users</a>
+                        <!--BOTH THOSE WHO INVESTED AND THOSE WHO HAS NOT INVESTED-->
+                        <a href="{{ route('admin.withdrawals') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'admin.withdrawals' ? 'active' : '' }}">Withdrawals</a>
+
+                        <a href="{{ route('admin.deposits') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'admin.deposits' ? 'active' : '' }}">Deposits</a>
+
+                        <a href="{{ route('admin.system_wallet') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'admin.system_wallet' ? 'active' : '' }}">System
+                            Wallet</a>
+                        <a href="{{ route('admin.system') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'admin.system' ? 'active' : '' }}">System
+                            Statistics and Update Settings</a>
+                        <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="dw dw-logout"></i>
+                            Log
                             Out</a>
                     </div>
                 </div>

@@ -19,9 +19,53 @@
     <link href="{{ asset('dashboard/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('dashboard/css/soft-ui-dashboard.css?v=1.0.1') }}" rel="stylesheet" />
+
+    {{-- To bring admin dashboard menu --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+    <!-- fROM ADMIN DASH -->
+    <div class="header">
+        <div class="header-right">
+            <!--User info-->
+            <div class="user-info-dropdown">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <span class="user-icon">
+                            <img src="storage/app/public/{{ Auth::user()->profile_photo }}" alt="..."
+                                class="w-100 border-radius-lg shadow-sm">
+                        </span>
+                        @if (Auth::guard('admin')->check())
+                            <span class="user-name">{{ Auth::guard('admin')->user()->name }}</span>
+                        @endif
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item {{ Route::currentRouteName() == 'user.dashboard' ? 'active' : '' }}"
+                            href="{{ route('user.dashboard') }}">My Account Overview</a>
+                        <!--BOTH THOSE WHO INVESTED AND THOSE WHO HAS NOT INVESTED-->
+                        <a href="{{ route('user.activities') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'user.activities' ? 'active' : '' }}">My
+                            Activities</a>
+
+                        <a href="{{ route('user.deposit') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'user.deposit' ? 'active' : '' }}">Deposit</a>
+
+                        <a href="{{ route('user.withdrawal') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'user.withdrawal' ? 'active' : '' }}">Withdrawal</a>
+                        <a href="{{ route('user.profile') }}"
+                            class="dropdown-item {{ Route::currentRouteName() == 'user.profile' ? 'active' : '' }}">Profile</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="dw dw-logout"></i>
+                            Log
+                            Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-left ms-3"
         id="sidenav-main">
         <div class="sidenav-header">
@@ -230,7 +274,7 @@
     </aside>
     <main class="main-content mt-1 border-radius-lg">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+        {{-- <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
             navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
@@ -247,7 +291,7 @@
 
                 </div>
             </div>
-        </nav>
+        </nav> --}}
         <!-- End Navbar -->
 
         <!-- Crypto Converter ⚡ Widget -->
@@ -389,6 +433,13 @@
         })();
     </script>
     <!--End of Tawk.to Script-->
+
+    <!-- ADMIN DASH js -->
+    <script src="{{ asset('vendors/scripts/core.js') }}"></script>
+    <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
+    <script src="{{ asset('vendors/scripts/process.js') }}"></script>
+    <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
+    <script src="{{ asset('vendors/scripts/dashboard.js') }}"></script>
 </body>
 
 </html>
