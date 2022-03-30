@@ -14,13 +14,12 @@
                         </div><br><br>
                         <div class="col-md-6 col-sm-12 text-right">
                             <div class="dropdown">
-                                <h4 class="btn btn-primary" role="button">
-                                    @if ($latest_date)
+                                @if ($latest_date)
+                                    <h4 class="btn btn-primary" role="button">
                                         As at
                                         {{ \Carbon\Carbon::createFromTimestamp(strtotime($latest_date))->format('d-m-Y') }}
-                                    @endif
-                                </h4>
-
+                                    </h4>
+                                @endif
                             </div>
                         </div>
                     </div>

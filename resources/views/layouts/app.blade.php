@@ -43,10 +43,14 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
-    {{-- Messes with the UI in statuistics page --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}"> --}}
+    @if (Route::currentRouteName() != 'home' && Route::currentRouteName() != 'index')
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+    @endif
+
+    @if (Route::currentRouteName() != 'statistics')
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
+    @endif
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
