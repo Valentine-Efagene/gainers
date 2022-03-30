@@ -15,7 +15,10 @@
                         <div class="col-md-6 col-sm-12 text-right">
                             <div class="dropdown">
                                 <h4 class="btn btn-primary" role="button">
-                                    As at April 2021
+                                    @if ($latest_date)
+                                        As at
+                                        {{ \Carbon\Carbon::createFromTimestamp(strtotime($latest_date))->format('d-m-Y') }}
+                                    @endif
                                 </h4>
 
                             </div>

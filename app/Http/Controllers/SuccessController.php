@@ -34,6 +34,13 @@ class SuccessController extends Controller
         return $s;
     }
 
+    public function statistics()
+    {
+        $latest = Success::latest()->first();
+        $latest_date = $latest ? $latest->date : null;
+        return view('statistics', compact('latest_date'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([

@@ -37,7 +37,7 @@ Route::view('/stock', 'stock')->name('stock');
 Route::view('/terms', 'terms')->name('terms');
 Route::view('/team', 'team')->name('team');
 Route::view('/mining', 'mining')->name('mining');
-Route::view('/statistics', 'statistics')->name('statistics');
+Route::get('/statistics', [SuccessController::class, 'statistics'])->name('statistics');
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/success/get', [SuccessController::class, 'index'])->name('admin.success.get');
 Route::get('test', function () {
@@ -72,4 +72,4 @@ Route::get('/mail-test', function () {
   Mail::to('efagenevalentine@gmail.com')->send(new Welcome());
 })->name('email.welcome');
 
-//Route::get('/adminLogin', [App\Http\Controllers\Auth\AdminAuthController::class, 'login'])->name('log');
+Route::get('/welcome-email', [EmailController::class, 'welcome'])->name('email.welcome');

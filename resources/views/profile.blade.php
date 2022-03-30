@@ -66,6 +66,9 @@
                                     class="text-dark">Country:</strong> &nbsp; {{ Auth::user()->country }}</li>
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">User
                                     Name:</strong> &nbsp; {{ Auth::user()->username }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">User
+                                    Referral Link:</strong> &nbsp;
+                                {{ env('APP_URL') }}/register?ref={{ Auth::user()->id }}</li>
                         </ul>
                     </div>
                 </div>
