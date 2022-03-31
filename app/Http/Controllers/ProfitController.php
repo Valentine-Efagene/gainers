@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bonus;
 use App\Models\Profit;
 use Illuminate\Http\Request;
 
@@ -22,25 +21,15 @@ class ProfitController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'id' => ['required'],
-      'profit_amount' => ['numeric'],
-      'profit_description' => ['string'],
-      'bonus_description' => ['string'],
-      'bonus_amount' => ['numeric'],
+      'deposit_id' => ['required'],
+      'amount' => ['numeric'],
+      'description' => ['string'],
     ]);
     $profit = new Profit;
-    $profit->deposit_id = $request->id;
-    $profit->amount = $request->profit_amount;
-    $profit->description = $request->profit_description;
+    $profit->deposit_id = $request->deposit_id;
+    $profit->amount = $request->amount;
+    $profit->description = $request->description;
     $profit->save();
-
-    if ($request->bonus_amount) {
-      $bonus = new Bonus;
-      $bonus->user_id = $request->id;
-      $bonus->amount = $request->bonus_amount;
-      $bonus->description = $request->bonus_description;
-      $bonus->save();
-    }
 
     return redirect('admin/deposits');
   }

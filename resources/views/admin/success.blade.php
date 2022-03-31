@@ -58,6 +58,43 @@
                                                     </li>
                                                 </ul>
                                             </form>
+                                            @isset($successes)
+                                                <div class="pd-ltr-20">
+                                                    <div class="card-box mb-30">
+                                                        <h2 class="h4 pd-20">Success Rates</h2>
+                                                        <!--Recent Deposits should be up-->
+                                                        <table class="data-table table nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Date</th>
+                                                                    <th>Success Rate</th>
+                                                                    <th class="datatable-nosort">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($successes as $success)
+                                                                    <tr>
+                                                                        <td>{{ $success->date }}</td>
+                                                                        <td>{{ $success->success_rate }}</td>
+                                                                        <td>
+                                                                            <form method="POST"
+                                                                                action="{{ route('admin.success.delete') }}">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <input name="id" type="hidden"
+                                                                                    value="{{ $success->id }}">
+                                                                                <button class="dropdown-item"><i
+                                                                                        class="dw dw-delete-3"></i></button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                            {{ $successes->links() }}
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            @endisset
                                         </div>
                                         <!-- Setting Tab End -->
                                     </div>

@@ -194,13 +194,17 @@
                                                 </td>
                                                 <td>
                                                     <div class="avatar-group mt-2">
-                                                        <p>{{ $trader->user->count() }}</p>
+                                                        @if ($trader->user)
+                                                            <p>{{ $trader->user->count() }}</p>
+                                                        @endif
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="avatar-group mt-2">
-                                                        @if ($trader->id == Auth::user()->trader->id)
-                                                            <p>Your Trader</p>
+                                                        @if (Auth::user() && Auth::user()->trader)
+                                                            @if ($trader->id == Auth::user()->trader->id)
+                                                                <p>Your Trader</p>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </td>

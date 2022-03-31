@@ -72,9 +72,8 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $data = $request->validate([
-            'email' => [],
-            'phone_number' => [],
-            'profile_photo' => [],
+            'email' => ['string', 'email', 'max:255', 'unique:users', 'nullable', 'sometimes'],
+            'phone_number' => ['string', 'max:20', 'nullable', 'sometimes'],
         ]);
         if ($request->file('profile_photo')) {
             $data['profile_photo'] = $request->file('profile_photo')->store('uploads', 'public');
@@ -82,6 +81,6 @@ class UserController extends Controller
         $data = $this->stripEmptyCustom($data);
         //dd($data);
         User::where('id', auth()->id())->update($data);
-        return view('profile');
+        return back();
     }
 }

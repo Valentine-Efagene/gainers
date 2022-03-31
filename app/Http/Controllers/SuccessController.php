@@ -17,7 +17,7 @@ class SuccessController extends Controller
     {
         $this->middleware('admin_auth', [
             'only' => [
-                'create', 'store'
+                'create', 'store', 'delete'
             ]
         ]);
     }
@@ -41,6 +41,16 @@ class SuccessController extends Controller
         return view('statistics', compact('latest_date'));
     }
 
+    public function delete(Request $request)
+    {
+        $request->validate([
+            'id' => ['required']
+        ]);
+
+        Success::find($request->id)->delete();
+        return back();
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -62,6 +72,8 @@ class SuccessController extends Controller
 
     public function create()
     {
-        return view('admin.success');
+        $successes = Success::paginate(12);
+        // dd($successes);
+        return view('admin.success', compact('successes'));
     }
 }

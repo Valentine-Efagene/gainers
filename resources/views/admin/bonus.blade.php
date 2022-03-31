@@ -15,36 +15,33 @@
                                 <ul class="nav nav-tabs customtab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#setting" role="tab">Click to add
-                                            profit</a>
+                                            bonus</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form method="POST" action="{{ route('admin.profit.store') }}">
+                                            <form method="POST" action="{{ route('admin.bonus.store') }}">
                                                 @csrf
-                                                <input name="deposit_id" type="hidden" value="{{ $id }}">
+                                                <input name="user_id" type="hidden" value="{{ $id }}">
                                                 <ul class="profile-edit-list row">
                                                     <li class="weight-500 col-md-6">
-                                                        <h4 class="text-blue h5 mb-20">Add Profit</h4>
-                                                        <!--Edit profit starts-->
+                                                        <h4 class="text-blue h5 mb-20">Add Bonus</h4>
                                                         <div class="form-group">
-                                                            <label>Profit</label>
                                                             <input name="description"
                                                                 class="form-control @error('description') is-invalid @enderror"
                                                                 id="description" type="text"
-                                                                placeholder="Enter Profit Description">
-                                                            @error('profit_description')
+                                                                placeholder="Enter Bonus Description"><br><br>
+                                                            @error('description')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
-                                                            <br><br>
                                                             <input name="amount"
                                                                 class="form-control @error('amount') is-invalid @enderror"
                                                                 id="amount" type="text"
-                                                                placeholder="Enter amount of Profit in USD">
+                                                                placeholder="Enter amount of Bonus in USD">
                                                             @error('amount')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -56,7 +53,7 @@
                                                                 {{ __('Add') }}
                                                             </button>
                                                         </div>
-                                                        <!--edit profit  ENDS-->
+                                                        <!--edit bonus ENDS-->
                                                     </li>
                                                 </ul>
                                             </form>

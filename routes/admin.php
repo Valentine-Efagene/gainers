@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuth\LoginController;
 use App\Http\Controllers\AdminAuth\RegisterController;
+use App\Http\Controllers\BonusController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ProfitController;
 use App\Http\Controllers\SuccessController;
@@ -49,8 +50,8 @@ Route::get('/reset-password/{token}', function ($token) {
 Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/profit', [ProfitController::class, 'create'])->name('admin.profit.create');
     Route::post('/profit', [ProfitController::class, 'store'])->name('admin.profit.store');
-    Route::get('/bonus', [ProfitController::class, 'create'])->name('admin.bonus.create');
-    Route::post('/bonus', [ProfitController::class, 'store'])->name('admin.bonus.store');
+    Route::get('/bonus', [BonusController::class, 'create'])->name('admin.bonus.create');
+    Route::post('/bonus', [BonusController::class, 'store'])->name('admin.bonus.store');
     Route::view('/token', 'admin.token')->name('admin.token');
     Route::post('/token', [TokenController::class, 'store'])->name('admin.token');
     Route::get('/withdrawals', [WithdrawalController::class, 'index'])->name('admin.withdrawals');
@@ -59,6 +60,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/traders/set', [UserController::class, 'setTrader'])->name('admin.traders.set');
     Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
     Route::patch('/deposits/update', [DepositController::class, 'update'])->name('admin.deposits.update');
+    Route::delete('/success', [SuccessController::class, 'delete'])->name('admin.success.delete');
 
     Route::delete('/withdrawals', [WithdrawalController::class, 'delete'])->name('admin.withdrawals.delete');
     Route::patch('/withdrawals/update', [WithdrawalController::class, 'update'])->name('admin.withdrawals.update');
