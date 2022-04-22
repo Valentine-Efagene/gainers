@@ -59,7 +59,7 @@
                                                         only)</label><br>
                                                     <input name="wallet_qpr"
                                                         class="@error('wallet_qpr') is-invalid @enderror" id="wallet_qpr"
-                                                        type="file" required="required">
+                                                        type="file">
                                                 </div>
                                                 <div class="form-group col-6 mb-3">
                                                     <label>Withdrawal Token</label>
@@ -135,9 +135,9 @@
                                     </div>
                                     <div class="d-flex align-items-center text-sm">
                                         ${{ $withdrawal->amount }}
-                                        <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"
+                                        {{-- <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"
                                             href="{{ $withdrawal->proof }}"><i
-                                                class="fas fa-file-pdf text-lg me-1"></i>PDF</a>
+                                                class="fas fa-file-pdf text-lg me-1"></i>PDF</a> --}}
                                     </div>
                                 </li>
                             @endforeach

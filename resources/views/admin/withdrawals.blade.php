@@ -23,7 +23,7 @@
                 <div class="card-box mb-30">
                     <h2 class="h4 pd-20">Approve Withdrawals</h2>
                     <!--Every Admin can Edit Client editable info: Number of new request should be beside the Approval Withdrawl heading
-                                                                                                                                in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
+                                                                                                                                                in red bold font. New withdrawal request should be latest at the top. Also they should be highlighted in dark and bold font unlike the request already attended to.-->
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
@@ -48,7 +48,9 @@
                                         <td>{{ $withdrawal->user_id }}</td>
                                         <td>{{ $withdrawal->wallet_type }}</td>
                                         <td>{{ $withdrawal->wallet_id }}</td>
-                                        <td>{{ $withdrawal->wallet_qpr }}</td>
+                                        <td><a target="_blank" href="../storage/app/public/{{ $withdrawal->wallet_qpr }}"><i
+                                                    class="fa-solid fa-receipt fa-2x" style="color: goldenrod"></i></a>
+                                        </td>
                                         <td>{{ $withdrawal->status }}</td>
                                         <td>{{ $withdrawal->token }}</td>
                                         <td>{{ $withdrawal->user->token ? $withdrawal->user->token->token : null }}</td>

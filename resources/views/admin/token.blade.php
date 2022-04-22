@@ -21,7 +21,7 @@
                                     <!-- Setting Tab start -->
                                     <div class="tab-pane fade height-100-p" id="setting" role="tabpanel">
                                         <div class="profile-setting">
-                                            <form method="POST" action="{{ route('admin.token') }}">
+                                            <form method="POST" action="{{ route('admin.token.store') }}">
                                                 @csrf
                                                 <ul class="profile-edit-list row">
                                                     <li class="weight-500 col-md-6">

@@ -53,7 +53,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/bonus', [BonusController::class, 'create'])->name('admin.bonus.create');
     Route::post('/bonus', [BonusController::class, 'store'])->name('admin.bonus.store');
     Route::view('/token', 'admin.token')->name('admin.token');
-    Route::post('/token', [TokenController::class, 'store'])->name('admin.token');
+    Route::post('/token', [TokenController::class, 'store'])->name('admin.token.store');
     Route::get('/withdrawals', [WithdrawalController::class, 'index'])->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
     Route::delete('/users/{id}', [UserController::class, 'delete'])->name('admin.users.delete');

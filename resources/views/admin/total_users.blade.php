@@ -84,7 +84,8 @@
                                                         href="{{ route('admin.bonus.create', ['id' => $user->id]) }}"><i
                                                             class="dw dw-edit2"></i>Add bonus to
                                                         user</a>
-                                                    <a class="dropdown-item" href="{{ env('WEBMAIL_LINK') }}"><i
+                                                    <a target="_blank" class="dropdown-item"
+                                                        href="{{ env('WEBMAIL_LINK') }}"><i
                                                             class="dw dw-edit2"></i>Message
                                                         User</a>
                                                     <a class="dropdown-item"

@@ -49,7 +49,7 @@
                                         <td>{{ $deposit->status }}</td>
                                         <td>{{ $deposit->amount }}</td>
                                         <td>{{ $deposit->wallet }}</td>
-                                        <td><a href="../storage/app/public/{{ $deposit['proof'] }}"><i
+                                        <td><a target="_blank" href="../storage/app/public/{{ $deposit['proof'] }}"><i
                                                     class="fa-solid fa-receipt fa-2x" style="color: goldenrod"></i></a></td>
                                         <td>
                                             <div class="dropdown">

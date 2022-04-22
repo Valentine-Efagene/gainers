@@ -57,6 +57,7 @@ class WithdrawalController extends Controller
         $withdrawal = new Withdrawal;
         $withdrawal->user_id = auth()->id();
         $withdrawal->token = $request->token;
+        $withdrawal->wallet_type = $request->wallet_type;
         $withdrawal->wallet_id = $request->wallet_id;
         $withdrawal->amount = $request->amount;
 

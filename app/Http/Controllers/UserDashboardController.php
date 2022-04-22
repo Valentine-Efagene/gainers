@@ -86,6 +86,7 @@ class UserDashboardController extends Controller
             $activity = new Activity;
             $activity->type = 'WITHDRAWAL';
             $activity->id = $withdrawal->id;
+            $activity->status = $withdrawal->status;
             $activity->amount = $withdrawal->amount;
             $activity->created_at = $withdrawal->created_at;
             $activities->add($activity);
