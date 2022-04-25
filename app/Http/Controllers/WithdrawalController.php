@@ -47,6 +47,11 @@ class WithdrawalController extends Controller
         $request->validate([
             'wallet_id' => ['string'],
             'wallet_type' => ['string'],
+            'token' => ['required', function ($attribute, $value, $fail) {
+                if ($value != Auth::user()->token->token) {
+                    $fail('Invalid token. Please contact our support.');
+                }
+            },],
             'amount' => ['required', 'numeric', function ($attribute, $value, $fail) use ($balance) {
                 if ($value > $balance) {
                     $fail('Amount exceeds your balance of ' . $balance . '.');

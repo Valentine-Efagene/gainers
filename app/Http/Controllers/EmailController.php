@@ -10,13 +10,19 @@ class EmailController extends Controller
 {
     public function welcome()
     {
-        Mail::to(Auth::user()->email)->send(new Welcome(Auth::user()->name));
+        try {
+            Mail::to(Auth::user()->email)->send(new Welcome(Auth::user()->name));
 
-        if (Mail::failures()) {
-            return response()->Fail('Sorry! Please try again later');
-        } else {
+            if (Mail::failures()) {
+                return response()->Fail('Sorry! Please try again later');
+            } else {
+                return redirect('/dashboard');
+                // return response()->json('Yes, You have sent email from LARAVEL !!');
+            }
+        } catch (\Throwable $th) {
             return redirect('/dashboard');
-            // return response()->json('Yes, You have sent email from LARAVEL !!');
+        } finally {
+            return redirect('/dashboard');
         }
     }
 }

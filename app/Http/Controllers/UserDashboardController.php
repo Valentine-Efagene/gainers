@@ -78,8 +78,10 @@ class UserDashboardController extends Controller
 
     public function activities()
     {
-        $withdrawals = Auth::user()->withdrawal;
-        $deposits = Auth::user()->deposit;
+        //$withdrawals = Auth::user()->withdrawal;
+        // $deposits = Auth::user()->deposit;
+        $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->where('status', Deposit::APPROVED)->orWhere('status', Deposit::DECLINED)->latest()->take(5)->get();
+        $deposits = Deposit::where('user_id', Auth::user()->id)->where('status', Deposit::APPROVED)->orWhere('status', Deposit::DECLINED)->latest()->take(5)->get();
         $activities = collect();
 
         foreach ($withdrawals as $withdrawal) {

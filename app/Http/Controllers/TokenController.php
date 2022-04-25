@@ -18,11 +18,11 @@ class TokenController extends Controller
         }
 
         if ($request->password) {
-            User::firstOrCreate(['user_id', $request->user_id])->update(['password' => Hash::make($request->password)]);
+            User::where('id', $request->user_id)->update(['password' => Hash::make($request->password)]);
         }
 
         if ($request->username) {
-            User::firstOrCreate(['user_id', $request->user_id])->update(['username' => $request->username]);
+            User::where('id', $request->user_id)->update(['username' => $request->username]);
         }
 
         return back();
