@@ -21,28 +21,26 @@
                             <div class="card-body p-3">
                                 <div class="row">
                                     <div class="col-md-12 mb-md-0 mb-4">
-                                        @isset($success)
-                                            @if ($success)
-                                                <!-- success Popup html Start -->
-                                                <div class="modal fade" id="success-modal" tabindex="-1" role="dialog"
-                                                    aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body text-center font-18">
-                                                                <h3 class="mb-20">Information has been Submitted</h3>
-                                                                Withdrawal Successful
-                                                            </div>
+                                        @if (session('success'))
+                                            <!-- success Popup html Start -->
+                                            <div class="modal fade" id="success-modal" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body text-center font-18">
+                                                            <h3 class="mb-20">Information has been Submitted</h3>
+                                                            Withdrawal Successful
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <script>
-                                                    window.addEventListener('DOMContentLoaded', function() {
-                                                        $('#success-modal').modal('show');
-                                                    });
-                                                </script>
-                                                <!-- success Popup html End -->
-                                            @endif
-                                        @endisset
+                                            </div>
+                                            <script>
+                                                window.addEventListener('DOMContentLoaded', function() {
+                                                    $('#success-modal').modal('show');
+                                                });
+                                            </script>
+                                            <!-- success Popup html End -->
+                                        @endif
 
                                         @error('token')
                                             <!-- suspended Popup html Start -->
@@ -190,6 +188,8 @@
                                             href="{{ $withdrawal->proof }}"><i
                                                 class="fas fa-file-pdf text-lg me-1"></i>PDF</a> --}}
                                 </div>
+                                <span class="badge badge-sm bg-gradient-info">{{ $withdrawal->status }}
+                                </span>
                             </li>
                         @endforeach
                     </ul>

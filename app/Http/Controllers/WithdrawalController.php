@@ -77,7 +77,8 @@ class WithdrawalController extends Controller
 
     public function create()
     {
-        $withdrawals = Auth::user()->withdrawal->sortByDesc('created_at');
+        // $withdrawals = Auth::user()->withdrawal->sortByDesc('created_at');
+        $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->where('status', Deposit::APPROVED)->orWhere('status', Deposit::DECLINED)->latest()->paginate(10);
         return view('withdrawal', compact('withdrawals'));
     }
 

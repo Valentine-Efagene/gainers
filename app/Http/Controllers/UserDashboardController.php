@@ -22,9 +22,11 @@ class UserDashboardController extends Controller
 
         // Last 5 transactions
         $profits = Auth::user()->profit->sortByDesc('id')->take(5);
-        $withdrawals = Auth::user()->withdrawal;
-        $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->latest()->take(5)->get();
-        $deposits = Deposit::where('user_id', Auth::user()->id)->latest()->take(5)->get();
+        //$withdrawals = Auth::user()->withdrawal;
+        //$withdrawals = Withdrawal::where('user_id', Auth::user()->id)->latest()->take(5)->get();
+        //$deposits = Deposit::where('user_id', Auth::user()->id)->latest()->take(5)->get();
+        $withdrawals = Withdrawal::where('user_id', Auth::user()->id)->where('status', Deposit::APPROVED)->orWhere('status', Deposit::DECLINED)->latest()->take(5)->get();
+        $deposits = Deposit::where('user_id', Auth::user()->id)->where('status', Deposit::APPROVED)->orWhere('status', Deposit::DECLINED)->latest()->take(5)->get();
         $bonuses = Bonus::where('user_id', Auth::user()->id)->latest()->take(5)->get();
         $transactions = collect();
 

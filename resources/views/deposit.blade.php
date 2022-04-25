@@ -7,6 +7,26 @@
         <!--BNB wallet-->
         <div class="row">
             <div class="col-xl-6 mb-xl-0 mb-4">
+                @if (session('success'))
+                    <!-- success Popup html Start -->
+                    <div class="modal fade" id="success-modal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body text-center font-18">
+                                    <h3 class="mb-20">Information has been Submitted</h3>
+                                    Deposit Successful
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        window.addEventListener('DOMContentLoaded', function() {
+                            $('#success-modal').modal('show');
+                        });
+                    </script>
+                    <!-- success Popup html End -->
+                @endif
                 <div class="card bg-transparent shadow-xl">
                     <div class="overflow-hidden position-relative border-radius-xl"
                         style="background-image: url('../assets/img/curved-images/curved14.jpg');">
@@ -15,7 +35,8 @@
                             <div class="d-flex">
                                 <div class="d-flex">
                                     <div class="form-group col-12 mb-3">
-                                        <p class="text-white text-sm opacity-8 mb-0">Scan the Wallet QPR Code to make payment
+                                        <p class="text-white text-sm opacity-8 mb-0">Scan the Wallet QPR Code to make
+                                            payment
                                         </p><br>
                                         @isset($wallet)
                                             <img src="storage/app/public/{{ $wallet->qr_code }}" alt="Wallet_QPR" width=200px
@@ -66,7 +87,7 @@
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-6 d-flex align-items-center">
-                                <h6 class="mb-0">Chose Investment Plan and Amount you paid in Dollar If you have
+                                <h6 class="mb-0">Choose Investment Plan and Amount you paid in Dollar If you have
                                     made
                                     deposit.</h6>
                             </div>
@@ -188,6 +209,8 @@
                                         class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
                                             class="fas fa-file-pdf text-lg me-1"></i> PDF</a>
                                 </div>
+                                <span class="badge badge-sm bg-gradient-info">{{ $deposit->status }}
+                                </span>
                             </li>
                         @endforeach
                     @endisset

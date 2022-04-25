@@ -45,7 +45,8 @@ class DepositController extends Controller
     public function create()
     {
         $wallets = Wallet::all();
-        $deposits = Auth::user()->deposit->sortByDesc('id');
+        // $deposits = Auth::user()->deposit->sortByDesc('id');
+        $deposits = Deposit::where('user_id', Auth::user()->id)->where('status', Deposit::APPROVED)->orWhere('status', Deposit::DECLINED)->latest()->paginate(10);
         return view('deposit', compact('deposits', 'wallets'));
     }
 
