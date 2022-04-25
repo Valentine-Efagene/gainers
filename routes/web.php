@@ -73,3 +73,6 @@ Route::get('/mail-test', function () {
 })->name('email.welcome');
 
 Route::get('/welcome-email', [EmailController::class, 'welcome'])->name('email.welcome');
+Route::fallback(function () {
+  return view('/home');
+});

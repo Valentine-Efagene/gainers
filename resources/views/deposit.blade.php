@@ -209,8 +209,12 @@
                                         class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
                                             class="fas fa-file-pdf text-lg me-1"></i> PDF</a>
                                 </div>
-                                <span class="badge badge-sm bg-gradient-info">{{ $deposit->status }}
-                                </span>
+                                @if ($deposit->status == 'APPROVED')
+                                    <span class="badge badge-sm bg-gradient-success">APPROVED</span>
+                                @endif
+                                @if ($deposit->status == 'DECLINED')
+                                    <span class="badge badge-sm bg-gradient-warning">Denied</span>
+                                @endif
                             </li>
                         @endforeach
                     @endisset

@@ -188,8 +188,12 @@
                                             href="{{ $withdrawal->proof }}"><i
                                                 class="fas fa-file-pdf text-lg me-1"></i>PDF</a> --}}
                                 </div>
-                                <span class="badge badge-sm bg-gradient-info">{{ $withdrawal->status }}
-                                </span>
+                                @if ($withdrawal->status == 'APPROVED')
+                                    <span class="badge badge-sm bg-gradient-success">APPROVED</span>
+                                @endif
+                                @if ($withdrawal->status == 'DECLINED')
+                                    <span class="badge badge-sm bg-gradient-warning">Denied</span>
+                                @endif
                             </li>
                         @endforeach
                     </ul>
