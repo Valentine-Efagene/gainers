@@ -40,9 +40,13 @@ class UserController extends Controller
         return view('admin.total_users', compact('users', 'traders'));
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        User::find($id)->delete();
+        $request->validate([
+            'id' => ['required'],
+        ]);
+
+        User::find($request->id)->delete();
         return back();
     }
 

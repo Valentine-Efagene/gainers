@@ -56,7 +56,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/token', [TokenController::class, 'store'])->name('admin.token.store');
     Route::get('/withdrawals', [WithdrawalController::class, 'index'])->name('admin.withdrawals');
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
-    Route::delete('/users/{id}', [UserController::class, 'delete'])->name('admin.users.delete');
+    Route::delete('/users', [UserController::class, 'delete'])->name('admin.users.delete');
     Route::post('/traders/set', [UserController::class, 'setTrader'])->name('admin.traders.set');
     Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
     Route::patch('/deposits/update', [DepositController::class, 'update'])->name('admin.deposits.update');

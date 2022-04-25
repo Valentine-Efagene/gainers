@@ -88,9 +88,13 @@
                                                         href="{{ env('WEBMAIL_LINK') }}"><i
                                                             class="dw dw-edit2"></i>Message
                                                         User</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('admin.users.delete', ['id' => $user->id]) }}"><i
-                                                            class="dw dw-delete-3"></i> Delete</a>
+                                                    <form method="POST" action="{{ route('admin.users.delete') }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input name="id" type="hidden" value="{{ $user->id }}">
+                                                        <button class="dropdown-item" href=""><i
+                                                                class="dw dw-delete-3"></i>Delete</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>
