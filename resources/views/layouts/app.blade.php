@@ -273,9 +273,11 @@
                                 </li>
                                 <li><a href="{{ route('market') }}">Cryptocurrency Market Updates</a>
                                 </li>
-                                <li><a href="#">Binance Exchange</a>
+                                <li><a href="https://accounts.binance.com/en/register">Binance Exchange</a>
                                 </li>
-                                <li><a href="#">Coinbase</a>
+                                <li><a href="https://www.coinbase.com/signup">Coinbase</a>
+                                </li>
+                                <li><a href="https://www.coinmama.com/signup">Coinmama</a>
                                 </li>
                             </ul>
                         </div>
@@ -296,7 +298,15 @@
                     <div class="container ">
                         <div class="row ">
                             <div class="col-md-12">
-                                <p>gainers bay © 2021 All Rights Reserved</p>
+                                <div class="copyright text-center text-sm text-muted text-lg-left">
+                                    ©
+                                    <script>
+                                        document.write(new Date().getFullYear())
+                                    </script>,
+                                    All Right Reserve <i class="fa fa-heart"></i>
+                                    <a href="{{ route('home') }}" class="font-weight-bold">Gainers Bay
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

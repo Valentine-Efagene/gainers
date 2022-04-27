@@ -36,6 +36,7 @@ class UserDashboardController extends Controller
             $transaction->id = $withdrawal->id;
             $transaction->wallet_id = $withdrawal->wallet_id;
             $transaction->wallet_qpr = $withdrawal->wallet_qpr;
+            $transaction->status = $withdrawal->status;
             $transaction->amount = $withdrawal->amount;
             $transaction->created_at = $withdrawal->created_at;
             $transactions->add($transaction);

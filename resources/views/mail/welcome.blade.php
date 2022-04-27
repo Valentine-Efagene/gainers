@@ -43,7 +43,17 @@
 
 <body>
 
-    <h2>Dear {{ Auth::user()->name }}, welcome to the gainers family</h2>
+    <h2>
+        <p>Dear {{ Auth::user()->name }}, </p>
+        <p>Thank you for signing up with us. Here at Gainers Bay, we ensure that
+            our investors get maximum profit on retun of their investments with us.
+            Kindly proceed to start your first investment with us.
+
+            For guidance on how to use the investment platform, please contact an admin on
+            investors_support@gainersbay.com or customer support via our livechat.</p>
+        <p>Thank you for Trusting us with your investment.</p>
+        <p>Gainers Bay</p>
+    </h2>
 </body>
 
 </html>

@@ -254,9 +254,11 @@
                                                     {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
                                                     @if ($transaction->wallet_id)
                                                         to Wallet Address: {{ $transaction->wallet_id }}
+                                                        {{ Str::title($transaction->status) }}
                                                     @endif
                                                 @elseif($transaction->type == 'DEPOSIT')
                                                     {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
+                                                    {{ Str::title($transaction->status) }}
                                                 @elseif($transaction->type == 'REFERRAL')
                                                     {{ Str::title($transaction->type) }} of ${{ $transaction->amount }}
                                                 @elseif($transaction->type == 'BONUS')

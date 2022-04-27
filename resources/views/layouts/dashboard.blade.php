@@ -293,14 +293,7 @@
             </div>
         </nav> --}}
         <!-- End Navbar -->
-
-        <!-- Crypto Converter ⚡ Widget -->
-        <crypto-converter-widget shadow symbol live background-color="#383a59" border-radius="0.60rem"
-            fiat="united-states-dollar" crypto="bitcoin" amount="1" decimal-places="2"></crypto-converter-widget>
-        <a href="https://currencyrate.today/" target="_blank" rel="noopener">CurrencyRate.Today</a>
-        <script async src="https://cdn.jsdelivr.net/gh/dejurin/crypto-converter-widget@1.5.2/dist/latest.min.js"></script>
-        <!-- /Crypto Converter ⚡ Widget -->
-
+        <br><br><br><br>
         {{-- Main content --}}
         @yield('content')
 
