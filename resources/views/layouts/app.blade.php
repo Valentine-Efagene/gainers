@@ -90,6 +90,8 @@
                 <a class="{{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
                     href="{{ route('user.dashboard') }}">My Dashboard</a>
             @else
+                <a class="{{ request()->segment(1) == 'register' ? 'active' : '' }}"
+                    href="{{ route('register') }}">Register</a>
                 <a class="{{ request()->segment(1) == 'login' ? 'active' : '' }}"
                     href="{{ url('/login') }}">Login</a>
             @endif
