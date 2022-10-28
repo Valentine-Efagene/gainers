@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trader;
 use App\Models\User;
+use App\Models\UserAgent;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -55,6 +56,20 @@ class UserController extends Controller
         $request->validate([]);
         User::where('id', $request->user_id)->update(['trader_id' => $request->trader_id]);
         return back();
+    }
+
+    public function setAgent(Request $request)
+    {
+        $request->validate([
+            'user_id' => ['string'],
+            'agent_id' => ['string'],
+        ]);
+        $userAgent = new UserAgent;
+        $userAgent->user_id = $request->user_id;
+        $userAgent->agent_id = $request->agent_id;
+        $ret = $userAgent->save();
+        $success = $ret ? true : false;
+        return back()->with(compact('success'));
     }
 
     public function stripEmptyCustom($data)

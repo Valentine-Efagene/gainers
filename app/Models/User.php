@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasOne(Token::class);
     }
 
+    public function agents()
+    {
+        return $this->belongsToMany(Agent::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

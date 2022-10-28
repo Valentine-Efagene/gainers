@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="js/app.js" defer></script>
+    {{-- <script src="js/app.js" defer></script> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -57,6 +57,7 @@
 </head>
 
 <body class="main-layout">
+    <div id="pop_up"></div>
     <!-- loader  -->
     <div class="loader_bg">
         <div class="loader"><img src="{{ asset('images/loading.gif') }}" alt="" /></div>

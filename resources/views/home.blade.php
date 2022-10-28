@@ -28,7 +28,9 @@
                                                     <h1>Earning passively and regularly</h1>
                                                     <p>Helping you trade on the Foreign Exchange market risk free.
                                                     </p>
-                                                    <a class="read_more" href="{{ route('register') }}">Get Started
+                                                    <a class="register" href="{{ route('register') }}">Create Account
+                                                    </a>
+                                                    <a class="login" href="{{ route('login') }}">Login
                                                     </a>
                                                 </div>
                                             </div>
@@ -53,8 +55,8 @@
                                                     <p>Giving personal guide on which Crypto Assets to invest on at the
                                                         right time.
                                                     </p>
-                                                    <a class="read_more" href="{{ route('register') }}">Get
-                                                        Started</a>
+                                                    <a class="register" href="{{ route('register') }}">Create Account</a>
+                                                    <a class="login" href="{{ route('login') }}">Login</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,8 +80,8 @@
                                                     <p>With list of our choice of stock, you can chose to invest into
                                                         company stocks across U.S and the world.
                                                     </p>
-                                                    <a class="read_more" href="{{ route('register') }}">Get
-                                                        Started</a>
+                                                    <a class="register" href="{{ route('register') }}">Create Account</a>
+                                                    <a class="login" href="{{ route('login') }}">Login</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,8 +104,8 @@
                                                     <h1>Sign Up Bonus</h1>
                                                     <p>Get Bonus up to 500 Dollar when you sign up and Invest
                                                     </p>
-                                                    <a class="read_more" href="{{ route('register') }}">Sign Up
-                                                        Now</a>
+                                                    <a class="register" href="{{ route('register') }}">Create Account</a>
+                                                    <a class="login" href="{{ route('login') }}">Login</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +130,8 @@
                                                     <p>Our Investment plans are as popular demands with the best and sincere
                                                         ROI
                                                     </p>
-                                                    <a class="read_more" href="{{ route('login') }}">Login</a>
+                                                    <a class="register" href="{{ route('register') }}">Create Account</a>
+                                                    <a class="login" href="{{ route('login') }}">Login</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +232,7 @@
                                     <h2>About Us</h2>
                                 </div>
                                 <div class="about_text">
-                                    <p>GAINERS BAY is a forex trading account managing and crypto currencies investment
+                                    <p>GAINERS BAY is a forex trading account-managing and crypto currencies investment
                                         platform. Giving Investors the best ROI and guidance on crypto trading...</p>
                                     <p>We gain on the bull market as well as on the bear market!</p>
                                     <a class="read_more" href="{{ route('about') }}">Read More</a>
@@ -248,6 +251,74 @@
         </div>
     </div>
     <!-- end about -->
+    
+    <!-- Recent Deposits -->
+    <div id="about" class="about">
+        <div class="container">
+            <div class="titlepage text_align_center my-5">
+                <h2>RECENT DEPOSITS</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Payment Method</th>
+                                    <th scope="col">Amount</th>
+                                  </tr>
+                                </thead>
+                                @if ($recent_deposits)
+                                <tbody>
+                                    @foreach ($recent_deposits as $recent_deposit)
+                                    <tr>
+                                        <th scope="col">{{$recent_deposit['name']}}</th>
+                                        <th scope="col">{{$recent_deposit['payment_method']}}</th>
+                                        $<th scope="col">{{$recent_deposit['amount']}}</th>
+                                      </tr>
+                                    @endforeach
+                                </tbody>
+                                @endif
+                              </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Deposits -->
+    
+    <!-- Recent Withdrawals -->
+    <div id="about" class="about">
+        <div class="container">
+            <div class="titlepage text_align_center my-5">
+                <h2>RECENT WITHDRAWALS</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Payment Method</th>
+                                    <th scope="col">Amount</th>
+                                  </tr>
+                                </thead>
+                                @if ($recent_withdrawals)
+                                <tbody>
+                                    @foreach ($recent_withdrawals as $recent_withdrawal)
+                                    <tr>
+                                        <th scope="col">{{$recent_withdrawal['name']}}</th>
+                                        <th scope="col">{{$recent_withdrawal['payment_method']}}</th>
+                                        <th scope="col">${{$recent_withdrawal['amount']}}</th>
+                                      </tr>
+                                    @endforeach
+                                </tbody>
+                                @endif
+                              </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Deposits -->
 
     <!-- Investment Plans -->
     <div class="works">

@@ -23,68 +23,7 @@
                                         <div class="profile-setting">
 
                                             <ul class="profile-edit-list row">
-                                                @foreach ($traders as $trader)
-                                                    <form action="{{ route('admin.trader.update') }}" method="post">
-                                                        @csrf
-                                                        <li class="weight-500 col-md-6">
-                                                            <h4 class="text-blue h5 mb-20">Edit/Update
-                                                                Trader {{ $trader->id }}</h4>
-                                                            <!--Edit trader1 starts-->
-                                                            <input type="text" hidden readonly name="id" id="id"
-                                                                value="{{ $trader->id }}">
-                                                            <div class="form-group">
-                                                                <label>TRADER NAME</label>
-                                                                <input name="name" id="name"
-                                                                    class="form-control form-control-lg @error('name') is-invalid @enderror"
-                                                                    value="{{ $trader->name }}" type="text">
-                                                                @error('name')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>INVESTORS</label>
-                                                                @isset($trader->user)
-                                                                    <ul>
-                                                                        @foreach ($trader->user as $user)
-                                                                            <li>{{ $user->name }}</li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                @endisset
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>AVERAGE ROI</label>
-                                                                <input name="roi" id="roi" value="{{ $trader->roi }}"
-                                                                    class="form-control form-control-lg @error('roi') is-invalid @enderror"
-                                                                    type="text">
-                                                                @error('roi')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>SUCCESS RATE</label>
-                                                                <input name="success_rate" id="success_rate"
-                                                                    value="{{ $trader->success_rate }}"
-                                                                    class="form-control form-control-lg @error('success_rate') is-invalid @enderror"
-                                                                    type="text">
-                                                                @error('success_rate')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group mb-0">
-                                                                <input type="submit" class="btn btn-primary"
-                                                                    value="Upload/Update Trader {{ $trader->id }}">
-                                                            </div>
-                                                            <!--edit trader1  ENDS-->
-                                                        </li>
-                                                    </form>
-                                                @endforeach
-                                                <li class="weight-500 col-md-6">
+                                                <li class="weight-500 col-md-12">
                                                     <form action="{{ route('admin.trader.store') }}" method="post">
                                                         @csrf
                                                         <h4 class="text-blue h5 mb-20">ADD TRADER</h4>
@@ -128,11 +67,74 @@
                                                             @enderror
                                                         </div>
                                                         <div class="form-group mb-0">
-                                                            <input type="submit" class="btn btn-primary" value="ADD TRADER">
+                                                            <input type="submit" class="btn btn-primary"
+                                                                value="ADD TRADER">
                                                         </div>
                                                         <!--edit trader  ENDS-->
                                                     </form>
                                                 </li>
+                                                @foreach ($traders as $trader)
+                                                    <form action="{{ route('admin.trader.update') }}" method="post">
+                                                        @csrf
+                                                        <li class="weight-500 col-md-12">
+                                                            <h4 class="text-blue h5 mb-20">Edit/Update
+                                                                Trader {{ $trader->id }}</h4>
+                                                            <!--Edit trader1 starts-->
+                                                            <input type="text" hidden readonly name="id"
+                                                                id="id" value="{{ $trader->id }}">
+                                                            <div class="form-group">
+                                                                <label>TRADER NAME</label>
+                                                                <input name="name" id="name"
+                                                                    class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                                                    value="{{ $trader->name }}" type="text">
+                                                                @error('name')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>INVESTORS</label>
+                                                                @isset($trader->user)
+                                                                    <ul>
+                                                                        @foreach ($trader->user as $user)
+                                                                            <li>{{ $user->name }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endisset
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>AVERAGE ROI</label>
+                                                                <input name="roi" id="roi"
+                                                                    value="{{ $trader->roi }}"
+                                                                    class="form-control form-control-lg @error('roi') is-invalid @enderror"
+                                                                    type="text">
+                                                                @error('roi')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>SUCCESS RATE</label>
+                                                                <input name="success_rate" id="success_rate"
+                                                                    value="{{ $trader->success_rate }}"
+                                                                    class="form-control form-control-lg @error('success_rate') is-invalid @enderror"
+                                                                    type="text">
+                                                                @error('success_rate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group mb-0">
+                                                                <input type="submit" class="btn btn-primary"
+                                                                    value="Upload/Update Trader {{ $trader->id }}">
+                                                            </div>
+                                                            <!--edit trader1  ENDS-->
+                                                        </li>
+                                                    </form>
+                                                @endforeach
                                             </ul>
 
                                         </div>

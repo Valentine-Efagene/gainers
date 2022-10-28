@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AddPhotoAlternate } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import React from "react";
+import ReactDOM from "react-dom";
+import { AddPhotoAlternate } from "@mui/icons-material";
+import { Button } from "@mui/material";
 
 function Example() {
     return (
@@ -9,8 +9,12 @@ function Example() {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">Example Component <AddPhotoAlternate /><Button>Hello</Button></div>
-                        <div className="card-body">I'm an       component! hjhjh</div>
+                        <div className="card-header">
+                            Example Component from me
+                            <AddPhotoAlternate />
+                            <Button>Hello</Button>
+                        </div>
+                        <div className="card-body">I'm a component!</div>
                     </div>
                 </div>
             </div>
@@ -20,6 +24,6 @@ function Example() {
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById("example")) {
+    ReactDOM.render(<Example />, document.getElementById("example"));
 }

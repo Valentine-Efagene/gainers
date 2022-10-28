@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuth\LoginController;
 use App\Http\Controllers\AdminAuth\RegisterController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BonusController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ProfitController;
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/deposits', [DepositController::class, 'index'])->name('admin.deposits');
     Route::delete('/users', [UserController::class, 'delete'])->name('admin.users.delete');
     Route::post('/traders/set', [UserController::class, 'setTrader'])->name('admin.traders.set');
+    Route::post('/agents/set', [UserController::class, 'setAgent'])->name('admin.agents.set');
     Route::delete('/deposits', [DepositController::class, 'delete'])->name('admin.deposits.delete');
     Route::patch('/deposits/update', [DepositController::class, 'update'])->name('admin.deposits.update');
     Route::delete('/success', [SuccessController::class, 'delete'])->name('admin.success.delete');
@@ -69,8 +71,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::post('/wallet/store', [WalletController::class, 'store'])->name('admin.wallet.store');
     Route::get('/system_wallet', [WalletController::class, 'index'])->name('admin.system_wallet');
     Route::get('/trader_stat', [TraderController::class, 'index'])->name('admin.trader_stat');
+    Route::get('/agents', [AgentController::class, 'index'])->name('admin.agents');
     Route::post('/traders/update', [TraderController::class, 'update'])->name('admin.trader.update');
+    Route::post('/agents/update', [AgentController::class, 'update'])->name('admin.agent.update');
     Route::post('/traders/store', [TraderController::class, 'store'])->name('admin.trader.store');
+    Route::post('/agents/store', [AgentController::class, 'store'])->name('admin.agents.store');
     Route::get('/total_users', [UserController::class, 'index'])->name('admin.total_users');
     Route::view('/system', 'admin.system')->name('admin.system');
     Route::get('/create-success', [SuccessController::class, 'create'])->name('admin.success.create');

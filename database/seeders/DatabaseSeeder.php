@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FakeTransaction;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             BonusSeeder::class,
             TraderSeeder::class,
             SuccessSeeder::class,
+            FakeTransactionSeeder::class
         ]);
     }
 }

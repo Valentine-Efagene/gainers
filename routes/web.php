@@ -1,18 +1,17 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SuccessController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\WithdrawalController;
 use App\Mail\Welcome;
 use Illuminate\Support\Facades\Mail;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +25,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 
-Route::view('/home', 'home')->name('home');
-Route::view('/', 'home')->name('index');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::view('/about', 'about')->name('about');
 Route::view('/faq', 'faq')->name('faq');
 Route::view('/contact', 'contact')->name('contact');
@@ -75,4 +74,8 @@ Route::get('/mail-test', function () {
 Route::get('/welcome-email', [EmailController::class, 'welcome'])->name('email.welcome');
 Route::fallback(function () {
   return view('/home');
+});
+
+Route::get('/version', function () {
+  return app()->version();
 });
