@@ -9,7 +9,7 @@ class Agent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'account_number', 'account_name', 'bank', 'western_union_link'];
+    protected $fillable = ['name', 'account_number', 'account_name', 'bank', 'western_union_link', 'phone_number'];
 
     public function users()
     {

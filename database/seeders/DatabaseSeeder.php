@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             BonusSeeder::class,
             TraderSeeder::class,
             SuccessSeeder::class,
-            FakeTransactionSeeder::class
+            FakeTransactionSeeder::class,
+            AgentSeeder::class
         ]);
     }
 }

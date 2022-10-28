@@ -17,7 +17,7 @@ class AgentController extends Controller
     {
         $this->middleware('admin_auth', [
             'only' => [
-                'index', 'update', 'store'
+                'index', 'update', 'store', 'create', 'edit', 'destroy'
             ]
         ]);
     }
@@ -29,7 +29,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $agents = Agent::all();
+        $agents = Agent::paginate(15);
         return view('admin.agents', compact('agents'));
     }
 
@@ -40,7 +40,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_agent');
     }
 
     /**
@@ -56,7 +56,8 @@ class AgentController extends Controller
             'account_number' => ['string', 'nullable'],
             'account_name' => ['string', 'nullable'],
             'bank' => ['string', 'nullable'],
-            'western_union_link' => ['string', 'nullable']
+            'western_union_link' => ['string', 'nullable'],
+            'phone_number' => ['string', 'nullable']
         ]);
 
         $agent = new Agent;
@@ -64,6 +65,7 @@ class AgentController extends Controller
         $agent->account_number = $request->account_number;
         $agent->account_name = $request->account_name;
         $agent->bank = $request->bank;
+        $agent->phone_number = $request->phone_number;
         $agent->western_union_link = $request->western_union_link;
         $ret = $agent->save();
         $success = $ret ? true : false;
@@ -89,7 +91,7 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-        //
+        return view('admin.edit_agent', compact('agent'));
     }
 
     /**
@@ -115,11 +117,17 @@ class AgentController extends Controller
         if ($request->account_name) {
             $agent->account_name = $request->account_name;
         }
+
         if ($request->bank) {
             $agent->bank = $request->bank;
         }
+
         if ($request->western_union_link) {
             $agent->western_union_link = $request->western_union_link;
+        }
+
+        if ($request->phone_number) {
+            $agent->phone_number = $request->phone_number;
         }
 
         $ret = $agent->save();

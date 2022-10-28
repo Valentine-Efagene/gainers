@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAgentsTable extends Migration
+class CreateAgentUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserAgentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_agent', function (Blueprint $table) {
+        Schema::create('agent_user', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')
@@ -34,6 +34,6 @@ class CreateUserAgentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_agent');
+        Schema::dropIfExists('agent_user');
     }
 }

@@ -32,6 +32,8 @@
                                 <th>Email</th>
                                 <th>Assigned Withdrawal token</th>
                                 <th>Assigned Trader</th>
+                                <th>Assigned Agent 1</th>
+                                <th>Assigned Agent 2</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
@@ -70,6 +72,52 @@
                                             </form>
                                         </td>
                                         <td>
+                                            <form action="{{ route('admin.agents.set') }}" method="post">
+                                                @csrf
+                                                <input type="text" name="user_id" readonly hidden id="user_id"
+                                                    value="{{ $user->id }}">
+                                                <select class="form-select" name="agent_id" id="agent_id"
+                                                    onchange='this.form.submit()' aria-label="Agent Select">
+                                                    @if (count($user->agents) > 0)
+                                                        <option value="{{ $user->agents[0]->id }}" selected>
+                                                            {{ $user->agents[0]->name }}</option>
+                                                    @else
+                                                        <option selected>
+                                                            Assign Agent
+                                                        </option>
+                                                    @endif
+                                                    @foreach ($agents as $agent)
+                                                        <option value="{{ $agent->id }}">{{ $agent->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <noscript><input hidden type="submit" value="Submit"></noscript>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('admin.agents.set') }}" method="post">
+                                                @csrf
+                                                <input type="text" name="user_id" readonly hidden id="user_id"
+                                                    value="{{ $user->id }}">
+                                                <select class="form-select" name="agent_id" id="agent_id"
+                                                    onchange='this.form.submit()' aria-label="Agent Select">
+                                                    @if (count($user->agents) > 1)
+                                                        <option value="{{ $user->agents[1]->id }}" selected>
+                                                            {{ $user->agents[1]->name }}</option>
+                                                    @else
+                                                        <option selected>
+                                                            Assign Agent
+                                                        </option>
+                                                    @endif
+                                                    @foreach ($agents as $agent)
+                                                        <option value="{{ $agent->id }}">{{ $agent->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <noscript><input hidden type="submit" value="Submit"></noscript>
+                                            </form>
+                                        </td>
+                                        <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
                                                     href="#" role="button" data-toggle="dropdown">
@@ -85,8 +133,7 @@
                                                             class="dw dw-edit2"></i>Add bonus to
                                                         user</a>
                                                     <a target="_blank" class="dropdown-item"
-                                                        href="{{ env('WEBMAIL_LINK') }}"><i
-                                                            class="dw dw-edit2"></i>Message
+                                                        href="{{ env('WEBMAIL_LINK') }}"><i class="dw dw-edit2"></i>Message
                                                         User</a>
                                                     <form method="POST" action="{{ route('admin.users.delete') }}">
                                                         @csrf

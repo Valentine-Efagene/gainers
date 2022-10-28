@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agent;
+use App\Models\AgentUser;
 use App\Models\Trader;
 use App\Models\User;
 use App\Models\UserAgent;
@@ -38,7 +40,8 @@ class UserController extends Controller
     {
         $users = User::paginate(10);
         $traders = Trader::all();
-        return view('admin.total_users', compact('users', 'traders'));
+        $agents = Agent::all();
+        return view('admin.total_users', compact('users', 'traders', 'agents'));
     }
 
     public function delete(Request $request)
@@ -64,10 +67,10 @@ class UserController extends Controller
             'user_id' => ['string'],
             'agent_id' => ['string'],
         ]);
-        $userAgent = new UserAgent;
-        $userAgent->user_id = $request->user_id;
-        $userAgent->agent_id = $request->agent_id;
-        $ret = $userAgent->save();
+        $agentUser = new AgentUser;
+        $agentUser->user_id = $request->user_id;
+        $agentUser->agent_id = $request->agent_id;
+        $ret = $agentUser->save();
         $success = $ret ? true : false;
         return back()->with(compact('success'));
     }

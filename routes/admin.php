@@ -72,6 +72,9 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/system_wallet', [WalletController::class, 'index'])->name('admin.system_wallet');
     Route::get('/trader_stat', [TraderController::class, 'index'])->name('admin.trader_stat');
     Route::get('/agents', [AgentController::class, 'index'])->name('admin.agents');
+    Route::get('/edit_agent', [AgentController::class, 'edit'])->name('admin.agents.edit');
+    Route::get('/add_agent', [AgentController::class, 'create'])->name('admin.agents.add');
+    Route::delete('/agent/{id}', [AgentController::class, 'destroy'])->name('admin.agents.delete');
     Route::post('/traders/update', [TraderController::class, 'update'])->name('admin.trader.update');
     Route::post('/agents/update', [AgentController::class, 'update'])->name('admin.agent.update');
     Route::post('/traders/store', [TraderController::class, 'store'])->name('admin.trader.store');

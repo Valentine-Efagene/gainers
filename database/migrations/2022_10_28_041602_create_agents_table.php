@@ -17,6 +17,7 @@ class CreateAgentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('account_number')->nullable();
             $table->string('account_name')->nullable();
             $table->string('bank')->nullable();

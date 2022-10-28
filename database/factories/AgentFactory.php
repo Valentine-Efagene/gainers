@@ -14,7 +14,12 @@ class AgentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'account_name' => $this->faker->word(),
+            'western_union_link' => $this->faker->word(),
+            'bank' => $this->faker->word(),
+            'account_number' => $this->faker->randomNumber(),
+            'phone_number' => $this->faker->phoneNumber(),
         ];
     }
 }
